@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  h1.arcade= title
+  p Welcome to #{title} with OpenShift
+
+  form(id='usernameForm', method='POST', action='/')
+    div
+      label(for='username') How do you want to be remembered?
+      input#usename(type='text', name='username')
+    button(type='submit', id='usernameFormBtn') Let's break OpenShift!
+
+block scripts
+  script(src='/javascripts/index.js')
