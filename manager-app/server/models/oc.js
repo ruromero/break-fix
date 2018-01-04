@@ -2,11 +2,12 @@ const shell = require('shelljs')
 const fs = require('fs');
 
 function loadToken(callbackFn) {
-  if(process.env.PWD !== undefined) {
-    return fs.readFileSync(process.env.PWD + '/token', 'utf8');
-  } else {
+  try {
+    return fs.readFileSync('/run/secrets/kubernetes.io/token', 'utf8');
+  } catch (error) {
     throw new Error('Missing required TOKEN. Check that the ServiceAccount is properly defined');
   }
+
 }
 
 const TOKEN = loadToken();
