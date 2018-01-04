@@ -1,0 +1,8 @@
+# Name: bf-devconf
+# Description: Application to be used in the Break & Fix at Devconf 2018
+
+oc new-project break-fix --display-name='Break & Fix'
+oc create sa bf-sa
+oc adm policy add-cluster-role-to-user cluster-admin -z bf-sa
+
+# Install manager-app and minion(s)
