@@ -7,13 +7,18 @@ const router = express.Router();
 /* GET api listing. */
 router.get('/', (req, res) => {
   Encryptor.decryptBreakLevel(req.query.level, req.query.key ,
-    msg => {
-      oc.run(msg, output => {
-        res.send(output);
-      });
+    (msg) => {
+      oc.run(msg,
+        (output) => {
+          res.send(output);
+        },
+        (error) => {
+          res.status(500).send({error: error});
+        }
+      );
     },
-    errorMsg => {
-      res.send('Unable to validate password: ' + errorMsg);
+    (errorMsg) => {
+      res.status(400).send({error: errorMsg});
     }
 );
 });

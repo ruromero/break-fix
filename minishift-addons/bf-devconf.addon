@@ -6,3 +6,7 @@ oc create sa bf-sa
 oc adm policy add-cluster-role-to-user cluster-admin -z bf-sa
 
 # Install manager-app and minion(s)
+oc import-image ruromero/nodejs-6-oc --confirm
+oc new-app nodejs-6-oc~https://github.com/ruromero/devconf --context-dir=manager-app --name=namager-app
+oc expose svc manager-app
+oc patch dc manager-app -p '{"spec": {"template": {"spec": {"serviceAccountName": "bf-sa"}}}}'
