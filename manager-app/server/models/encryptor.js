@@ -8,15 +8,18 @@ const BREAK = 'break';
 const CHECK = 'check';
 const ROLLBACK = 'rollback';
 
-function decrypt(fileName, key, callback) {
+function decrypt(fileName, key, callback, errorCallback) {
   fs.readFile(path.join(__dirname, fileName), 'utf8', function(err, data) {
     if (err) {
-      console.log(err);
-      callback('');
+      errorCallback(err);
     } else {
       const bytes = CryptoJS.AES.decrypt(data.toString(), key);
-      const plainText = bytes.toString(CryptoJS.enc.Utf8);
-      callback(plainText);
+      if(bytes == '') {
+        errorCallback('No output. Is it the right key?');
+      } else {
+        const plainText = bytes.toString(CryptoJS.enc.Utf8);
+        callback(plainText);
+      }
     }
   });
 }
@@ -25,19 +28,18 @@ function generateFileName(command, level) {
   return '../static/' + OC_COMMANDS + '/' + LEVEL + level + '/' + command;
 }
 
-exports.decryptBreakLevel = function(level, key, callback) {
-  decrypt(generateFileName(BREAK, level), key, callback);
+exports.decryptBreakLevel = function(level, key, callback, errorCallback) {
+  decrypt(generateFileName(BREAK, level), key, callback, errorCallback);
 }
 
-exports.decryptCheckLevel = function(level, key, callback) {
-  decrypt(generateFileName(CHECK, level), key, callback);
+exports.decryptCheckLevel = function(level, key, callback, errorCallback) {
+  decrypt(generateFileName(CHECK, level), key, callback, errorCallback);
 }
 
-exports.decryptRollbackLevel = function(level, key, callback) {
-  decrypt(generateFileName(ROLLBACK, level), key, callback);
+exports.decryptRollbackLevel = function(level, key, callback, errorCallback) {
+  decrypt(generateFileName(ROLLBACK, level), key, callback, errorCallback);
 }
 
-exports.encrypt = function(text, key, callback) {
-  const cryptedText = CryptoJS.AES.encrypt(text, key);
-  callback(cryptedText);
+exports.encrypt = function(text, key) {
+  return CryptoJS.AES.encrypt(text, key);
 };
