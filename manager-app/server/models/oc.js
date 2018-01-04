@@ -7,7 +7,6 @@ function loadToken(callbackFn) {
   } catch (error) {
     throw new Error('Missing required TOKEN. Check that the ServiceAccount is properly defined');
   }
-
 }
 
 const TOKEN = loadToken();
