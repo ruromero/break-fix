@@ -1,7 +1,6 @@
 // Get dependencies
 const express = require('express');
 const path = require('path');
-const http = require('http');
 const bodyParser = require('body-parser');
 
 // Get our API routes
@@ -27,15 +26,12 @@ app.get('*', (req, res) => {
 /**
  * Get port from environment and store in Express.
  */
-const port = process.env.PORT || '8080';
-app.set('port', port);
-
-/**
- * Create HTTP server.
- */
-const server = http.createServer(app);
+const port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
+      ip = process.env.IP || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0'
 
 /**
  * Listen on provided port, on all network interfaces.
  */
-server.listen(port, () => console.log(`API running on localhost:${port}`));
+app.listen(port, ip, () => console.log(`API running on ${ip}:${port}`));
+
+module.exports = app;
