@@ -1,0 +1,24 @@
+@import url(//fonts.googleapis.com/css?family=Press+Start+2P);
+@import url(//fonts.googleapis.com/css?family=VT323);
+@import url(//fonts.googleapis.com/css?family=Open+Sans);
+
+* {
+	margin: 0;
+	padding: 10px;
+	outline: none;
+	color: green;
+  background-color: black;
+}
+
+p {
+  font: 24px "VT323", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+h1, h2, h3, h4, .pixel {
+  font-family: 'Press Start 2P';
+  color: green;
+}

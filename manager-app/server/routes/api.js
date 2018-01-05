@@ -48,11 +48,12 @@ router.get('/fix', (req, res) => {
 });
 
 router.get('/check', (req, res) => {
-  Validator.check(req.query.level, (result) => {
-    res.send({
-      level: req.query.level,
-      status: result
-    });
+  Validator.check(req.query.level, (passed) => {
+    if(passed) {
+      res.send('PASSED');
+    } else {
+      res.send('FAILED');
+    }
   });
 });
 

@@ -3,11 +3,13 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
+import { LevelsComponent } from './levels/levels.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LevelsComponent
   ],
   imports: [
     BrowserModule
