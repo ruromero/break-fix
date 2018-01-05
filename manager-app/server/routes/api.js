@@ -1,6 +1,7 @@
 const express = require('express');
 const Encryptor = require('../models/encryptor');
 const OC = require('../models/oc');
+const Validator = require('../models/validator');
 
 const router = express.Router();
 
@@ -47,10 +48,11 @@ router.get('/fix', (req, res) => {
 });
 
 router.get('/check', (req, res) => {
-  res.send({
-    level: req.query.level,
-    status: 'PASSED',
-    nextKey: 'nextkey'
+  Validator.check(req.query.level, (result) => {
+    res.send({
+      level: req.query.level,
+      status: result
+    });
   });
 });
 

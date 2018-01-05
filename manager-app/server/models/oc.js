@@ -22,3 +22,7 @@ exports.run = function(commands) {
   }
   return true;
 };
+
+exports.getDemoAppRoute = function() {
+  return shell.exec("oc get route -n myproject demoapp -o jsonpath='{.spec.host}'", {silent: true}).stdout;
+}
