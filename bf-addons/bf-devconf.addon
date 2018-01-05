@@ -9,3 +9,6 @@ oc import-image ruromero/nodejs-6-oc --confirm
 oc new-app nodejs-6-oc~https://github.com/ruromero/devconf --context-dir=manager-app --name=manager-app
 oc expose svc manager-app
 oc patch dc manager-app -p '{"spec": {"template": {"spec": {"serviceAccountName": "bf-sa"}}}}'
+oc create -f demoapp-template.yaml -n myproject
+oc new-app -p LEVEL=1 break-fix-app-template -n myproject
+oc adm policy add-scc-to-user anyuid -z demoapp -n myproject

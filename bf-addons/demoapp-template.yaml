@@ -1,0 +1,81 @@
+apiVersion: v1
+kind: Template
+metadata:
+  creationTimestamp: null
+  name: break-fix-app-template
+objects:
+- apiVersion: v1
+  kind: ServiceAccount
+  metadata:
+    labels:
+      app: ${APP_NAME}
+    name: ${APP_NAME}
+- apiVersion: v1
+  kind: ImageStream
+  metadata:
+    labels:
+      app: ${APP_NAME}
+    name: ${APP_NAME}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    labels:
+      app: ${APP_NAME}
+    name: ${APP_NAME}
+  spec:
+    ports:
+    - name: web
+      port: 8000
+    selector:
+      app: ${APP_NAME}
+- apiVersion: v1
+  kind: Route
+  metadata:
+    labels:
+      app: ${APP_NAME}
+    name: ${APP_NAME}
+  spec:
+    port:
+      targetPort: web
+    to:
+      kind: Service
+      name: ${APP_NAME}
+- apiVersion: v1
+  kind: DeploymentConfig
+  metadata:
+    labels:
+      app: ${APP_NAME}
+    name: ${APP_NAME}
+  spec:
+    replicas: 1
+    selector:
+      app: ${APP_NAME}
+      deploymentconfig: ${APP_NAME}
+    strategy:
+      type: Recreate
+    template:
+      metadata:
+        labels:
+          app: ${APP_NAME}
+          deploymentconfig: ${APP_NAME}
+      spec:
+        containers:
+        - env:
+          - name: LEVEL
+            value: "${LEVEL}"
+          image: ruromero/devconf-minion:latest
+          imagePullPolicy: IfNotPresent
+          name: ${APP_NAME}
+        serviceAccountName: ${APP_NAME}
+    triggers:
+    - type: ConfigChange
+parameters:
+- description: Break & Fix Level to deploy
+  displayName: Level
+  name: LEVEL
+  required: true
+- description: Break & Fix Application name
+  displayName: Application name
+  name: APP_NAME
+  required: true
+  value: demoapp
