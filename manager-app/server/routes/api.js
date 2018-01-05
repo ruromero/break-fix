@@ -1,18 +1,18 @@
 const express = require('express');
 const Encryptor = require('../models/encryptor');
-const oc = require('../models/oc');
+const OC = require('../models/oc');
 
 const router = express.Router();
 
 router.get('/break', (req, res) => {
-  Encryptor.decryptBreakLevel(req.query.level, req.query.key ,
+  Encryptor.decryptBreakLevel(req.query.level, req.query.key,
     (commands) => {
-      const success = oc.run(commands);
+      const success = OC.run(commands);
       if(success) {
         res.send({
           level: req.query.level,
           status: 'broken'
-        })
+        });
       } else {
         res.status(500).send({
           level: req.query.level
@@ -28,12 +28,12 @@ router.get('/break', (req, res) => {
 router.get('/fix', (req, res) => {
   Encryptor.decryptFixLevel(req.query.level, req.query.key,
     (commands) => {
-      const success = oc.run(commands);
+      const success = OC.run(commands);
       if(success) {
         res.send({
           level: req.query.level,
           status: 'fixed'
-        })
+        });
       } else {
         res.status(500).send({
           level: req.query.level
@@ -51,7 +51,7 @@ router.get('/check', (req, res) => {
     level: req.query.level,
     status: 'PASSED',
     nextKey: 'nextkey'
-  })
+  });
 });
 
 router.get('/encrypt', (req, res) => {
