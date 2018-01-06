@@ -2,16 +2,30 @@
 @import url(//fonts.googleapis.com/css?family=VT323);
 @import url(//fonts.googleapis.com/css?family=Open+Sans);
 
-* {
+body {
 	margin: 0;
 	padding: 10px;
 	outline: none;
-	color: green;
-  background-color: black;
+	background-color: black;
 }
 
-p {
-  font: 24px "VT323", Helvetica, Arial, sans-serif;
+* {
+	font: 24px "VT323", Helvetica, Arial, sans-serif;
+	color: green;
+}
+
+input {
+  background-color: black;
+  border: dashed green;
+	border-width: 0px 0px 3px 0px;
+}
+
+button {
+	background-color: green;
+	border: none;
+	color: orangered;
+	padding: 5px 15px;
+	border-radius: 2px;
 }
 
 a {

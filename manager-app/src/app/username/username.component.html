@@ -1,0 +1,5 @@
+<h2>Prepare for unforseen consequences</h2>
+<form>
+  Enter your name: <input [(ngModel)]="username" name="username">
+  <button type="submit" *ngIf="username !== undefined && username.length > 3" (click)="onClick(username)">Start</button>
+</form>

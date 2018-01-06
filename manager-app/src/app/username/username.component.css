@@ -1,0 +1,7 @@
+@keyframes blink {
+	to { color: white; }
+}
+
+button {
+	animation: blink 1s steps(2, start) infinite;
+}

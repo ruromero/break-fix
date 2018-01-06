@@ -5,7 +5,6 @@
   </h1>
   <img width="300" alt="OpenShift Logo" src="assets/images/OpenShift_icon_Flat.svg">
 </div>
-<h2>Mess with the best, you will die like the rest</h2>
-<p>
-  Enter your name: <input #username (keyup)="0">
-</p>
+<app-score [game]="game" *ngIf="game.username !== undefined && game.username.length > 0"></app-score>
+<app-username [game]="game" *ngIf="game.username === undefined || game.username.length === 0"></app-username>
+<app-levels></app-levels>
