@@ -1,7 +1,12 @@
 @keyframes blink {
-	to { color: white; }
+	to { color: red; }
 }
 
-button {
+button{
+	position: absolute; left: -9999px; width: 1px; height: 1px;
+}
+
+.blink {
 	animation: blink 1s steps(2, start) infinite;
+	color: white;
 }

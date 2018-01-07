@@ -3,11 +3,11 @@ import { GameService } from '../game.service';
 import { Game } from '../model/game';
 
 @Component({
-  selector: 'app-score',
-  templateUrl: './score.component.html',
-  styleUrls: ['./score.component.css']
+  selector: 'app-menu',
+  templateUrl: './menu.component.html',
+  styleUrls: ['../app.component.css']
 })
-export class ScoreComponent implements OnInit {
+export class MenuComponent implements OnInit {
 
   game: Game;
 
@@ -17,10 +17,6 @@ export class ScoreComponent implements OnInit {
 
   ngOnInit() {
     this.game = this.gameService.getGame();
-  }
-
-  onNextLevel() {
-    this.gameService.calculateScore();
   }
 
 }

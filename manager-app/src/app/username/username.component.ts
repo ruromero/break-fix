@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Game } from '../model/game';
+import { Component, OnInit } from '@angular/core';
+import { GameService } from '../game.service';
 
 @Component({
   selector: 'app-username',
@@ -8,17 +8,21 @@ import { Game } from '../model/game';
 })
 export class UsernameComponent implements OnInit {
 
-  @Input() game: Game;
+  waitForUser: boolean = true;
 
-  username: string;
-
-  constructor() { }
+  constructor(
+    private gameService: GameService
+  ) {
+    document.addEventListener('keypress', () => {
+      this.waitForUser = false;
+    }, Object({once: true}));
+  }
 
   ngOnInit() {
   }
 
-  onClick(username: string): void {
-    this.game.username = username;
+  saveUsername(username: string): void {
+    this.gameService.setUsername(username);
   }
 
 }

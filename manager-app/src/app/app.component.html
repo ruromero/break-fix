@@ -1,10 +1,7 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
-  <h1>
-    {{ title }}!
-  </h1>
-  <img width="300" alt="OpenShift Logo" src="assets/images/OpenShift_icon_Flat.svg">
+  <!-- <img width="300" alt="OpenShift Logo" src="assets/images/OpenShift_icon_Flat.svg"> -->
+  <app-logo></app-logo>
 </div>
-<app-score [game]="game" *ngIf="game.username !== undefined && game.username.length > 0"></app-score>
-<app-username [game]="game" *ngIf="game.username === undefined || game.username.length === 0"></app-username>
-<app-levels></app-levels>
+<app-score></app-score>
+<router-outlet></router-outlet>

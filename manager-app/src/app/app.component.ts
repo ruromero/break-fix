@@ -7,6 +7,5 @@ import { Game } from './model/game';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Break & Fix with OpenShift';
-  game = new Game();
+  title = 'Break & Fix';
 }

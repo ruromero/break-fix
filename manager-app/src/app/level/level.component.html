@@ -1,0 +1,16 @@
+<div *ngIf="level === null; else showLevel">
+  <div *ngFor="let level of gameService.getGame().levels">
+    <a class="{{level.status}}" [routerLink]="['/level', {id: level.id}]">Level {{level.id}}</a>
+  </div>
+</div>
+<ng-template #showLevel>
+  <h3>Level {{ level.id }}</h3>
+  <div *ngIf="level.status === levelStatus.Unlocked">Break</div>
+  <div *ngIf="level.status === levelStatus.Locked">Unlock this level!</div>
+  <div *ngIf="level.status === levelStatus.Broken">
+    <div>Check</div>
+    <div>Give up</div>
+  </div>
+  <div *ngIf="level.status === levelStatus.Fixed">You already solved this level</div>
+</ng-template>
+<a [routerLink]="['/menu']">Menu</a>

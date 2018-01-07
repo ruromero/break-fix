@@ -1,0 +1,10 @@
+<app-username *ngIf="game.username === undefined || game.username.length === 0; else showMenu"></app-username>
+<ng-template #showMenu>
+
+    <a *ngIf="game.currentLevel !== undefined; else start" [routerLink]="['/level', {id: game.currentLevel}]">CONTINUE</a>
+    <ng-template #start>
+      <a [routerLink]="['/level', {id: 1}]">NEW GAME</a>
+    </ng-template>
+    <br><a [routerLink]="['/level']">SELECT LEVEL</a>
+
+</ng-template>

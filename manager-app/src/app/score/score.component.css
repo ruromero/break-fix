@@ -1,0 +1,9 @@
+div {
+  right: 10px;
+  top: 10px;
+  position: absolute;
+}
+
+.username, .points {
+  color: silver;
+}
