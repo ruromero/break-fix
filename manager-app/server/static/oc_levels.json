@@ -1,32 +1,15 @@
 {
-  "level_1": {
-    "break": {
-      "command": "U2FsdGVkX19Fo49iRkXZFE8zmZgY3XrhDhPU0kQFa/CxS16SwB8hNwpJ5y6tU+cjvU/pyn6KYX/yy01jMKnCm6yVePLqwejN81bXfYHbM3HUor5BrSWh0VzhCfGD5VqLdZV07UFkce2Qy8aQttVIiBr1zCtXFVutrIZxl6KOc44=",
-      "waitUntil": ""
+    "level_1": {
+        "break": {
+            "commands": "U2FsdGVkX19OqQC7NBLtDwNuSRODhr0TjjmQegI/c+DdCvBfs298badwq8Jn8bmWE3Zudlo1KvKXsE+5sVZUwbULR/HSKkAA2dh8QZF7WeFe2h0rq7ZEOMO4zND5IiA+yLuCrk5oZHRagngDAGUepgRLVeFF3rWEQfjgpJP2tGg=",
+            "waitUntil": {
+                "command": "U2FsdGVkX1+yvE2YRtfGKrOA1zAZagXHXZ8/t+94KWpaxqFN3A+2M5ND4di1H/RBT/kgsexagZlV/hhot5SeyVeRDrsCfFuy8Fvv1+xmYSVnX4IM2do9F75mdqrgQ+yz",
+                "expectation": "U2FsdGVkX19l4MuxQvcO+SuiH7x8RlM7T1dzRugPNgs="
+            }
+        },
+        "fix": {
+            "commands": "U2FsdGVkX1+aRXnHXDCf78/qVOTy/by12hvoHLo+PgsP/ZkVF19c6Sx7dNXWdnhRkMqZcX2ZJ8r788WrjovHSRtcWHUIwStP3W7znRHpRzVIWWcy6/f8Z/rdLiqzqxWTYwyfUxwxaTaOVcEth6gDbwc3c4u5AWVVEaUTq5H+poM="
+        }
     },
-    "fix": {
-      "command": "U2FsdGVkX19VW5yvVXhI7KVL5xlxu0Z3Gzw9GIz3R1gaI6AKCve3LC0DU24PJuqdPilRmmdIccirO3IKUsjhSZ76pc4NZbZK27ic7wniIkkls4u6puSv+23K26orK3XuxGmauGpY/N03oA3K7EFD+DCje5XuYGXjGBVWWqK5PeE=",
-      "waitUtil": ""
-    }
-  },
-  "level_2": {
-    "break": "",
-    "fix": ""
-  },
-  "level_3": {
-    "break": "",
-    "fix": ""
-  },
-  "level_4": {
-    "break": "",
-    "fix": ""
-  },
-  "level_5": {
-    "break": "",
-    "fix": ""
-  },
-  "level_6": {
-    "break": "",
-    "fix": ""
-  }
+    "hash": "983644616d2dab40de8928fc4e83e44efb9e10b17987fe02de21f775fb10acef"
 }

@@ -22,7 +22,7 @@
       </div>
       <div *ngIf="level.status === levelStatus.Locked">Unlock this level!</div>
       <div *ngIf="level.status === levelStatus.Fixed">
-        <div>You  solved this level</div>
+        <div>You solved this level</div>
         <div *ngIf="level.id < gameService.getGame().levels.length">
           <button [routerLink]="['/level', {id: level.id + 1}]">Next level</button>
         </div>

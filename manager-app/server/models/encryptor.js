@@ -2,13 +2,12 @@ const CryptoJS = require('crypto-js');
 const fs = require('fs');
 const path = require('path');
 
-const OC_COMMANDS = 'oc_commands';
 const LEVEL = 'level_';
 const BREAK = 'break';
 const CHECK = 'check';
 const FIX = 'fix';
-
 const LEVELS_FILE = 'oc_levels.json';
+
 let levels;
 
 function loadCommands() {
@@ -16,7 +15,7 @@ function loadCommands() {
     if(err) {
       throw new Error('Unable to load levels file.\n' + err);
     }
-    levels = JSON.parse(data);
+    this.levels = JSON.parse(data);
   });
 }
 
@@ -32,34 +31,62 @@ function decrypt(text, key) {
   }
 }
 
-function decrypt(level, action, key, callbackFn, errorCallbackFn) {
-  try {
-    const result = {
-      command: decrypt(levels['level_' + level][action].command, key),
-      waitUtil: decrypt(levels['level_' + level][action].waitUtil, key),
+function decryptLevel(level, action, key) {
+  let result = {
+    commands: decrypt(this.levels['level_' + level][action].commands, key)
+  };
+  if(this.levels['level_' + level][action].waitUntil !== undefined) {
+    result.waitUntil = {
+      command: decrypt(this.levels['level_' + level][action].waitUntil.command, key),
+      expectation: decrypt(this.levels['level_' + level][action].waitUntil.expectation, key)
+    };
+  }
+  return result;
+}
+
+exports.decryptBreakLevel = (level, key) => {
+  return decryptLevel(level, BREAK, key);
+};
+
+exports.decryptFixLevel = (level, key) => {
+  return decryptLevel(level, FIX, key);
+};
+
+function encrypt (text, key) {
+  return CryptoJS.AES.encrypt(text, key).toString();
+}
+
+exports.encrypt = encrypt;
+
+exports.validatePassword = (password) => {
+  return levels.hash === CryptoJS.SHA256(password).toString();
+};
+
+
+exports.encryptFile = (config, key) => {
+  let result = {};
+  for(let parameter in config) {
+    if(parameter.startsWith('level_')) {
+      const src = config[parameter];
+      let level = {
+        break: {
+          commands: encrypt(src.break.commands, key)
+        },
+        fix: {
+          commands: encrypt(src.fix.commands, key)
+        }
+      };
+      for(let arg of ["break", "fix"]) {
+        if(src[arg].waitUntil !== undefined) {
+          level[arg].waitUntil = {
+            command: encrypt(src[arg].waitUntil.command, key),
+            expectation: encrypt(src[arg].waitUntil.expectation, key),
+          };
+        }
+      }
+      result[parameter] = level;
     }
-  } catch (error) {
-    
   }
-
-
-  const bytes = CryptoJS.AES.decrypt(levels['level_' + level][action].command, key);
-  if(bytes == '') {
-    errorCallbackFn('No output. Is it the right key?');
-  } else {
-    const plainText = bytes.toString(CryptoJS.enc.Utf8);
-    callbackFn(plainText.split('\n'));
-  }
-}
-
-exports.decryptBreakLevel = function(level, key, callbackFn, errorCallbackFn) {
-  decrypt(level,BREAK, key, callbackFn, errorCallbackFn);
-}
-
-exports.decryptFixLevel = function(level, key, callbackFn, errorCallbackFn) {
-  decrypt(level, FIX, key, callbackFn, errorCallbackFn);
-}
-
-exports.encrypt = function(text, key) {
-  return CryptoJS.AES.encrypt(text, key);
+  result.hash = config.hash;
+  return result;
 };
