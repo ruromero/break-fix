@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
+import { ConfirmationComponent } from './confirmation/confirmation.component';
 import { LevelComponent } from './level/level.component';
 import { MenuComponent } from './menu/menu.component';
 import { UsernameComponent } from './username/username.component';
@@ -10,6 +11,7 @@ import { ScoreComponent } from './score/score.component';
 import { LogoComponent } from './logo/logo.component';
 
 import { GameService } from './game.service';
+import { LevelService } from './level.service';
 
 import { RouterModule, Routes } from '@angular/router';
 
@@ -26,7 +28,8 @@ const appRoutes: Routes = [
     MenuComponent,
     UsernameComponent,
     ScoreComponent,
-    LogoComponent
+    LogoComponent,
+    ConfirmationComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +37,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes)
   ],
   providers: [
-    GameService
+    GameService,
+    LevelService
   ],
   bootstrap: [AppComponent]
 })

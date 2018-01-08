@@ -1,16 +1,36 @@
-<div *ngIf="level === null; else showLevel">
+<div *ngIf="level === null">
   <div *ngFor="let level of gameService.getGame().levels">
-    <a class="{{level.status}}" [routerLink]="['/level', {id: level.id}]">Level {{level.id}} - {{level.name}}</a>
+    <a class="status_{{levelStatus[level.status]}}" [routerLink]="['/level', {id: level.id}]">{{level.id}} - {{level.name}}</a>
   </div>
 </div>
-<ng-template #showLevel>
+<div *ngIf="level !== null && toConfirm === ''">
   <h3>Level {{ level.id }}</h3>
-  <div *ngIf="level.status === levelStatus.Unlocked">Break</div>
-  <div *ngIf="level.status === levelStatus.Locked">Unlock this level!</div>
-  <div *ngIf="level.status === levelStatus.Broken">
-    <div>Check</div>
-    <div>Give up</div>
+  <div *ngIf="!processing; else showProcessing">
+    <button *ngIf="level.status === levelStatus.Unlocked" (click)="toConfirm = 'break'">Break</button>
+    <div *ngIf="level.status === levelStatus.Broken">
+      <div>
+        <button type="button" (click)="check()">Check</button>
+      </div>
+      <div>
+        <button (click)="toConfirm = 'giveUp'">Give up</button>
+
+      </div>
+    </div>
+    <div *ngIf="level.status === levelStatus.Locked">Unlock this level!</div>
+    <div *ngIf="level.status === levelStatus.Fixed">
+      <div>You  solved this level</div>
+      <div *ngIf="level.id < gameService.getGame().levels.length">
+        <button [routerLink]="['/level', {id: level.id + 1}]">Next level</button>
+      </div>
+    </div>
   </div>
-  <div *ngIf="level.status === levelStatus.Fixed">You already solved this level</div>
-</ng-template>
-<a [routerLink]="['/menu']">Menu</a>
+  <ng-template #showProcessing>
+    <div>Hold on a second...</div>
+  </ng-template>
+</div>
+<app-confirmation *ngIf="toConfirm === 'break'" [message]="'Obviously, this will break something. Continue?'" [confirmFn]="break"></app-confirmation>
+<app-confirmation *ngIf="toConfirm === 'giveUp'" [message]="'You won\'t get any points. Proceed?'" [confirmFn]="giveUp"></app-confirmation>
+
+<div class="btn-menu">
+  <a [routerLink]="['/menu']">Menu</a>
+</div>

@@ -1,10 +1,15 @@
-<app-username *ngIf="game.username === undefined || game.username.length === 0; else showMenu"></app-username>
-<ng-template #showMenu>
+<div *ngIf="!toConfirm">
+  <app-username *ngIf="game.username === undefined || game.username.length === 0; else showMenu"></app-username>
+  <ng-template #showMenu>
 
-    <a *ngIf="game.currentLevel !== undefined; else start" [routerLink]="['/level', {id: game.currentLevel}]">CONTINUE</a>
-    <ng-template #start>
-      <a [routerLink]="['/level', {id: 1}]">NEW GAME</a>
-    </ng-template>
-    <br><a [routerLink]="['/level']">SELECT LEVEL</a>
-
-</ng-template>
+      <button *ngIf="game.currentLevel !== undefined; else start" [routerLink]="['/level', {id: game.currentLevel}]">CONTINUE</button>
+      <ng-template #start>
+        <button [routerLink]="['/level', {id: 1}]">NEW GAME</button>
+      </ng-template>
+      <br><button [routerLink]="['/level']">SELECT LEVEL</button>
+      <div>
+        <button *ngIf="!toConfirm" (click)="reset()">RESET</button>
+      </div>
+  </ng-template>
+</div>
+<app-confirmation *ngIf="toConfirm" [message]="'All your progress will be deleted'" [confirmFn]="reset"></app-confirmation>
