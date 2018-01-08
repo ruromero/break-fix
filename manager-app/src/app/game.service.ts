@@ -42,12 +42,12 @@ export class GameService {
       console.log("creating new game");
       this.game = new Game();
       this.game.levels = [
-        new Level(1, 0, LevelStatus.Fixed),
-        new Level(2, 0, LevelStatus.Unlocked),
-        new Level(3, 0, LevelStatus.Broken),
-        new Level(4, 0, LevelStatus.Locked),
-        new Level(5, 0, LevelStatus.Locked),
-        new Level(6, 0, LevelStatus.Locked),
+        new Level(1, "What are you waiting for? Christmas?", 0, LevelStatus.Fixed),
+        new Level(2, "For Pete's sake, I'm not going to hurt you!", 0, LevelStatus.Unlocked),
+        new Level(3, "Go and play in the airlock, Wilco.", 0, LevelStatus.Broken),
+        new Level(4, "I'd be peeing my pants if I wore any!", 0, LevelStatus.Locked),
+        new Level(5, "The cake is a lie", 0, LevelStatus.Locked),
+        new Level(6, "I feel like I could, TAKE ON THE WORLD!", 0, LevelStatus.Locked),
       ];
       this.save();
     }

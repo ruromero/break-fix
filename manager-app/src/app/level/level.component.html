@@ -1,6 +1,6 @@
 <div *ngIf="level === null; else showLevel">
   <div *ngFor="let level of gameService.getGame().levels">
-    <a class="{{level.status}}" [routerLink]="['/level', {id: level.id}]">Level {{level.id}}</a>
+    <a class="{{level.status}}" [routerLink]="['/level', {id: level.id}]">Level {{level.id}} - {{level.name}}</a>
   </div>
 </div>
 <ng-template #showLevel>

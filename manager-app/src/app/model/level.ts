@@ -1,10 +1,12 @@
 export class Level {
   id: number;
+  name: string;
   status: LevelStatus;
   score: number;
 
-  constructor(id: number, score: number, status: LevelStatus) {
+  constructor(id: number, name: string, score: number, status: LevelStatus) {
     this.id = id;
+    this.name = name;
     this.score = score;
     this.status = status;
   }

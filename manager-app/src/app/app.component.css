@@ -37,3 +37,16 @@ h1, h2, h3, h4, .pixel {
   font-family: 'Press Start 2P';
   color: green;
 }
+
+a {
+	color: green;
+}
+
+a:link, a:visited {
+	text-decoration: none;
+}
+
+a:hover, .option-selected {
+	color: red;
+	text-decoration: underline;
+}
