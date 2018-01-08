@@ -15,6 +15,8 @@ export class LevelComponent implements OnInit {
   levelStatus = LevelStatus;
   processing: boolean = false;
   toConfirm: string = '';
+  error: string = '';
+  password: string = '';
 
   constructor(
     private route: ActivatedRoute,
@@ -31,6 +33,15 @@ export class LevelComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  setPassword = (password: string) => {
+    if(this.gameService.validatePassword(password)) {
+      this.level = this.gameService.setCurrentLevel(1);
+    } else {
+      this.error = "Unable to validate master password";
+      this.password = '';
+    }
   }
 
   break = (confirmed: boolean) => {

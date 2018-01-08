@@ -15,6 +15,7 @@ import { LevelSelectComponent } from './level-select/level-select.component';
 
 import { GameService } from './game.service';
 import { LevelService } from './level.service';
+import { MenuBtnComponent } from './menu-btn/menu-btn.component';
 
 const appRoutes: Routes = [
   { path: 'menu',       component: MenuComponent },
@@ -32,7 +33,8 @@ const appRoutes: Routes = [
     ScoreComponent,
     LogoComponent,
     ConfirmationComponent,
-    LevelSelectComponent
+    LevelSelectComponent,
+    MenuBtnComponent
   ],
   imports: [
     BrowserModule,

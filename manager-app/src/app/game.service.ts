@@ -26,6 +26,15 @@ export class GameService {
     this.save();
   };
 
+  validatePassword = (password: string) => {
+    if(password === "test") {
+      this.game.levels[0].status = LevelStatus.Unlocked;
+      return true;
+    } else {
+      return false;
+    }
+  };
+
   calculateScore = () => {
     let score = 0;
     this.game.levels.forEach((level: Level, id: number) => {
@@ -49,7 +58,7 @@ export class GameService {
     delete this.game.currentLevel;
     delete this.game.key;
     this.game.levels = [
-      new Level(1, "What are you waiting for? Christmas?", 0, LevelStatus.Unlocked),
+      new Level(1, "What are you waiting for? Christmas?", 0, LevelStatus.Locked),
       new Level(2, "For Pete's sake, I'm not going to hurt you!", 0, LevelStatus.Locked),
       new Level(3, "Go and play in the airlock, Wilco.", 0, LevelStatus.Locked),
       new Level(4, "I'd be peeing my pants if I wore any!", 0, LevelStatus.Locked),
