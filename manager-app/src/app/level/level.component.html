@@ -1,9 +1,4 @@
-<div *ngIf="level === null">
-  <div *ngFor="let level of gameService.getGame().levels">
-    <a class="status_{{levelStatus[level.status]}}" [routerLink]="['/level', {id: level.id}]">{{level.id}} - {{level.name}}</a>
-  </div>
-</div>
-<div *ngIf="level !== null && toConfirm === ''">
+<div *ngIf="toConfirm === ''">
   <h3>Level {{ level.id }}</h3>
   <div *ngIf="!processing; else showProcessing">
     <button *ngIf="level.status === levelStatus.Unlocked" (click)="toConfirm = 'break'">Break</button>

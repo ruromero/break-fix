@@ -4,9 +4,9 @@
 
       <button *ngIf="game.currentLevel !== undefined; else start" [routerLink]="['/level', {id: game.currentLevel}]">CONTINUE</button>
       <ng-template #start>
-        <button [routerLink]="['/level', {id: 1}]">NEW GAME</button>
+        <button [routerLink]="['/level']">NEW GAME</button>
       </ng-template>
-      <br><button [routerLink]="['/level']">SELECT LEVEL</button>
+      <br><button [routerLink]="['/level-select']">SELECT LEVEL</button>
       <div>
         <button *ngIf="!toConfirm" (click)="reset()">RESET</button>
       </div>

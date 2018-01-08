@@ -1,4 +1,4 @@
-<div *ngIf="game.username !== undefined">
-  <span class="username">{{ game.username }}</span>
+<div *ngIf="gameService.getGame().username !== undefined">
+  <span class="username">{{ gameService.getGame().username }}</span>
   <span>Score: </span> <span class="points">{{ gameService.calculateScore() }}</span>
 </div>

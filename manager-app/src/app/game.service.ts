@@ -47,6 +47,7 @@ export class GameService {
     console.log("creating new game");
     this.game = new Game();
     delete this.game.currentLevel;
+    delete this.game.key;
     this.game.levels = [
       new Level(1, "What are you waiting for? Christmas?", 0, LevelStatus.Unlocked),
       new Level(2, "For Pete's sake, I'm not going to hurt you!", 0, LevelStatus.Locked),

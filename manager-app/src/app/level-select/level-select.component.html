@@ -1,0 +1,3 @@
+<div *ngFor="let level of gameService.getGame().levels">
+  <a class="status_{{levelStatus[level.status]}}" [routerLink]="['/level', {id: level.id}]">{{level.id}} - {{level.name}}</a>
+</div>

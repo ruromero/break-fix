@@ -22,8 +22,28 @@ function loadCommands() {
 
 loadCommands();
 
+function decrypt(text, key) {
+  const bytes = CryptoJS.AES.decrypt(text, key);
+  if(bytes == '') {
+    throw new Error('Invalid key or missing commands for path: ' + text);
+  } else {
+    const plainText = bytes.toString(CryptoJS.enc.Utf8);
+    return plainText.split('\n');
+  }
+}
+
 function decrypt(level, action, key, callbackFn, errorCallbackFn) {
-  const bytes = CryptoJS.AES.decrypt(levels['level_' + level][action], key);
+  try {
+    const result = {
+      command: decrypt(levels['level_' + level][action].command, key),
+      waitUtil: decrypt(levels['level_' + level][action].waitUtil, key),
+    }
+  } catch (error) {
+    
+  }
+
+
+  const bytes = CryptoJS.AES.decrypt(levels['level_' + level][action].command, key);
   if(bytes == '') {
     errorCallbackFn('No output. Is it the right key?');
   } else {
