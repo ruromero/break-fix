@@ -77,6 +77,7 @@ This laboratory is intended to be deployed using [minishift](https://github.com/
 
 
 ## manager-app
+The `manager-app` is a web application that drive you through the workshop. It will break the application and check when it has been fixed. All your progress is stored **in your browser**. If you want to start over, you can click the `Reset` button. Cleaning the cache or the cookies won't be enough as it uses the `localStorage`.
 
 ### Start
 1. Type some **username** to be used when sharing the scores
@@ -84,7 +85,12 @@ This laboratory is intended to be deployed using [minishift](https://github.com/
 3. Enter the **master password** that will be provided during the workshop to unlock the first level
 
 ### Levels
+Each level will break the `demoapp` or some element that will prevent it from being accessible through its route.
+* **Break**: Will execute some `oc` commands that will break the `demoapp` and you will have **10 minutes** to fix it (if you want to get some points).
+* **Check**: Tries to access the `demoapp` through it's route (to verify the end-2-end health of the application). If it succeeds you will get 1 point for each second left and you will be able to move to the next level.
+* **Give up**: Will revert the changes made by the **Break** commands and you will be able to move forward to the next level but you won't get any points.
 
-### Reset
-
-## The Docker images
+### The Docker images
+The Docker images are also published in Docker Hub
+* [ruromero/nodejs-6-oc](https://hub.docker.com/r/ruromero/nodejs-6-oc/): An extension of the base s2i image for nodejs which installs the `oc` client.
+* [ruromero/devconf-minion](https://hub.docker.com/r/ruromero/devconf-minion/): A simple image extending `alpine` that installs python and executes a simple script that creates an HTTP server to expose a json file which is processed upon deployment.
