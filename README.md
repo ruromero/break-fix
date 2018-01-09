@@ -81,7 +81,7 @@ The `manager-app` is a web application that drive you through the workshop. It w
 
 ### Start
 1. Type some **username** to be used when sharing the scores
-2. To start, select `New game`
+2. To start, select **New game**
 3. Enter the **master password** that will be provided during the workshop to unlock the first level
 
 ### Levels
@@ -93,4 +93,4 @@ Each level will break the `demoapp` or some element that will prevent it from be
 ### The Docker images
 The Docker images are also published in Docker Hub
 * [ruromero/nodejs-6-oc](https://hub.docker.com/r/ruromero/nodejs-6-oc/): An extension of the base s2i image for nodejs which installs the `oc` client.
-* [ruromero/devconf-minion](https://hub.docker.com/r/ruromero/devconf-minion/): A simple image extending `alpine` that installs python and executes a simple script that creates an HTTP server to expose a json file which is processed upon deployment.
+* [ruromero/devconf-minion](https://hub.docker.com/r/ruromero/devconf-minion/): A simple image extending [alpine](https://hub.docker.com/_/alpine/) that installs python and executes a simple script that creates an HTTP server to expose a json file which is processed upon deployment.
