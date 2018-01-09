@@ -1,16 +1,14 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { GameService } from './game.service';
 
 @Injectable()
 export class LevelService {
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private gameService: GameService
   ) { }
-
-  readonly MAX_SCORE: number = 10 * 60;
-
-  levelTracker: Map<number, Date> = new Map();
 
   break = (id: number, key: string, callbackFn: Function, errorCallbackFn: Function) => {
     this.http.post('/api/break', {
@@ -18,7 +16,7 @@ export class LevelService {
       key: key})
     .subscribe(
       data => {
-        this.levelTracker[id] = Date.now();
+        this.gameService.breakLevel(id);
         callbackFn();
       },
       error => {
@@ -29,21 +27,16 @@ export class LevelService {
   check = (id: number, callbackFn: Function, errorCallbackFn: Function) => {
     console.log('Checking level: ' + id);
     const end = Date.now();
-    this.http.get('/api/check').subscribe(
+    const params = new HttpParams().set('level', String(id));
+    this.http.get('/api/check', {params: params})
+    .subscribe(
       data => {
-        if(data === "PASSED") {
-          const seconds = end - this.levelTracker[id];
-          let score = this.MAX_SCORE - Math.round(seconds / 60);
-          if(score < 0) {
-            score = 0;
-          }
-          console.log('Solved level: %d - Score: %d', id, score);
-          callbackFn(true, score);
-        } else {
-          callbackFn(false);
-        }
+        callbackFn(data['passed']);
       },
       error => {
+        console.log(error.ok);
+        console.log(error.error);
+        console.log(error.message);
         errorCallbackFn(error);
       }
     );

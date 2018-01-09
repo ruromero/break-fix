@@ -89,6 +89,6 @@ exports.encryptFile = (config, key) => {
       result[parameter] = level;
     }
   }
-  result.hash = config.hash;
+  result.hash = CryptoJS.SHA256(key).toString();
   return result;
 };

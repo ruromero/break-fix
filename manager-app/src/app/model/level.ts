@@ -3,6 +3,7 @@ export class Level {
   name: string;
   status: LevelStatus;
   score: number;
+  startedAt: number;
 
   constructor(id: number, name: string, score: number, status: LevelStatus) {
     this.id = id;

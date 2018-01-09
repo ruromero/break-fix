@@ -55,8 +55,7 @@ export class LevelComponent implements OnInit {
     this.processing = true;
     this.levelService.break(this.level.id, this.gameService.getGame().key,
       () => {
-        this.level.status = LevelStatus.Broken;
-        this.gameService.save(this.level);
+        this.gameService.breakLevel(this.level.id);
         this.processing = false;
       }, (error: string) => {
         console.log("Unable to break level %d. Error: %s", this.level.id, error);
@@ -70,14 +69,13 @@ export class LevelComponent implements OnInit {
     this.levelService.check(this.level.id,
       (passed, score) => {
         if(passed) {
-          this.level.score = score;
-          this.level.status = LevelStatus.Fixed;
-          this.gameService.save(this.level);
+          this.gameService.solveLevel(this.level.id);
         } else {
           this.error = "The check failed. The route is not yet reachable";
         }
         this.processing = false;
-      }, (error: string) => {
+      },
+      (error: string) => {
         console.log("Unable to check level %d. Error: %s", this.level.id, error);
         this.error = "Something went terribly wrong";
         this.processing = false;

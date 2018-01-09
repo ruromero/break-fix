@@ -3,7 +3,6 @@
     <h3>Enter the master password</h3>
     <input type="password" [(ngModel)]="password" name="password" autofocus required>
     <button type="submit" class="password" tabindex="-1">Unlock</button>
-    <div *ngIf="error !== ''" class="error-msg">{{ error }}</div>
   </form>
 </div>
 <div *ngIf="level !== null">
@@ -29,10 +28,11 @@
       </div>
     </div>
     <ng-template #showProcessing>
-      <div>Hold on a second...</div>
+      <app-random-msg></app-random-msg>
     </ng-template>
   </div>
   <app-confirmation *ngIf="toConfirm === 'break'" [message]="'Obviously, this will break something. Continue?'" [confirmFn]="break"></app-confirmation>
   <app-confirmation *ngIf="toConfirm === 'giveUp'" [message]="'You won\'t get any points. Proceed?'" [confirmFn]="giveUp"></app-confirmation>
 </div>
+<div *ngIf="error !== ''" class="error-msg">{{ error }}</div>
 <app-menu-btn></app-menu-btn>

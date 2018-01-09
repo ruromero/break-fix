@@ -7,6 +7,7 @@ import { Level, LevelStatus } from './model/level';
 export class GameService {
 
   game: Game;
+  readonly MAX_SCORE: number = 10 * 60;
 
   constructor(
     private http: HttpClient
@@ -28,6 +29,29 @@ export class GameService {
     this.game.username = username;
     this.save();
   };
+
+  breakLevel = (level: number) => {
+    this.game.levels[level - 1].status = LevelStatus.Broken;
+    this.game.levels[level - 1].startedAt = Date.now();
+    this.save();
+  };
+
+  solveLevel = (id: number) => {
+    const level = this.game.levels[id - 1];
+    const seconds = (Date.now() - level.startedAt) / 1000;
+    let score = this.MAX_SCORE - Math.floor(seconds);
+    if(score < 0) {
+      score = 0;
+    }
+    console.log('Solved level: %d - Score: %d', id, score);
+    this.game.levels[id - 1].status = LevelStatus.Fixed;
+    this.game.levels[id - 1].score = score;
+    this.game.levels[id - 1].startedAt = null;
+    if(this.game.levels.length > id) {
+      this.game.levels[id].status = LevelStatus.Unlocked;
+    }
+    this.save();
+  }
 
   validatePassword = (password: string, callbackFn: Function, errorCallbackFn: Function) => {
     this.http.post('/api/validatePassword', {password: password}).subscribe(

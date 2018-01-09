@@ -16,6 +16,7 @@ import { MenuBtnComponent } from './menu-btn/menu-btn.component';
 
 import { GameService } from './game.service';
 import { LevelService } from './level.service';
+import { RandomMsgComponent } from './random-msg/random-msg.component';
 
 const appRoutes: Routes = [
   { path: 'menu',       component: MenuComponent },
@@ -34,7 +35,8 @@ const appRoutes: Routes = [
     LogoComponent,
     ConfirmationComponent,
     LevelSelectComponent,
-    MenuBtnComponent
+    MenuBtnComponent,
+    RandomMsgComponent
   ],
   imports: [
     BrowserModule,
