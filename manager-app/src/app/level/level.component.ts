@@ -37,6 +37,7 @@ export class LevelComponent implements OnInit {
   }
 
   setPassword = (password: string) => {
+    this.error = '';
     this.gameService.validatePassword(password, () => {
         this.level = this.gameService.setCurrentLevel(1);
         this.router.navigate(['/level', {id: 1}]);
