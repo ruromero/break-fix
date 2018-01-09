@@ -15,7 +15,8 @@ function loadCommands() {
     if(err) {
       throw new Error('Unable to load levels file.\n' + err);
     }
-    this.levels = JSON.parse(data);
+    levels = JSON.parse(data);
+    console.log("Configuration loaded from file");
   });
 }
 
@@ -33,15 +34,19 @@ function decrypt(text, key) {
 
 function decryptLevel(level, action, key) {
   let result = {
-    commands: decrypt(this.levels['level_' + level][action].commands, key)
+    commands: decrypt(levels['level_' + level][action].commands, key)
   };
-  if(this.levels['level_' + level][action].waitUntil !== undefined) {
+  if(levels['level_' + level][action].waitUntil !== undefined) {
     result.waitUntil = {
-      command: decrypt(this.levels['level_' + level][action].waitUntil.command, key),
-      expectation: decrypt(this.levels['level_' + level][action].waitUntil.expectation, key)
+      command: decrypt(levels['level_' + level][action].waitUntil.command, key),
+      expectation: decrypt(levels['level_' + level][action].waitUntil.expectation, key)
     };
   }
   return result;
+}
+
+function encrypt (text, key) {
+  return CryptoJS.AES.encrypt(text, key).toString();
 }
 
 exports.decryptBreakLevel = (level, key) => {
@@ -52,9 +57,6 @@ exports.decryptFixLevel = (level, key) => {
   return decryptLevel(level, FIX, key);
 };
 
-function encrypt (text, key) {
-  return CryptoJS.AES.encrypt(text, key).toString();
-}
 
 exports.encrypt = encrypt;
 

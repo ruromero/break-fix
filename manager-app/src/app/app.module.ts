@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-
+import {HttpClientModule} from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -12,10 +12,10 @@ import { UsernameComponent } from './username/username.component';
 import { ScoreComponent } from './score/score.component';
 import { LogoComponent } from './logo/logo.component';
 import { LevelSelectComponent } from './level-select/level-select.component';
+import { MenuBtnComponent } from './menu-btn/menu-btn.component';
 
 import { GameService } from './game.service';
 import { LevelService } from './level.service';
-import { MenuBtnComponent } from './menu-btn/menu-btn.component';
 
 const appRoutes: Routes = [
   { path: 'menu',       component: MenuComponent },
@@ -39,7 +39,8 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    HttpClientModule
   ],
   providers: [
     GameService,

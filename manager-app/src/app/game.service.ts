@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Game } from './model/game';
 import { Level, LevelStatus } from './model/level';
 
@@ -7,7 +8,9 @@ export class GameService {
 
   game: Game;
 
-  constructor() {
+  constructor(
+    private http: HttpClient
+  ) {
     this.load();
   }
 
@@ -26,13 +29,18 @@ export class GameService {
     this.save();
   };
 
-  validatePassword = (password: string) => {
-    if(password === "test") {
-      this.game.levels[0].status = LevelStatus.Unlocked;
-      return true;
-    } else {
-      return false;
-    }
+  validatePassword = (password: string, callbackFn: Function, errorCallbackFn: Function) => {
+    this.http.post('/api/validatePassword', {password: password}).subscribe(
+      data => {
+        this.game.levels[0].status = LevelStatus.Unlocked;
+        this.game.key = password;
+        this.save();
+        callbackFn();
+      },
+      error => {
+        errorCallbackFn(error);
+      }
+    );
   };
 
   calculateScore = () => {
@@ -46,7 +54,7 @@ export class GameService {
   load = () => {
     if(localStorage.getItem("game") !== null) {
       this.game = JSON.parse(localStorage.getItem("game"));
-      console.log("loading existing game");
+      console.log("Loaded existing game");
     } else {
       this.initialize();
     }

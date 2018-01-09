@@ -5,10 +5,9 @@ const Validator = require('../models/validator');
 
 const router = express.Router();
 
-router.get('/break', (req, res) => {
+router.post('/break', (req, res) => {
   try {
-    const ocBreak = Encryptor.decryptBreakLevel(req.query.level, req.query.key);
-    OC.run(ocBreak,
+    OC.run(Encryptor.decryptBreakLevel(req.body.level, req.body.key),
       () => {
         res.send({
           level: req.query.level,
@@ -23,13 +22,13 @@ router.get('/break', (req, res) => {
       });
   } catch (error) {
     console.log(error);
-    res.status(400).send({error: error.message});
+    res.status(500).send({error: error.message});
   }
 });
 
-router.get('/fix', (req, res) => {
+router.post('/fix', (req, res) => {
   try {
-    OC.run(Encryptor.decryptFixLevel(req.query.level, req.query.key),
+    OC.run(Encryptor.decryptFixLevel(req.body.level, req.body.key),
       () => {
         res.send({
           level: req.query.level,
@@ -44,7 +43,7 @@ router.get('/fix', (req, res) => {
       });
   } catch (error) {
     console.log(error);
-    res.status(400).send({error: error.message});
+    res.status(500).send({error: error.message});
   }
 });
 

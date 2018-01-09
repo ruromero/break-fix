@@ -21,7 +21,8 @@ export class LevelComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private gameService: GameService,
-    private levelService: LevelService
+    private levelService: LevelService,
+    private router: Router
   ) {
     this.route.params.subscribe(params => {
       if(params['id']) {
@@ -36,12 +37,14 @@ export class LevelComponent implements OnInit {
   }
 
   setPassword = (password: string) => {
-    if(this.gameService.validatePassword(password)) {
-      this.level = this.gameService.setCurrentLevel(1);
-    } else {
-      this.error = "Unable to validate master password";
-      this.password = '';
-    }
+    this.gameService.validatePassword(password, () => {
+        this.level = this.gameService.setCurrentLevel(1);
+        this.router.navigate(['/level', {id: 1}]);
+      },
+      (error) => {
+        this.error = "Unable to validate master password";
+        this.password = '';
+      });
   }
 
   break = (confirmed: boolean) => {
@@ -50,7 +53,7 @@ export class LevelComponent implements OnInit {
       return;
     }
     this.processing = true;
-    this.levelService.break(this.level.id, "mutante",
+    this.levelService.break(this.level.id, this.gameService.getGame().key,
       () => {
         this.level.status = LevelStatus.Broken;
         this.gameService.save(this.level);
@@ -62,15 +65,21 @@ export class LevelComponent implements OnInit {
   };
 
   check = () => {
+    this.error = "";
     this.processing = true;
-    this.levelService.check(this.level.id, "mutante",
-      (score) => {
-        this.level.score = score;
-        this.level.status = LevelStatus.Fixed;
-        this.gameService.save(this.level);
+    this.levelService.check(this.level.id,
+      (passed, score) => {
+        if(passed) {
+          this.level.score = score;
+          this.level.status = LevelStatus.Fixed;
+          this.gameService.save(this.level);
+        } else {
+          this.error = "The check failed. The route is not yet reachable";
+        }
         this.processing = false;
       }, (error: string) => {
         console.log("Unable to check level %d. Error: %s", this.level.id, error);
+        this.error = "Something went terribly wrong";
         this.processing = false;
       });
   };
@@ -81,7 +90,7 @@ export class LevelComponent implements OnInit {
       return;
     }
     this.processing = true;
-    this.levelService.giveUp(this.level.id, "planetas",
+    this.levelService.giveUp(this.level.id, this.gameService.getGame().key,
       () => {
         this.level.score = 0;
         this.level.status = LevelStatus.Fixed;
