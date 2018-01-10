@@ -7,13 +7,7 @@ exports.check = function(level, callbackFn) {
   http.get(ROUTE + '/index.json', (resp) => {
     let body = "";
     if(resp.statusCode === 200) {
-      resp.on('data', data => {
-        body += data;
-      });
-      resp.on("end", () => {
-        body = JSON.parse(body);
-        callbackFn(body.level === level);
-      });
+      callbackFn(true);
     } else {
       callbackFn(false);
     }
