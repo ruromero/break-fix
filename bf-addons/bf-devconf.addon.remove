@@ -2,5 +2,4 @@
 # Description: Removes the stuff created in the Break & Fix at Devconf 2018
 
 oc delete project break-fix
-oc delete svc,dc,sa,is,route -l app=demoapp -n myproject
-oc delete template break-fix-app-template  -n myproject
+oc delete project demo

@@ -59,5 +59,5 @@ exports.run = (config, callbackFn, errorCallbackFn) => {
 };
 
 exports.getDemoAppRoute = () => {
-  return shell.exec("oc get route -n myproject demoapp -o jsonpath='{.spec.host}'", {silent: true}).stdout;
+  return shell.exec("oc get route -n demo demoapp -o jsonpath='{.spec.host}'", {silent: true}).stdout;
 }

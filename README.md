@@ -59,7 +59,7 @@ This laboratory is intended to be deployed using [minishift](https://github.com/
   $ oc get pods -n break-fix --as system:admin -l app=manager-app -o jsonpath='{range .items[*]}{.metadata.name}{"\t"}{.status.phase}{"\n"}{end}'
   manager-app-1-19jhw	Running
 
-  $ oc get pods -n myproject --as system:admin -l app=demoapp -o jsonpath='{range .items[*]}{.metadata.name}{"\t"}{.status.phase}{"\n"}{end}'
+  $ oc get pods -n demo --as system:admin -l app=demoapp -o jsonpath='{range .items[*]}{.metadata.name}{"\t"}{.status.phase}{"\n"}{end}'
   demoapp-1-j4xlx	Running
   ```
 
