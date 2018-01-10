@@ -1,13 +1,8 @@
 # Name: bf-devconf
 # Description: Application to be used in the Break & Fix at Devconf 2018
 
-oc adm new-project break-fix --display-name='Break & Fix'
-oc create sa bf-sa -n break-fix
-oc policy add-cluster-role-to-user cluster-admin -z bf-sa -n break-fix
+oc adm new-project break-fix --display-name="Break & Fix"
 oc import-image ruromero/nodejs-6-oc --confirm -n openshift
-oc new-app nodejs-6-oc~https://github.com/ruromero/devconf --context-dir=manager-app --name=manager-app -n break-fix
-oc expose svc manager-app -n break-fix
-oc patch dc manager-app -p '{"spec": {"template": {"spec": {"serviceAccountName": "bf-sa"}}}}' -n break-fix
+oc new-app -f manager-app-template.yaml -n break-fix
+oc adm policy add-cluster-role-to-user cluster-admin -z manager-app -n break-fix
 oc create -f demoapp-template.yaml -n myproject
-oc new-app -p LEVEL=1 break-fix-app-template -n myproject
-oc adm policy add-scc-to-user anyuid -z demoapp -n myproject
