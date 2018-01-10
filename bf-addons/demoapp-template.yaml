@@ -2,14 +2,8 @@ apiVersion: v1
 kind: Template
 metadata:
   creationTimestamp: null
-  name: break-fix-app-template
+  name: demoapp-template
 objects:
-- apiVersion: v1
-  kind: ServiceAccount
-  metadata:
-    labels:
-      app: ${APP_NAME}
-    name: ${APP_NAME}
 - apiVersion: v1
   kind: ImageStream
   metadata:
@@ -25,7 +19,7 @@ objects:
   spec:
     ports:
     - name: web
-      port: 8000
+      port: 8080
     selector:
       app: ${APP_NAME}
 - apiVersion: v1
@@ -40,6 +34,36 @@ objects:
     to:
       kind: Service
       name: ${APP_NAME}
+- apiVersion: v1
+  kind: BuildConfig
+  metadata:
+    labels:
+      app: ${APP_NAME}
+    name: ${APP_NAME}
+  spec:
+    nodeSelector: null
+    output:
+      to:
+        kind: ImageStreamTag
+        name: ${APP_NAME}:latest
+    postCommit: {}
+    resources: {}
+    runPolicy: Serial
+    source:
+      contextDir: ${APP_NAME}
+      git:
+        uri: https://github.com/ruromero/devconf
+      type: Git
+    strategy:
+      sourceStrategy:
+        from:
+          kind: DockerImage
+          name: ruromero/nodejs-6-oc:latest
+      type: Source
+    triggers:
+    - type: ConfigChange
+    - imageChange:
+      type: ImageChange
 - apiVersion: v1
   kind: DeploymentConfig
   metadata:
@@ -61,19 +85,12 @@ objects:
       spec:
         containers:
         - env:
-          - name: LEVEL
-            value: "${LEVEL}"
-          image: ruromero/devconf-minion:latest
+          image: ${APP_NAME}:latest
           imagePullPolicy: IfNotPresent
           name: ${APP_NAME}
-        serviceAccountName: ${APP_NAME}
     triggers:
     - type: ConfigChange
 parameters:
-- description: Break & Fix Level to deploy
-  displayName: Level
-  name: LEVEL
-  required: true
 - description: Break & Fix Application name
   displayName: Application name
   name: APP_NAME

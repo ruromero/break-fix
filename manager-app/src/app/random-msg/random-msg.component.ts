@@ -19,7 +19,15 @@ export class RandomMsgComponent implements OnInit {
     "Starting another project I'll never finish",
     "I don't know why I am still making you wait",
     "Cleaning up the coffee I just spilled",
-    "Doing science, b...!"
+    "Doing science, bitch!",
+    "Running 'meltdown.sh'",
+    "Running 'spectre.sh'",
+    "Ooops I shouldn't have touched that",
+    "I'm sorry, Dave, I'm afraid I can't do that",
+    "Fear is the little-death that brings total obliteration",
+    "I find your lack of faith disturbing",
+    "You know kung fu",
+    "Time...to break"
   ];
 
   message: string;
