@@ -85,11 +85,18 @@ objects:
       spec:
         containers:
         - env:
-          image: ${APP_NAME}:latest
-          imagePullPolicy: IfNotPresent
           name: ${APP_NAME}
+          image: ' '
     triggers:
     - type: ConfigChange
+    - imageChangeParams:
+        automatic: true
+        containerNames:
+        - ${APP_NAME}
+        from:
+          kind: ImageStreamTag
+          name: ${APP_NAME}:latest
+      type: ImageChange
 parameters:
 - description: Break & Fix Application name
   displayName: Application name
