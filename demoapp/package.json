@@ -1,0 +1,22 @@
+{
+  "name": "demoapp",
+  "version": "1.0.0",
+  "description": "Demo application to be used in the Break & Fix with OpenShift",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ruromero/devconf.git"
+  },
+  "author": "Ruben Romero Montes <rromerom@redhat.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ruromero/devconf/issues"
+  },
+  "homepage": "https://github.com/ruromero/devconf#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
