@@ -27,7 +27,20 @@ export class RandomMsgComponent implements OnInit {
     "Fear is the little-death that brings total obliteration",
     "I find your lack of faith disturbing",
     "You know kung fu",
-    "Time...to break"
+    "Time...to break",
+    "Keep calm and break OpenShift",
+    "Mining bitcoins",
+    "I am testing your patience",
+    "The bits are flowing slowly today",
+    "What do you call 8 Hobbits? A Hobbyte",
+    "I swear it's almost done.",
+    "Walking the dog",
+    "Dividing by zero and multiplying by to",
+    "Laughing at your pictures-i mean, loading...",
+    "BRB, working on my side project",
+    "@todo Insert witty loading message",
+    "Compiling the Powerpoint",
+    "Compiling some Javascript code"
   ];
 
   message: string;

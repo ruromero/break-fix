@@ -5,4 +5,5 @@ export class Game {
   currentLevel: number;
   levels: Array<Level> = new Array();
   key: string;
+  maxScore: number;
 }

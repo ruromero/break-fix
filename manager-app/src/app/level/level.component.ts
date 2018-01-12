@@ -36,6 +36,7 @@ export class LevelComponent implements OnInit {
 
   break = (confirmed: boolean) => {
     this.toConfirm = '';
+    this.error = '';
     if(!confirmed) {
       return;
     }
@@ -46,6 +47,7 @@ export class LevelComponent implements OnInit {
         this.processing = false;
       }, (error: string) => {
         console.log("Unable to break level %d. Error: %s", this.level.id, error);
+        this.error = 'I have not been able to break it. You can try again but I don\'t promise you anything';
         this.processing = false;
       });
   };
@@ -71,6 +73,7 @@ export class LevelComponent implements OnInit {
 
   giveUp = (confirmed: boolean) => {
     this.toConfirm = '';
+    this.error = '';
     if(!confirmed) {
       return;
     }
@@ -83,6 +86,7 @@ export class LevelComponent implements OnInit {
         this.processing = false;
       }, (error: string) => {
         console.log("Unable to give up for level %d. Error: %s", this.level.id, error);
+        this.error = 'I have not been able to fix it. You can try again but I don\'t promise you anything';
         this.processing = false;
       });
   };

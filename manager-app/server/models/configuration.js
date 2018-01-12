@@ -5,16 +5,6 @@ const Encryptor = require('./encryptor');
 const CONFIG_FILE = '../static/configuration.json';
 const LEVELS = "levels",
       HASH = "hash";
-const ID = "id",
-      NAME = "name",
-      TIME = "time",
-      BONUS = "bonus",
-      BREAK = "break",
-      FIX = "fix"
-      COMMANDS = "commands",
-      WAIT_UNTIL = "waitUntil",
-      COMMAND = "command",
-      EXPECTATION = "expectation";
 
 let config;
 let game;
@@ -32,13 +22,14 @@ function loadConfigFile() {
 
 function createGame() {
   game = {
-    levels: []
+    levels: [],
+    maxScore: config.maxScore
   };
   for(let level of config.levels) {
     game.levels.push({
       id: level.id,
       name: level.name,
-      time: level.time,
+      maxScore: level.maxScore,
       bonus: level.bonus
     });
   }
@@ -47,8 +38,8 @@ function createGame() {
 loadConfigFile();
 
 function getLevel(id) {
-  for(let level of config[LEVELS]) {
-    if (level[ID] === id) {
+  for(let level of config.levels) {
+    if (level.id === id) {
       return level;
     }
   }
@@ -60,12 +51,12 @@ exports.getConfiguration = () => {
 
 exports.getBreakConfig = (levelId, key) => {
   const level = getLevel(levelId);
-  return Encryptor.decryptCommands(level[BREAK], key);
+  return Encryptor.decryptCommands(level.break, key);
 };
 
 exports.getFixConfig = (levelId, key) => {
   const level = getLevel(levelId);
-  return Encryptor.decryptCommands(level[FIX], key);
+  return Encryptor.decryptCommands(level.fix, key);
 };
 
 exports.getGame = () => {

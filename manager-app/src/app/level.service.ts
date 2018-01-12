@@ -19,8 +19,8 @@ export class LevelService {
         this.gameService.breakLevel(id);
         callbackFn();
       },
-      error => {
-        errorCallbackFn(error.error);
+      errorResp => {
+        errorCallbackFn(errorResp.error.error);
       });
   };
 
@@ -35,8 +35,7 @@ export class LevelService {
       },
       error => {
         console.log(error.error);
-        console.log(error.message);
-        errorCallbackFn(error);
+        errorCallbackFn(error.error);
       }
     );
   };
@@ -50,8 +49,8 @@ export class LevelService {
         console.log('Gave up for level: %d - Score: 0', id);
         callbackFn(0);
       },
-      error => {
-        errorCallbackFn(error.error);
+      errorResp => {
+        errorCallbackFn(errorResp.error.error);
       });
   };
 }

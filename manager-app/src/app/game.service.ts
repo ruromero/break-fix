@@ -7,7 +7,6 @@ import { Level, LevelStatus } from './model/level';
 export class GameService {
 
   game: Game = new Game();
-  readonly MAX_SCORE: number = 10 * 60;
 
   constructor(
     private http: HttpClient
@@ -39,7 +38,7 @@ export class GameService {
   solveLevel = (id: number) => {
     const level = this.game.levels[id - 1];
     const seconds = (Date.now() - level.startedAt) / 1000;
-    let maxScore = this.MAX_SCORE;
+    let maxScore = this.game.maxScore;
     if(level.timeToSolve !== undefined) {
       maxScore = level.timeToSolve;
     }
@@ -104,6 +103,7 @@ export class GameService {
     this.http.get('/api/game').subscribe(
       data => {
         this.game.levels = data['levels'];
+        this.game.maxScore = data['maxScore'];
         delete this.game.currentLevel;
         delete this.game.key;
         delete this.game.username;

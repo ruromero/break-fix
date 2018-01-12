@@ -37,6 +37,7 @@ function waitUntilReady(waitUntil, callbackFn, errorCallbackFn) {
     }
     if(retries === MAX_RETRIES) {
       errorCallbackFn("Timeout waiting for environment to be ready");
+      clearInterval(timer);
       return;
     }
     retries++;
