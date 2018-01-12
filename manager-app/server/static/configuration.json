@@ -1,52 +1,113 @@
 {
-  "levels": [
-    {
-      "id": 1,
-      "name": "What are you waiting for? Christmas?",
-      "maxScore": 600,
-      "bonus": true,
-      "break": {
-          "commands": "U2FsdGVkX19TsQXVQ22dQboM96zHjboS2p0Oh0bOKU0=",
-          "waitUntil": {
-              "command": "U2FsdGVkX187BNSulEEC9T15gXvU0bkbjrQfrdBzOk+7RKFo1e6fdPXXzDgPPdfkfqFt7teXt4594/jcwVQBxkmMTDPZG/Bi1XTLCe4pXWiRtRcksR1Bwd9lO+fMJiIq",
-              "expectation": "U2FsdGVkX19ax84eSYS+87KDSyrYW5IMdrNWQ1WQmrY="
-          }
-      },
-      "fix": {
-          "commands": "U2FsdGVkX19tWyyMubz4uZ6wXLoiv9vinfuv+Mh8tbw="
-      }
-    },
-    {
-      "id": 2,
-      "name": "For Pete's sake, I'm not going to hurt you!",
-      "bonus": false,
-      "break": {
-          "commands": "U2FsdGVkX19TsQXVQ22dQboM96zHjboS2p0Oh0bOKU0=",
-          "waitUntil": {
-              "command": "U2FsdGVkX187BNSulEEC9T15gXvU0bkbjrQfrdBzOk+7RKFo1e6fdPXXzDgPPdfkfqFt7teXt4594/jcwVQBxkmMTDPZG/Bi1XTLCe4pXWiRtRcksR1Bwd9lO+fMJiIq",
-              "expectation": "U2FsdGVkX19ax84eSYS+87KDSyrYW5IMdrNWQ1WQmrY="
-          }
-      },
-      "fix": {
-          "commands": "U2FsdGVkX19tWyyMubz4uZ6wXLoiv9vinfuv+Mh8tbw="
-      }
-    },
-    {
-      "id": 3,
-      "name": "Go and play in the airlock, Wilco.",
-      "bonus": false,
-      "break": {
-          "commands": "U2FsdGVkX19TsQXVQ22dQboM96zHjboS2p0Oh0bOKU0=",
-          "waitUntil": {
-              "command": "U2FsdGVkX187BNSulEEC9T15gXvU0bkbjrQfrdBzOk+7RKFo1e6fdPXXzDgPPdfkfqFt7teXt4594/jcwVQBxkmMTDPZG/Bi1XTLCe4pXWiRtRcksR1Bwd9lO+fMJiIq",
-              "expectation": "U2FsdGVkX19ax84eSYS+87KDSyrYW5IMdrNWQ1WQmrY="
-          }
-      },
-      "fix": {
-          "commands": "U2FsdGVkX19tWyyMubz4uZ6wXLoiv9vinfuv+Mh8tbw="
-      }
-    }
-  ],
-  "hash": "3a4d5b86cfa208b50f1175f39165355a3b05a4ce8ef30fa6ee9ea326905efe9b",
-  "maxScore": 600
+    "hash": "3a4d5b86cfa208b50f1175f39165355a3b05a4ce8ef30fa6ee9ea326905efe9b",
+    "maxScore": 600,
+    "levels": [
+        {
+            "id": 1,
+            "name": "What are you waiting for? Christmas?",
+            "maxScore": 600,
+            "bonus": false,
+            "break": {
+                "commands": "U2FsdGVkX19gWzL2TVrIvo8hKCaT1CcBI4wcw2NFwj+aIc6j5VEMIAccuEsntbbJJGeqz/ReYSZPnaNF3CF/zY0gyNr4FEArh+fm+/CFfufktzVh+Sknxl2N3Dsc3VZlDl9g811gHXA9qb/iiP+i3jgjFy30GjPJRyc4n4s62NU=",
+                "waitUntil": {
+                    "command": "U2FsdGVkX19HI5jgqNbtiMHSMmwksigrKCGgKZSOmR75MdVB6KFMd40d8xBtnqu/xbofT0e4iSri3IauC/UC08tQ6p71hlf5YUU+Ah7fo4DdfY8xAVHoeI+aTo/r+/Dq",
+                    "expectation": "U2FsdGVkX19WGsaqVegQdgtZjGrfnC/cCSVKq15taGU="
+                }
+            },
+            "fix": {
+                "commands": "U2FsdGVkX1+vWQQ8mLAg/KueRq6wDpQ2BMNGQLSS5615YaCDqroCGYuit64vhkPNwCBOahPT6jM3Y9JtgxtQa/A7IT2SSVdy2jXoRXzKP9WsoWus+ZRARpGckH54WbScQlmrl4HCcF79LmIhgEWgfFA34JSsm1Opj0Ud926DKw0=",
+                "waitUntil": {
+                    "command": "U2FsdGVkX1+wA7EcpGJJSvmnSI9Ts+bPo7vLmxXbTs5PszFkxgsQsxv64867+WLWF7K4C+ask4NBgwdM2RW1J/mNAE+qTogB86mNPh63F1wKKymSI0weXfNqZnIcFCQ5",
+                    "expectation": "U2FsdGVkX1+dSzJiUKvR/GFOu5tBVtZMoWrhMae64Lo="
+                }
+            }
+        },
+        {
+            "id": 2,
+            "name": "Go and play in the airlock, Wilco.",
+            "bonus": false,
+            "break": {
+                "commands": "U2FsdGVkX1+2vfvrWXdaMscwxOnCgj+9VyHczQbqmvdwoufwwHHKqbyesunNLXPXDj1syIDc8/BCu7+8dmUu4RmhNw1pk7xN4XaL8ziZRzXAU9N+vRNMCkyYjUt1q1uy"
+            },
+            "fix": {
+                "commands": "U2FsdGVkX1+V47wPaWBZ4Xly9XpMrCy4XWYxFVeRYczZDdr1Hsc3R79adbTQYWjHknTpcu+OLtgDzAeURjwHK4LLVdPrkz4FpIqX1qd8tJiC4JWkoMUerAP/Xe50A+yT"
+            }
+        },
+        {
+            "id": 3,
+            "name": "For Pete's sake, I'm not going to hurt you!",
+            "bonus": false,
+            "break": {
+                "commands": "U2FsdGVkX18tswrOsHLWBSA0tTDgMNz47Ngzak8V8eA2OPENNd9QW54eEWk6++podT30vNO2kSj7iaXmAsLA6GQpbsnh3WWpOlUjfopW1XAuhSm0RCvGTdy8zmq/6bg/5Le74a7ug4ZO6vM1sT+xBLmmosMDFR7okPcT+Z0EJgr83Ksfg7YQmhOGhYumKTbRFBhtCOBXWS6lSeGsOcU1aOuoaH1nY1Zak8WkGkWIRi0=",
+                "waitUntil": {
+                    "command": "U2FsdGVkX19udSjBoidAYicUzm3RcDndMZktDpmLSXuAOg7ppKbQEuEeZLaAjtoxcDVhbJ8hFF1z7g1WCBnCF45wG3gDFEZMq3qsBK1eQZOLN0AQgv0c+bm82Mts2/78",
+                    "expectation": "U2FsdGVkX18tkLTPQvL/ZFv5ohvcCweH6uvu4hNEnmM="
+                }
+            },
+            "fix": {
+                "commands": "U2FsdGVkX1+nvIIrmcOZ898XsoQ52DlBqy63+4uUdFjj9ZC33sSuPwW0pHw2Yy861dOzpeSeWgnnoKHoDOxBan9xKRuyXO8S81a1lEuf1nO/ANVFx4/de+SaIbN7HNZGlDq6QK2pmsNIw/+C4r9pb55B1LcsDIGLZHzRyZlnHH3TYG+07QuKC4kmRsQTQH3S",
+                "waitUntil": {
+                    "command": "U2FsdGVkX19Qp2ATpTdBfff14Or5b7riLatXM+cFlFUrXSYhbatQGnBixqLlw6wr29YhZJkzDFcdub7sB/PwdhbS9Q3w70wI3R+uIWOCWzTeolJ3zqSf5KrKcPwOtRdR",
+                    "expectation": "U2FsdGVkX184lVeuZwEp0HX90RQsJhm4FW/4L4Iw81s="
+                }
+            }
+        },
+        {
+            "id": 4,
+            "name": "I'd be peeing my pants if I wore any!",
+            "bonus": false,
+            "break": {
+                "commands": "U2FsdGVkX1+xq2ToUqXEwKJLFfoX+Yug4r36QSNyzkQzUBuI1Xs1s536bpLuPuEs1R7iTj6sHSSDLkdO5ZTzrSa1w4L9+GMj9gznS8gO6wSPV9FlfU8ctkU/8TP6bsOduiZfUaOjyQW6TLV3rm/CFkR8npKdxUOrziiqMl8Qa3sZTwUiTusBQQpSQ36/gRhRB/MzLxVljfDqy9Nsn/DhFwzxFn3vSaeHxLrne8aWh6w=",
+                "waitUntil": {
+                    "command": "U2FsdGVkX182S6dEU9g/nXpr2bxsW96QPn+YnG37/H+RW13oSqJFu0YVstgxgAt3iO1mskx1Bmj2pzuZs+HJTzvAwL1eGgNAErhgwvnA5LAXBDLYov3F5yqo35RvfCE/",
+                    "expectation": "U2FsdGVkX18rz0/ES2T8W7chiguHa08i1iFSNHrs5yI="
+                }
+            },
+            "fix": {
+                "commands": "U2FsdGVkX19LyHdGMtLpYiy3HbDE7ZCAKKHtPD9Ll3PxUvfiDkxNU6+YYA2inymZIuK/wNR32zEKRIvOivT+aVfCNyHbTQYfBBbup7tr3DmTbQsMkpdARvFkDYIB4U85vUW1W2O1yDQNPYVDXwHAv/9LZNhQtN6bScgWE6HO8/3tgvReFepPtSs+wpiu4plU",
+                "waitUntil": {
+                    "command": "U2FsdGVkX184MaGlLubBPWSrGLDCtTqQDNidhVZs4lityL48UCAYO10kKp1vol5jTKDKv0pIALx1eE1bEljQFyBZk8f9z8cw5+CuiJZu/ZdO5pdnFEPKUU/3h16qQxCG",
+                    "expectation": "U2FsdGVkX19KyOsusYH9NjcTiBj463Lv8U93nId0n7E="
+                }
+            }
+        },
+        {
+            "id": 5,
+            "name": "The cake is a lie",
+            "bonus": false,
+            "break": {
+                "commands": "U2FsdGVkX1+5ISCmornD+6zhDylRlqD/PbZGtRikJZ5XluFBfE4v4u86EaeKgjZ8VgW32VxM00D6m6okBUyzlQASnXzsdTous7F1e45a9LmBid25R90qUcRuOjMAbUI2MwdO0lAU5nXLa5qr76ZatQNqiV3Z2uZ0XP/f0mehcRoEWkom+pj9DUo7vkRnseWElFQNIxoGH5D+0iRAldcPmczdLNp2EaJ8cqv0rvmitj8=",
+                "waitUntil": {
+                    "command": "U2FsdGVkX1+2mkFmQx6uGijVkoFuPCDTBdYunzgebWjKDcu8cYs/YK9OSfwyG3Wve8NpWNETgn25akOlohf8g+Yg4WUtKxd5TaVXpLrYWX8EDTCInXl6JU7GBC9YcgVI",
+                    "expectation": "U2FsdGVkX19HwdGRVL9ZRESmOfRbmk88Eped06AUi1k="
+                }
+            },
+            "fix": {
+                "commands": "U2FsdGVkX1/Po344PxZ+pTWNRBY0zYDrnzg4DRWTRawpCNnFFEYOVxRvfrFcJHy29IE2hwe27uz0e+nkZ8h5140VwIkPAkgMN0Hpgt2fRWu0Ewy5LlXjI4S9kBVddBUbdsdJiZq9N6ZslIcXYVetakKC7nxp9jjHZJ1pPTHFZcqIvAPAWnrfRsSho15ERfoz",
+                "waitUntil": {
+                    "command": "U2FsdGVkX1+5Fn1PtoXeP9gp4WBVxmUqqEv6KfmCbSLbqaKXvUzNKbw6lvlHwnNnQGWMLhO52Wa7Hos6OZ0MBIkbkZ0PTRoVOxslsq1wymtFdr6BTqykAcsKdzWFnN99",
+                    "expectation": "U2FsdGVkX1+TgOq701FZt4Z7wm4SMEEEF3dP9vJtuiU="
+                }
+            }
+        },
+        {
+            "id": 6,
+            "name": "I feel like I could, TAKE ON THE WORLD!",
+            "bonus": false,
+            "break": {
+                "commands": "U2FsdGVkX1+ser6zo67YtP8hg8CmVlVdK0FmOY0uy+i6yFA4c+wjNDwEagohzNo9mBO+A/4i3gg1nxul3fDT8TOSWdUbhF/AH47BhpVloO+Rr+a22/+A60HARMSK4ROQ85aYqzcc2qx0KXajYYFZF3L3Odsop8UORknAhwDcL4Azl66m59g0xeQolBKHkgQKgp9ACnLkXy+BahOaE7+mM7cjD8Ue9/8/e4gz8MwONWs=",
+                "waitUntil": {
+                    "command": "U2FsdGVkX1+jL0hrWxyeMRHGUJfkssP0TTL7y7MQklOtrebQTsAwlfONI42ZGjVkQCRrXH4opCuxQv5Zj6AqqMnEhZby8PZ0/IQ34f79Krjr7IMaRnGJSAfE4tc/m+fZ",
+                    "expectation": "U2FsdGVkX184iEubp7C/wz83gT+RvwT3puhqII55b0U="
+                }
+            },
+            "fix": {
+                "commands": "U2FsdGVkX19RLt1hmakYP22u3fyACsCFTq5WZoANz7ixWwYWSHQfVbT9KV1TiFNNOcVbgEbFBf99NqSsOiVmHdOTfjoxy6hoFhbeCO97RdbYAm0HXG4GEPBPb6Lvie0D16iqCOOwWoQncYbzQ1dFbuMz8NYQo3cHX+uv0UqcEUL6aClhQcs1LT713w/JNeSr",
+                "waitUntil": {
+                    "command": "U2FsdGVkX19lQAmbNQCLz5jDa+wUGSis1wJknuTpe9mOsT1QsRBR7N9kklowr086XmbHkKpbM/Cljf2QHt2TfMJrzi31YGIYMVws8gCSDWyh3XTvn99OjMkwbNd8g9Yo",
+                    "expectation": "U2FsdGVkX19KRcKY0SDPhBzqHm6cH5XMBY0j2ahNzn4="
+                }
+            }
+        }
+    ]
 }

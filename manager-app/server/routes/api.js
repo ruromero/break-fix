@@ -2,6 +2,7 @@ const express = require('express');
 const OC = require('../models/oc');
 const Validator = require('../models/validator');
 const Configuration = require('../models/configuration');
+const Encryptor = require('../models/encryptor');
 
 const router = express.Router();
 

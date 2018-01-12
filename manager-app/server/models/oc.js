@@ -15,8 +15,6 @@ function loadToken() {
 
 function ocRun(command) {
   const oc_command = command + ' --token=' + TOKEN;
-  //TODO: Delete this line
-  console.log("Running command: %s", oc_command);
   const result = shell.exec(oc_command, {silent: true});
   if(result.code !== 0) {
     console.log('Unable to run command[%d]. Error: %s', result.code, result.stderr);
@@ -24,12 +22,11 @@ function ocRun(command) {
   return result;
 }
 
+//TODO: It seems it's being executed twice
 function waitUntilReady(waitUntil, callbackFn, errorCallbackFn) {
   let retries = 0;
   const timer = setInterval(() => {
     console.log("Waiting for environment to be ready: %d/%d.", retries, MAX_RETRIES);
-    //TODO: Delete this line
-    console.log("Command %s === Expectation: %s", waitUntil.command, waitUntil.expectation);
     if(ocRun(waitUntil.command).stdout === waitUntil.expectation.toString()) {
       callbackFn();
       clearInterval(timer);

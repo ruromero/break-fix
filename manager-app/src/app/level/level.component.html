@@ -1,25 +1,31 @@
+<h3>Level {{ level.id }} - {{ level.name }}</h3>
 <div *ngIf="toConfirm === ''">
-  <h3>Level {{ level.id }}</h3>
   <div *ngIf="!processing; else showProcessing">
     <button *ngIf="level.status === levelStatus.Unlocked" (click)="toConfirm = 'break'">Break</button>
     <div *ngIf="level.status === levelStatus.Broken">
+      <div>
+        <p>All set! Try to find the issue and solve it. Remaining points: <span class="points">{{remainingTime}}</span> points</p>
+      </div>
       <div>
         <button type="button" (click)="check()">Check</button>
       </div>
       <div>
         <button (click)="toConfirm = 'giveUp'">Give up</button>
-
       </div>
+      <!-- <div>
+        <button>Buy a hint (100 points)</button>
+      </div> -->
     </div>
     <div *ngIf="level.status === levelStatus.Locked">Unlock this level!</div>
     <div *ngIf="level.status === levelStatus.Fixed">
-      <div>You solved this level</div>
+      <div>Yay! You solved this level</div>
       <div *ngIf="level.id < gameService.getGame().levels.length">
         <button [routerLink]="['/level', {id: level.id + 1}]">Next level</button>
       </div>
     </div>
   </div>
   <ng-template #showProcessing>
+    <p>Breaking OpenShift is not easy, please hold on.</p>
     <app-random-msg></app-random-msg>
   </ng-template>
 </div>

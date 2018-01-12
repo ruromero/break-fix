@@ -1,3 +1,7 @@
 div.error-msg {
   color: red;
 }
+
+span.points {
+  color: white
+}

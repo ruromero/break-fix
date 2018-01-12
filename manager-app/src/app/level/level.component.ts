@@ -16,6 +16,13 @@ export class LevelComponent implements OnInit {
   processing: boolean = false;
   toConfirm: string = '';
   error: string = '';
+  showRemainingTime: boolean;
+  remainingTime: number;
+  pointsInterval = setInterval(() => {
+    if(this.level.status === LevelStatus.Broken) {
+      this.remainingTime = this.gameService.getCurrentScore(this.level);
+    }
+  }, 1000);
 
   constructor(
     private route: ActivatedRoute,
@@ -32,6 +39,10 @@ export class LevelComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  ngOnDestroy() {
+    clearInterval(this.pointsInterval);
   }
 
   break = (confirmed: boolean) => {
@@ -90,4 +101,5 @@ export class LevelComponent implements OnInit {
         this.processing = false;
       });
   };
+
 }

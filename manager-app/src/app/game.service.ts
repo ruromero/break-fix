@@ -35,26 +35,31 @@ export class GameService {
     this.save();
   };
 
-  solveLevel = (id: number) => {
-    const level = this.game.levels[id - 1];
+  getCurrentScore = (level: Level) => {
     const seconds = (Date.now() - level.startedAt) / 1000;
     let maxScore = this.game.maxScore;
-    if(level.timeToSolve !== undefined) {
-      maxScore = level.timeToSolve;
+    if(level.maxScore !== undefined) {
+      maxScore = level.maxScore;
     }
     let score = maxScore - Math.floor(seconds);
     if(score < 0) {
       score = 0;
     }
+    return score;
+  };
+
+  solveLevel = (id: number) => {
+    const level = this.game.levels[id - 1];
+    const score = this.getCurrentScore(level);
     console.log('Solved level: %d - Score: %d', id, score);
-    this.game.levels[id - 1].status = LevelStatus.Fixed;
-    this.game.levels[id - 1].score = score;
-    this.game.levels[id - 1].startedAt = null;
+    level.status = LevelStatus.Fixed;
+    level.score = score;
+    level.startedAt = null;
     if(this.game.levels.length > id) {
       this.game.levels[id].status = LevelStatus.Unlocked;
     }
     this.save();
-  }
+  };
 
   validatePassword = (password: string, callbackFn: Function, errorCallbackFn: Function) => {
     this.http.post('/api/validatePassword', {password: password}).subscribe(

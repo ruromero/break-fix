@@ -24,7 +24,7 @@ exports.decryptCommands = (action, key) => {
 }
 
 exports.encrypt = (text, key) => {
-  CryptoJS.AES.encrypt(text, key).toString();
+  return CryptoJS.AES.encrypt(text, key).toString();
 };
 
 exports.validatePassword = (password, hash) => {
@@ -32,29 +32,30 @@ exports.validatePassword = (password, hash) => {
 };
 
 exports.encryptFile = (config, key) => {
-  let result = {};
-  for(let parameter in config) {
-    if(parameter.startsWith('level_')) {
-      const src = config[parameter];
-      let level = {
-        break: {
-          commands: encrypt(src.break.commands, key)
-        },
-        fix: {
-          commands: encrypt(src.fix.commands, key)
-        }
-      };
-      for(let arg of ["break", "fix"]) {
-        if(src[arg].waitUntil !== undefined) {
-          level[arg].waitUntil = {
-            command: encrypt(src[arg].waitUntil.command, key),
-            expectation: encrypt(src[arg].waitUntil.expectation, key),
-          };
-        }
+  let result = {
+    hash: CryptoJS.SHA256(key).toString(),
+    maxScore: config.maxScore,
+    levels: []
+  };
+  for(let cfgLevel of config.levels) {
+    let level = {
+      id: cfgLevel.id,
+      name: cfgLevel.name,
+      maxScore: cfgLevel.maxScore,
+      bonus: cfgLevel.bonus,
+      break: {},
+      fix: {}
+    };
+    for(let arg of ["break", "fix"]) {
+      level[arg].commands = this.encrypt(cfgLevel[arg].commands, key);
+      if(cfgLevel[arg].waitUntil !== undefined) {
+        level[arg].waitUntil = {
+          command: this.encrypt(cfgLevel[arg].waitUntil.command, key),
+          expectation: this.encrypt(cfgLevel[arg].waitUntil.expectation, key),
+        };
       }
-      result[parameter] = level;
     }
+    result.levels.push(level);
   }
-  result.hash = CryptoJS.SHA256(key).toString();
   return result;
 };
