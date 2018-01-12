@@ -4,12 +4,20 @@ export class Level {
   status: LevelStatus;
   score: number;
   startedAt: number;
+  timeToSolve: number;
+  bonus: boolean;
 
-  constructor(id: number, name: string, score: number, status: LevelStatus) {
+  constructor(id: number, name: string, timeToSolve: number, bonus: boolean) {
     this.id = id;
     this.name = name;
-    this.score = score;
-    this.status = status;
+    this.bonus = bonus;
+    this.timeToSolve = timeToSolve;
+    if(bonus || id === 1) {
+      this.status = LevelStatus.Unlocked;
+    } else {
+      this.status = LevelStatus.Locked;
+    }
+
   }
 }
 export enum LevelStatus {

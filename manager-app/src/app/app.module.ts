@@ -13,15 +13,17 @@ import { ScoreComponent } from './score/score.component';
 import { LogoComponent } from './logo/logo.component';
 import { LevelSelectComponent } from './level-select/level-select.component';
 import { MenuBtnComponent } from './menu-btn/menu-btn.component';
+import { RandomMsgComponent } from './random-msg/random-msg.component';
+import { NewGameComponent } from './new-game/new-game.component';
 
 import { GameService } from './game.service';
 import { LevelService } from './level.service';
-import { RandomMsgComponent } from './random-msg/random-msg.component';
 
 const appRoutes: Routes = [
   { path: 'menu',       component: MenuComponent },
   { path: 'level',  component: LevelComponent },
   { path: 'level-select', component: LevelSelectComponent},
+  { path: 'new-game', component: NewGameComponent},
   { path: '', redirectTo: '/menu', pathMatch: 'full'}
 ];
 
@@ -36,7 +38,8 @@ const appRoutes: Routes = [
     ConfirmationComponent,
     LevelSelectComponent,
     MenuBtnComponent,
-    RandomMsgComponent
+    RandomMsgComponent,
+    NewGameComponent
   ],
   imports: [
     BrowserModule,

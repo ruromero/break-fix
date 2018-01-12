@@ -1,0 +1,37 @@
+{
+  "levels": [
+    {
+      "id": 1,
+      "name": "What are you waiting for? Christmas?",
+      "time": 600,
+      "bonus": true,
+      "break": {
+          "commands": "U2FsdGVkX19TsQXVQ22dQboM96zHjboS2p0Oh0bOKU0=",
+          "waitUntil": {
+              "command": "U2FsdGVkX187BNSulEEC9T15gXvU0bkbjrQfrdBzOk+7RKFo1e6fdPXXzDgPPdfkfqFt7teXt4594/jcwVQBxkmMTDPZG/Bi1XTLCe4pXWiRtRcksR1Bwd9lO+fMJiIq",
+              "expectation": "U2FsdGVkX19ax84eSYS+87KDSyrYW5IMdrNWQ1WQmrY="
+          }
+      },
+      "fix": {
+          "commands": "U2FsdGVkX19tWyyMubz4uZ6wXLoiv9vinfuv+Mh8tbw="
+      }
+    },
+    {
+      "id": 2,
+      "name": "For Pete's sake, I'm not going to hurt you!",
+      "time": 600,
+      "bonus": false,
+      "break": {
+          "commands": "U2FsdGVkX19TsQXVQ22dQboM96zHjboS2p0Oh0bOKU0=",
+          "waitUntil": {
+              "command": "U2FsdGVkX187BNSulEEC9T15gXvU0bkbjrQfrdBzOk+7RKFo1e6fdPXXzDgPPdfkfqFt7teXt4594/jcwVQBxkmMTDPZG/Bi1XTLCe4pXWiRtRcksR1Bwd9lO+fMJiIq",
+              "expectation": "U2FsdGVkX19ax84eSYS+87KDSyrYW5IMdrNWQ1WQmrY="
+          }
+      },
+      "fix": {
+          "commands": "U2FsdGVkX19tWyyMubz4uZ6wXLoiv9vinfuv+Mh8tbw="
+      }
+    }
+  ],
+  "hash": "3a4d5b86cfa208b50f1175f39165355a3b05a4ce8ef30fa6ee9ea326905efe9b"
+}

@@ -1,7 +1,3 @@
-button.password {
-	position: absolute; left: -9999px; width: 1px; height: 1px;
-}
-
 div.error-msg {
   color: red;
 }

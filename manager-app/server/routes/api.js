@@ -1,13 +1,13 @@
 const express = require('express');
-const Encryptor = require('../models/encryptor');
 const OC = require('../models/oc');
 const Validator = require('../models/validator');
+const Configuration = require('../models/configuration');
 
 const router = express.Router();
 
 router.post('/break', (req, res) => {
   try {
-    OC.run(Encryptor.decryptBreakLevel(req.body.level, req.body.key),
+    OC.run(Configuration.getBreakConfig(req.body.level, req.body.key),
       () => {
         res.send({
           level: req.query.level,
@@ -28,7 +28,7 @@ router.post('/break', (req, res) => {
 
 router.post('/fix', (req, res) => {
   try {
-    OC.run(Encryptor.decryptFixLevel(req.body.level, req.body.key),
+    OC.run(Configuration.getFixConfig(req.body.level, req.body.key),
       () => {
         res.send({
           level: req.query.level,
@@ -68,11 +68,15 @@ router.post('/encrypt', (req, res) => {
 });
 
 router.post('/validatePassword', (req, res) => {
-  if(Encryptor.validatePassword(req.body.password)) {
+  if(Configuration.validatePassword(req.body.password)) {
     res.send('');
   } else {
     res.status(400).send('');
   }
+});
+
+router.get('/game', (req, res) => {
+  res.send(Configuration.getGame());
 });
 
 module.exports = router;

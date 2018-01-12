@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { GameService } from '../game.service';
 import { LevelService } from '../level.service';
 import { Level, LevelStatus } from '../model/level';
@@ -11,18 +11,16 @@ import { Level, LevelStatus } from '../model/level';
 })
 export class LevelComponent implements OnInit {
 
-  level: Level = null;
+  level: Level;
   levelStatus = LevelStatus;
   processing: boolean = false;
   toConfirm: string = '';
   error: string = '';
-  password: string = '';
 
   constructor(
     private route: ActivatedRoute,
     private gameService: GameService,
-    private levelService: LevelService,
-    private router: Router
+    private levelService: LevelService
   ) {
     this.route.params.subscribe(params => {
       if(params['id']) {
@@ -34,18 +32,6 @@ export class LevelComponent implements OnInit {
   }
 
   ngOnInit() {
-  }
-
-  setPassword = (password: string) => {
-    this.error = '';
-    this.gameService.validatePassword(password, () => {
-        this.level = this.gameService.setCurrentLevel(1);
-        this.router.navigate(['/level', {id: 1}]);
-      },
-      (error) => {
-        this.error = "Unable to validate master password";
-        this.password = '';
-      });
   }
 
   break = (confirmed: boolean) => {

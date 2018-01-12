@@ -6,7 +6,7 @@ import { Level, LevelStatus } from './model/level';
 @Injectable()
 export class GameService {
 
-  game: Game;
+  game: Game = new Game();
   readonly MAX_SCORE: number = 10 * 60;
 
   constructor(
@@ -39,7 +39,11 @@ export class GameService {
   solveLevel = (id: number) => {
     const level = this.game.levels[id - 1];
     const seconds = (Date.now() - level.startedAt) / 1000;
-    let score = this.MAX_SCORE - Math.floor(seconds);
+    let maxScore = this.MAX_SCORE;
+    if(level.timeToSolve !== undefined) {
+      maxScore = level.timeToSolve;
+    }
+    let score = maxScore - Math.floor(seconds);
     if(score < 0) {
       score = 0;
     }
@@ -56,7 +60,13 @@ export class GameService {
   validatePassword = (password: string, callbackFn: Function, errorCallbackFn: Function) => {
     this.http.post('/api/validatePassword', {password: password}).subscribe(
       data => {
-        this.game.levels[0].status = LevelStatus.Unlocked;
+        for(let level of this.game.levels) {
+          if(level.id == 1 || level.bonus) {
+            level.status = LevelStatus.Unlocked;
+          } else {
+            level.status = LevelStatus.Locked;
+          }
+        }
         this.game.key = password;
         this.save();
         callbackFn();
@@ -69,8 +79,13 @@ export class GameService {
 
   calculateScore = () => {
     let score = 0;
+    if(this.game.levels === undefined) {
+      return score;
+    }
     this.game.levels.forEach((level: Level, id: number) => {
-      score += level.score;
+      if(level.score !== undefined) {
+        score += level.score;
+      }
     });
     return score;
   };
@@ -86,18 +101,19 @@ export class GameService {
 
   initialize = () => {
     console.log("creating new game");
-    this.game = new Game();
-    delete this.game.currentLevel;
-    delete this.game.key;
-    this.game.levels = [
-      new Level(1, "What are you waiting for? Christmas?", 0, LevelStatus.Locked),
-      new Level(2, "For Pete's sake, I'm not going to hurt you!", 0, LevelStatus.Locked),
-      new Level(3, "Go and play in the airlock, Wilco.", 0, LevelStatus.Locked),
-      new Level(4, "I'd be peeing my pants if I wore any!", 0, LevelStatus.Locked),
-      new Level(5, "The cake is a lie", 0, LevelStatus.Locked),
-      new Level(6, "I feel like I could, TAKE ON THE WORLD!", 0, LevelStatus.Locked)
-    ];
-    this.save();
+    this.http.get('/api/game').subscribe(
+      data => {
+        this.game.levels = data['levels'];
+        delete this.game.currentLevel;
+        delete this.game.key;
+        delete this.game.username;
+        this.save();
+      },
+      error => {
+        console.log(error.error);
+        console.log(error.message);
+      }
+    );
   }
 
   reset = () => {

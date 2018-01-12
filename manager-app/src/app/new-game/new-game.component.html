@@ -1,0 +1,6 @@
+<form autocomplete="off" novalidate (ngSubmit)="setPassword(password)">
+  <h3>Enter the master password</h3>
+  <input type="password" [(ngModel)]="password" name="password" autofocus required>
+  <button type="submit" class="password" tabindex="-1">Unlock</button>
+</form>
+<div *ngIf="error !== ''" class="error-msg">{{ error }}</div>

@@ -1,26 +1,4 @@
 const CryptoJS = require('crypto-js');
-const fs = require('fs');
-const path = require('path');
-
-const LEVEL = 'level_';
-const BREAK = 'break';
-const CHECK = 'check';
-const FIX = 'fix';
-const LEVELS_FILE = 'oc_levels.json';
-
-let levels;
-
-function loadCommands() {
-  fs.readFile(path.join(__dirname, '../static/' + LEVELS_FILE), 'utf8', function(err, data) {
-    if(err) {
-      throw new Error('Unable to load levels file.\n' + err);
-    }
-    levels = JSON.parse(data);
-    console.log("Configuration loaded from file");
-  });
-}
-
-loadCommands();
 
 function decrypt(text, key) {
   const bytes = CryptoJS.AES.decrypt(text, key);
@@ -32,38 +10,26 @@ function decrypt(text, key) {
   }
 }
 
-function decryptLevel(level, action, key) {
+exports.decryptCommands = (action, key) => {
   let result = {
-    commands: decrypt(levels['level_' + level][action].commands, key)
+    commands: decrypt(action.commands, key)
   };
-  if(levels['level_' + level][action].waitUntil !== undefined) {
+  if(action.waitUntil !== undefined) {
     result.waitUntil = {
-      command: decrypt(levels['level_' + level][action].waitUntil.command, key),
-      expectation: decrypt(levels['level_' + level][action].waitUntil.expectation, key)
+      command: decrypt(action.waitUntil.command, key),
+      expectation: decrypt(action.waitUntil.expectation, key)
     };
   }
   return result;
 }
 
-function encrypt (text, key) {
-  return CryptoJS.AES.encrypt(text, key).toString();
-}
-
-exports.decryptBreakLevel = (level, key) => {
-  return decryptLevel(level, BREAK, key);
+exports.encrypt = (text, key) => {
+  CryptoJS.AES.encrypt(text, key).toString();
 };
 
-exports.decryptFixLevel = (level, key) => {
-  return decryptLevel(level, FIX, key);
+exports.validatePassword = (password, hash) => {
+  return CryptoJS.SHA256(password).toString() === hash;
 };
-
-
-exports.encrypt = encrypt;
-
-exports.validatePassword = (password) => {
-  return levels.hash === CryptoJS.SHA256(password).toString();
-};
-
 
 exports.encryptFile = (config, key) => {
   let result = {};

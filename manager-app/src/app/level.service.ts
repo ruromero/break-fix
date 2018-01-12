@@ -34,17 +34,11 @@ export class LevelService {
         callbackFn(data['passed']);
       },
       error => {
-        console.log(error.ok);
         console.log(error.error);
         console.log(error.message);
         errorCallbackFn(error);
       }
     );
-
-    setTimeout(() => {
-
-    }, 1000);
-
   };
 
   giveUp = (id: number, key: string, callbackFn: Function, errorCallbackFn: Function) => {
