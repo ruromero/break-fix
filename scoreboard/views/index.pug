@@ -1,5 +1,22 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  h1= 'Hall of fame'
+  table(id='scores')
+    thead
+      tr
+        th="Rank"
+        th="Score"
+        th="Player"
+    tbody
+      each score, index in scores
+        if index == 0
+          tr.champ
+            td.position=index+1
+            td.points=score.points
+            td.player=score.player
+        else
+          tr
+            td.position=index+1
+            td.points=score.points
+            td.player=score.player

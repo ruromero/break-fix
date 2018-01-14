@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package scoreboard;
+
+service Scoreboard {
+  rpc SetScore(Score) returns (Response) {}
+  rpc AddPlayer(Player) returns (Response) {}
+}
+
+message Score {
+  string player = 1;
+  int32 points = 2;
+}
+
+message Player {
+  string player = 1;
+  string token_hash = 2;
+}
+
+message Response {
+  string message = 1;
+}

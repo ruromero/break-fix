@@ -7,12 +7,12 @@ wss.on('connection', function (ws) {
   ws.send('Connected at: ' + `${new Date()}`);
 });
 
-exports.newScore = (pos, score) => {
+exports.broadcast = (type, data) => {
   wss.clients.forEach((client) => {
     if (client.readyState === WebSocket.OPEN) {
       client.send(JSON.stringify({
-        position: pos,
-        score: score
+        type: type,
+        data: data
       }));
     }
   });

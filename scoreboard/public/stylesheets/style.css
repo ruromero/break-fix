@@ -1,8 +1,53 @@
+@import url(//fonts.googleapis.com/css?family=Press+Start+2P);
+@import url(//fonts.googleapis.com/css?family=VT323);
+@import url(//fonts.googleapis.com/css?family=Open+Sans);
+
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+	margin: 0;
+	padding: 10px;
+	outline: none;
+	background-color: black;
+  text-align: center;
 }
 
-a {
-  color: #00B7FF;
+* {
+  font-family: 'Press Start 2P';
+  color: blue;
+}
+
+h1 {
+  color: #717738;
+  text-shadow: -2px 0 yellow, 0 2px yellow, 2px 0 yellow, 0 -2px yellow;
+}
+
+table {
+  margin: 0px auto;
+  text-align: right;
+}
+
+th {
+  color: blue;
+  padding-right: 50px;
+  padding-bottom: 15px;
+}
+
+td {
+  color: goldenrod;
+  padding-right: 50px;
+}
+
+tr.champ td {
+  color: crimson;
+}
+
+td.position {
+
+}
+
+td.player {
+
+}
+
+td.points {
+
 }
