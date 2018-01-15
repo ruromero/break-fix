@@ -1,34 +1,45 @@
 const express = require('express');
 const wsapi = require('./wsapi');
-const grpc = require('grpc');
-
-const PROTO_PATH = __dirname + '/../protos/scoreboard.proto';
-const scoreboard = grpc.load(PROTO_PATH).scoreboard;
 
 let scores = [];
 
 const players = new Map();
 
+function removeOldScore(gameId) {
+  let pos = 0;
+  while(pos < scores.length) {
+    if(scores[pos].gameId === gameId) {
+      scores.splice(pos, 1);
+      return pos;
+    }
+    pos++;
+  }
+  return -1;
+}
+
 exports.getScores = () => {
   return scores;
 };
 
-exports.setScore = (player, points) => {
+exports.addScore = (gameId, score) => {
   let pos = 0;
-  while(pos < scores.length && scores[pos].points >= points) {
+  const oldPos = removeOldScore(gameId);
+  while(pos < scores.length && scores[pos].points >= score.points) {
     pos++;
   }
   scores.splice(pos, 0, {
-    player: player,
-    points: points
+    player: score.player,
+    points: score.points,
+    gameId: gameId
   });
   wsapi.broadcast('addScore',
   {
     position: pos,
-    player: player,
-    points: points
+    previous: oldPos,
+    player: score.player,
+    points: score.points
   });
-
+  return pos;
 };
 
 /**
@@ -51,9 +62,3 @@ exports.playerJoined = (player, tokenHash) => {
     return false;
   }
 };
-
-setInterval(() => {
-  this.setScore('ruben', Math.floor(Math.random() * 1000));
-  console.log(this.playerJoined('ruben','abcdef'));
-  console.log(scores);
-}, 2000);

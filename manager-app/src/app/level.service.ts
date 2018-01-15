@@ -13,7 +13,8 @@ export class LevelService {
   break = (id: number, key: string, callbackFn: Function, errorCallbackFn: Function) => {
     this.http.post('/api/break', {
       level: id,
-      key: key})
+      key: key
+    })
     .subscribe(
       data => {
         this.gameService.breakLevel(id);
@@ -53,4 +54,5 @@ export class LevelService {
         errorCallbackFn(errorResp.error.error);
       });
   };
+
 }

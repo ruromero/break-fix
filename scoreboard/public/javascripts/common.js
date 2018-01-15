@@ -29,14 +29,18 @@ function updateScores() {
   }
 }
 
-function removeScore() {
-
+function removeScore(position) {
+  const tableRef = document.getElementById('scores').tBodies[0];
+  tableRef.deleteRow(position);
 }
 
 appSocket.onmessage = (event) => {
   console.log('event received: ' + event.data);
   const object = JSON.parse(event.data);
   if(object.type === 'addScore') {
+    if(object.data.previous !== -1) {
+      removeScore(object.data.previous);
+    }
     addScore(object.data);
     updateScores();
   }

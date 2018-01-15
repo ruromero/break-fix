@@ -23,6 +23,7 @@ h1 {
 table {
   margin: 0px auto;
   text-align: right;
+	padding-left: 40px;
 }
 
 th {

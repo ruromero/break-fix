@@ -3,6 +3,7 @@ const OC = require('../models/oc');
 const Validator = require('../models/validator');
 const Configuration = require('../models/configuration');
 const Encryptor = require('../models/encryptor');
+const Notifier = require('../models/notifier');
 
 const router = express.Router();
 
@@ -57,12 +58,6 @@ router.get('/check', (req, res) => {
   });
 });
 
-router.get('/encrypt', (req, res) => {
-  const commands = JSON.parse(req.query.commands).join('\n');
-  const ciphertext = Encryptor.encrypt(commands, req.query.key);
-  res.send(ciphertext.toString());
-});
-
 router.post('/encrypt', (req, res) => {
   const config = JSON.parse(req.body.config);
   res.send(Encryptor.encryptFile(config, req.body.key));
@@ -78,6 +73,18 @@ router.post('/validatePassword', (req, res) => {
 
 router.get('/game', (req, res) => {
   res.send(Configuration.getGame());
+});
+
+router.post('/score', (req, res) => {
+  Notifier.ping((pong) => {
+    if(pong) {
+      Notifier.setScore(req.body.gameId, req.body.score);
+      res.send('');
+    } else {
+      console.log("Not submitting scores. Scoreboard seems to be offline");
+      res.status(503).send('Not submitting scores. Scoreboard seems to be offline');
+    }
+  });
 });
 
 module.exports = router;

@@ -48,6 +48,21 @@ export class GameService {
     return score;
   };
 
+  submitScore = () => {
+    this.http.post('/api/score', {
+      gameId: this.game.id,
+      score: {
+        player: this.game.username,
+        points: this.calculateScore()
+      }
+    }).subscribe( data => {
+      console.log(`Submitted score for: ${this.game.username}`);
+    }, error => {
+      console.log(`Unable to submit score for: ${this.game.username}`);
+      console.log(error.error);
+    });
+  };
+
   solveLevel = (id: number) => {
     const level = this.game.levels[id - 1];
     const score = this.getCurrentScore(level);
@@ -55,6 +70,7 @@ export class GameService {
     level.status = LevelStatus.Fixed;
     level.score = score;
     level.startedAt = null;
+    this.submitScore();
     if(this.game.levels.length > id) {
       this.game.levels[id].status = LevelStatus.Unlocked;
     }
@@ -98,15 +114,22 @@ export class GameService {
     if(localStorage.getItem("game") !== null) {
       this.game = JSON.parse(localStorage.getItem("game"));
       console.log("Loaded existing game");
+      //TODO: DELETE
+      this.submitScore();
     } else {
       this.initialize();
     }
   };
 
+  generateId = () => {
+    return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+  }
+
   initialize = () => {
     console.log("creating new game");
     this.http.get('/api/game').subscribe(
       data => {
+        this.game.id = this.generateId();
         this.game.levels = data['levels'];
         this.game.maxScore = data['maxScore'];
         delete this.game.currentLevel;
