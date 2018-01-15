@@ -50,11 +50,17 @@ exports.getConfiguration = () => {
 }
 
 exports.getBreakConfig = (levelId, key) => {
+  if(!this.validatePassword(key)) {
+    throw new Error('Invalid key');
+  }
   const level = getLevel(levelId);
   return Encryptor.decryptCommands(level.break, key);
 };
 
 exports.getFixConfig = (levelId, key) => {
+  if(!this.validatePassword(key)) {
+    throw new Error('Invalid key');
+  }
   const level = getLevel(levelId);
   return Encryptor.decryptCommands(level.fix, key);
 };

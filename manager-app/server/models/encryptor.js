@@ -2,12 +2,8 @@ const CryptoJS = require('crypto-js');
 
 function decrypt(text, key) {
   const bytes = CryptoJS.AES.decrypt(text, key);
-  if(bytes == '') {
-    throw new Error('Invalid key or missing commands for path: ' + text);
-  } else {
-    const plainText = bytes.toString(CryptoJS.enc.Utf8);
-    return plainText.split('\n');
-  }
+  const plainText = bytes.toString(CryptoJS.enc.Utf8);
+  return plainText.split('\n');
 }
 
 exports.decryptCommands = (action, key) => {
@@ -51,7 +47,7 @@ exports.encryptFile = (config, key) => {
       if(cfgLevel[arg].waitUntil !== undefined) {
         level[arg].waitUntil = {
           command: this.encrypt(cfgLevel[arg].waitUntil.command, key),
-          expectation: this.encrypt(cfgLevel[arg].waitUntil.expectation, key),
+          expectation: this.encrypt(cfgLevel[arg].waitUntil.expectation, key)
         };
       }
     }
