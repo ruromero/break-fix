@@ -33,5 +33,7 @@ const port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
  * Listen on provided port, on all network interfaces.
  */
 app.listen(port, ip, () => console.log(`API running on ${ip}:${port}`));
-
+process.on('uncaughtException', function (err) {
+    console.log(err);
+}); 
 module.exports = app;
