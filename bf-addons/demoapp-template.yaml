@@ -58,7 +58,7 @@ objects:
       sourceStrategy:
         from:
           kind: DockerImage
-          name: centos/nodejs-6-centos7:latest
+          name: ${BUILDER_IMAGE}
       type: Source
     triggers:
     - type: ConfigChange
@@ -116,3 +116,8 @@ parameters:
   name: CONTEXT_DIR
   required: true
   value: demoapp
+- description: Base image used to build the Demo application
+  displayName: Builder image
+  name: BUILDER_IMAGE
+  required: true
+  value: centos/nodejs-6-centos7:latest

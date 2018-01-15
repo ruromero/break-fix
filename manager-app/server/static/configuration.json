@@ -8,17 +8,17 @@
             "maxScore": 600,
             "bonus": false,
             "break": {
-                "commands": "U2FsdGVkX19gWzL2TVrIvo8hKCaT1CcBI4wcw2NFwj+aIc6j5VEMIAccuEsntbbJJGeqz/ReYSZPnaNF3CF/zY0gyNr4FEArh+fm+/CFfufktzVh+Sknxl2N3Dsc3VZlDl9g811gHXA9qb/iiP+i3jgjFy30GjPJRyc4n4s62NU=",
+                "commands": "U2FsdGVkX19t1c2OyQsOgqGPdJHAYU5nbxCQ7rXyIIXHzNZpz8CunR9GRNQ489UmWbvWlCR9Yk7WrAGsy91u7A==",
                 "waitUntil": {
-                    "command": "U2FsdGVkX19HI5jgqNbtiMHSMmwksigrKCGgKZSOmR75MdVB6KFMd40d8xBtnqu/xbofT0e4iSri3IauC/UC08tQ6p71hlf5YUU+Ah7fo4DdfY8xAVHoeI+aTo/r+/Dq",
-                    "expectation": "U2FsdGVkX19WGsaqVegQdgtZjGrfnC/cCSVKq15taGU="
+                    "command": "U2FsdGVkX1/PBu07bMPVUU8ubCrO98S5a7uSdQQSNC9+RRllNu2EpMMZrzUMO/dSlkJ1VAxW3pk1kgjiOJFCIyF+pQjRIS6aE+CHegtetJDM+9ikK/rfw1HTfhCTP6nA",
+                    "expectation": "U2FsdGVkX19mlP3GmiyJLGjjkw7PWq1zv8d7/J4ut3Y="
                 }
             },
             "fix": {
-                "commands": "U2FsdGVkX1+vWQQ8mLAg/KueRq6wDpQ2BMNGQLSS5615YaCDqroCGYuit64vhkPNwCBOahPT6jM3Y9JtgxtQa/A7IT2SSVdy2jXoRXzKP9WsoWus+ZRARpGckH54WbScQlmrl4HCcF79LmIhgEWgfFA34JSsm1Opj0Ud926DKw0=",
+                "commands": "U2FsdGVkX1+zD0yusQvoDirg8qdEaH9F7ys3c8gnSUtW5MzG9yett2JbDzMHy0ek2+kZ0SKPhOim+WgBnt47ng==",
                 "waitUntil": {
-                    "command": "U2FsdGVkX1+wA7EcpGJJSvmnSI9Ts+bPo7vLmxXbTs5PszFkxgsQsxv64867+WLWF7K4C+ask4NBgwdM2RW1J/mNAE+qTogB86mNPh63F1wKKymSI0weXfNqZnIcFCQ5",
-                    "expectation": "U2FsdGVkX1+dSzJiUKvR/GFOu5tBVtZMoWrhMae64Lo="
+                    "command": "U2FsdGVkX1+yNTVPNNEOnbqX7gCXNVkmdrxzwGjR6wXQIGbq3rbRTA8cWdQ/ogH2aVmLPLaAtc6r6CwEZr6KGTM770sE5hOe9wkUwSFuGG7SmkmaLEBhRreopLtlIBjl",
+                    "expectation": "U2FsdGVkX19pGomCjzD5xpeTYNvw5i6YstiOisXe+JE="
                 }
             }
         },
@@ -27,10 +27,10 @@
             "name": "Go and play in the airlock, Wilco.",
             "bonus": false,
             "break": {
-                "commands": "U2FsdGVkX1+2vfvrWXdaMscwxOnCgj+9VyHczQbqmvdwoufwwHHKqbyesunNLXPXDj1syIDc8/BCu7+8dmUu4RmhNw1pk7xN4XaL8ziZRzXAU9N+vRNMCkyYjUt1q1uy"
+                "commands": "U2FsdGVkX1+iq7x+cOEkYkk67OMc//2VekE2uGRBAVmYOzlaEPAAn9LnUv95hW1PEz/QsfXCIF1OSKyaKGrRA+6GH2N0HFWYzYFdJdYJMa9IMcPZGT5sdJ3VZ2CD1nV5"
             },
             "fix": {
-                "commands": "U2FsdGVkX1+V47wPaWBZ4Xly9XpMrCy4XWYxFVeRYczZDdr1Hsc3R79adbTQYWjHknTpcu+OLtgDzAeURjwHK4LLVdPrkz4FpIqX1qd8tJiC4JWkoMUerAP/Xe50A+yT"
+                "commands": "U2FsdGVkX1+V1w1eLDsF9ew+NWYs8UZtwC2J41mJht5xd3n9SJfAWLiucc6sgWXEJG5DfT04vMmqfoRXLNeroKFm0BHneIRNJC6ox/bh8pD4csCyYcEzHVoP4jQXL/xE"
             }
         },
         {
@@ -38,17 +38,17 @@
             "name": "For Pete's sake, I'm not going to hurt you!",
             "bonus": false,
             "break": {
-                "commands": "U2FsdGVkX18tswrOsHLWBSA0tTDgMNz47Ngzak8V8eA2OPENNd9QW54eEWk6++podT30vNO2kSj7iaXmAsLA6GQpbsnh3WWpOlUjfopW1XAuhSm0RCvGTdy8zmq/6bg/5Le74a7ug4ZO6vM1sT+xBLmmosMDFR7okPcT+Z0EJgr83Ksfg7YQmhOGhYumKTbRFBhtCOBXWS6lSeGsOcU1aOuoaH1nY1Zak8WkGkWIRi0=",
+                "commands": "U2FsdGVkX19J3rJcs7IsxqxTJrACf5+tvZ/VZd48gSV4cbIspI08pO8y3A5zHFR6SGNZZtDelgdYSvYRbKo4/B6nIvi94EqKGUOEq/6GxkNV+GTO5nufKed3a5O6eHETNX+vp46MYO2FE4NK7vaJrnMOtg/YOtATD5Pw03Aj8b56WHm9gcpM6cxbd/s/sRUN7uasmh9/2Ap9N7HWiwrp24FPfUWCmv2IC0D8zGKzHUI=",
                 "waitUntil": {
-                    "command": "U2FsdGVkX19udSjBoidAYicUzm3RcDndMZktDpmLSXuAOg7ppKbQEuEeZLaAjtoxcDVhbJ8hFF1z7g1WCBnCF45wG3gDFEZMq3qsBK1eQZOLN0AQgv0c+bm82Mts2/78",
-                    "expectation": "U2FsdGVkX18tkLTPQvL/ZFv5ohvcCweH6uvu4hNEnmM="
+                    "command": "U2FsdGVkX182gNl7P4wb6ik1VwwBkEyiwGujcQz4ePcWPIFPpMCodVKoudR1EPjTcyPvV3GsjXsv8Nls+ejkczXCcWEVgb+LevM+sS9n1L+kcPFgmr5LmAg9rvBbT8px",
+                    "expectation": "U2FsdGVkX19CGcCXZDqiIKzeuvi4t/C48OO725inq2k="
                 }
             },
             "fix": {
-                "commands": "U2FsdGVkX1+nvIIrmcOZ898XsoQ52DlBqy63+4uUdFjj9ZC33sSuPwW0pHw2Yy861dOzpeSeWgnnoKHoDOxBan9xKRuyXO8S81a1lEuf1nO/ANVFx4/de+SaIbN7HNZGlDq6QK2pmsNIw/+C4r9pb55B1LcsDIGLZHzRyZlnHH3TYG+07QuKC4kmRsQTQH3S",
+                "commands": "U2FsdGVkX19dL+MZT9RDlRprvw4gdDqq75nQ6jHAi145/JA/N5cYYSFWKP+4r62NrzCy8+CfE3kPKW/4xZM22ozZSEokoaKAAf6y5AHNtWFcx9n50TvRd0ngytTMSHTCM30/7v46J/LYRzi4Y4RizPsFWwkyk7PA7Zqzx/w1PJXZNx0zpRXriO6h+4GglNM3",
                 "waitUntil": {
-                    "command": "U2FsdGVkX19Qp2ATpTdBfff14Or5b7riLatXM+cFlFUrXSYhbatQGnBixqLlw6wr29YhZJkzDFcdub7sB/PwdhbS9Q3w70wI3R+uIWOCWzTeolJ3zqSf5KrKcPwOtRdR",
-                    "expectation": "U2FsdGVkX184lVeuZwEp0HX90RQsJhm4FW/4L4Iw81s="
+                    "command": "U2FsdGVkX1+0yaayL0MN8nEjVeHs05Qg0dCDRuxfXmctZo6/AzEMb3cY9QvF66MA3sCf1SIofDdUoyeEKNAu4mpgnP8k46v/NTfBaMrsQQwNtftnd43sdMVpWtg8q8c1",
+                    "expectation": "U2FsdGVkX19mFPygnEVvjeYdUmtRzFo3BPjku6X3eAk="
                 }
             }
         },
@@ -57,17 +57,17 @@
             "name": "I'd be peeing my pants if I wore any!",
             "bonus": false,
             "break": {
-                "commands": "U2FsdGVkX1+xq2ToUqXEwKJLFfoX+Yug4r36QSNyzkQzUBuI1Xs1s536bpLuPuEs1R7iTj6sHSSDLkdO5ZTzrSa1w4L9+GMj9gznS8gO6wSPV9FlfU8ctkU/8TP6bsOduiZfUaOjyQW6TLV3rm/CFkR8npKdxUOrziiqMl8Qa3sZTwUiTusBQQpSQ36/gRhRB/MzLxVljfDqy9Nsn/DhFwzxFn3vSaeHxLrne8aWh6w=",
+                "commands": "U2FsdGVkX19a+Gw2PeoGSPOH5gV5TNcUTHbJ214PMtV2e3nVdUBXCRPMV66fZ/5HY4QfvJaryrnFX84nrbBJY6ezftPT5I9XEsYmWou1IooJF0W3B0Hu/6MHu2PWvvFE",
                 "waitUntil": {
-                    "command": "U2FsdGVkX182S6dEU9g/nXpr2bxsW96QPn+YnG37/H+RW13oSqJFu0YVstgxgAt3iO1mskx1Bmj2pzuZs+HJTzvAwL1eGgNAErhgwvnA5LAXBDLYov3F5yqo35RvfCE/",
-                    "expectation": "U2FsdGVkX18rz0/ES2T8W7chiguHa08i1iFSNHrs5yI="
+                    "command": "U2FsdGVkX1/IdOBOQtRll67g1SKCp7iBYVOAYqt1hvOClbEDu6mWzYD4bU29K+9cZglmI1/mASYVHPcbf5MYo6M5oOZwVeBGXtHz1vxKyoxs4MBhdawZUmQCbt8ZFK+GIAiog+u3OOPQWodXRhTi0g==",
+                    "expectation": "U2FsdGVkX19Gs52trnJfhxsIzr6fcEPXTNWg07gnyrQ="
                 }
             },
             "fix": {
-                "commands": "U2FsdGVkX19LyHdGMtLpYiy3HbDE7ZCAKKHtPD9Ll3PxUvfiDkxNU6+YYA2inymZIuK/wNR32zEKRIvOivT+aVfCNyHbTQYfBBbup7tr3DmTbQsMkpdARvFkDYIB4U85vUW1W2O1yDQNPYVDXwHAv/9LZNhQtN6bScgWE6HO8/3tgvReFepPtSs+wpiu4plU",
+                "commands": "U2FsdGVkX1/FnfgSlGRkXTDS3/yC7bIb7D5OPZC8DFtE0LTnd6ceLGABZn9ZZ9wHExzSk+GGdDX3cjd7R6nOFM41B4j4xpyRvbbtYNfJEz5c7Q9eArwpMOtQhp2/65uX",
                 "waitUntil": {
-                    "command": "U2FsdGVkX184MaGlLubBPWSrGLDCtTqQDNidhVZs4lityL48UCAYO10kKp1vol5jTKDKv0pIALx1eE1bEljQFyBZk8f9z8cw5+CuiJZu/ZdO5pdnFEPKUU/3h16qQxCG",
-                    "expectation": "U2FsdGVkX19KyOsusYH9NjcTiBj463Lv8U93nId0n7E="
+                    "command": "U2FsdGVkX19YUJCGTQezfQIdykeUmW6ZNVPi2Mi8Ud7xPDP81U4DP8B5uxcZxhuXCK4LM16QThD5VWQj2+yFoNNDlVOCMd7R3EN2PCP26sIFcEeIRCLaPifRNcuwhRB/MuDNl7f8TRsGOzmuKBrNzg==",
+                    "expectation": "U2FsdGVkX185PbPlZr9sr3+kni5UO9H8reaCjUi/kgs="
                 }
             }
         },
@@ -76,36 +76,56 @@
             "name": "The cake is a lie",
             "bonus": false,
             "break": {
-                "commands": "U2FsdGVkX1+5ISCmornD+6zhDylRlqD/PbZGtRikJZ5XluFBfE4v4u86EaeKgjZ8VgW32VxM00D6m6okBUyzlQASnXzsdTous7F1e45a9LmBid25R90qUcRuOjMAbUI2MwdO0lAU5nXLa5qr76ZatQNqiV3Z2uZ0XP/f0mehcRoEWkom+pj9DUo7vkRnseWElFQNIxoGH5D+0iRAldcPmczdLNp2EaJ8cqv0rvmitj8=",
+                "commands": "U2FsdGVkX19Xo/1dYJQFL/sTgXA+YarP3tkPQ0d6RGqH5XyARtYSctsljzQBwYpDlEOIRZkxoRSgbHC6mvKAUfl705sd9z1u60su6RQfsMjF+zrXpAY3I0/IxqokxB6E0PQqPtoSKUBz/vS9KqRpiw==",
                 "waitUntil": {
-                    "command": "U2FsdGVkX1+2mkFmQx6uGijVkoFuPCDTBdYunzgebWjKDcu8cYs/YK9OSfwyG3Wve8NpWNETgn25akOlohf8g+Yg4WUtKxd5TaVXpLrYWX8EDTCInXl6JU7GBC9YcgVI",
-                    "expectation": "U2FsdGVkX19HwdGRVL9ZRESmOfRbmk88Eped06AUi1k="
+                    "command": "U2FsdGVkX1+lPqIqqDy0gy7ScstcXbQQijenmRA34bjuPNNTyNtR96+FThvpYmkUGlu3DIPlEA2ogS8aoD5A8lHXP7grNDFAMezPTVOIrrofTeuibTXa8xkEDU7L039ewzoyKYAUHB5vxxu7DhUZAK4M9tDMI3aOZ2z5AAsRBi4XKEgR2u5QjeYE32jPPBiA",
+                    "expectation": "U2FsdGVkX186GwUNL1y82kB9UCOU1SHMIzwLNEKPZ+c="
                 }
             },
             "fix": {
-                "commands": "U2FsdGVkX1/Po344PxZ+pTWNRBY0zYDrnzg4DRWTRawpCNnFFEYOVxRvfrFcJHy29IE2hwe27uz0e+nkZ8h5140VwIkPAkgMN0Hpgt2fRWu0Ewy5LlXjI4S9kBVddBUbdsdJiZq9N6ZslIcXYVetakKC7nxp9jjHZJ1pPTHFZcqIvAPAWnrfRsSho15ERfoz",
+                "commands": "U2FsdGVkX19IPnNLvNXtlNOvjSJSESgjX4Cll9Rjtwh+0GuXPbm6Xe5MKH0XZN87kohmb00yh7Bk26asoLR/rfdUrx6sJd3zI2zX4JqZBiE2g/QU3b95mD5Hf07NVQnRtFXzpZ35GUpS2pVjDRakKUUXxS1jGEwBgWaKzabXrWjLvo1HMz9J7TamCYCLUWPu62AZbf6c57flZ3Kx8A1+HaeWa+Hd0YTmFhYXBsxKopY=",
                 "waitUntil": {
-                    "command": "U2FsdGVkX1+5Fn1PtoXeP9gp4WBVxmUqqEv6KfmCbSLbqaKXvUzNKbw6lvlHwnNnQGWMLhO52Wa7Hos6OZ0MBIkbkZ0PTRoVOxslsq1wymtFdr6BTqykAcsKdzWFnN99",
-                    "expectation": "U2FsdGVkX1+TgOq701FZt4Z7wm4SMEEEF3dP9vJtuiU="
+                    "command": "U2FsdGVkX1+nGNaauA/tdYQ7/zGKgHGgUqr0y7w6yxppONIj5STNuOF3ekSwSaVpQ9rMh8UAoVU/135nvfUtd8+we7PeYS+hl1mtqgspJwtSJU70fWRcigjzzZ7iomYv",
+                    "expectation": "U2FsdGVkX18wkKLrWJroc/Xqh4prNE/6K1VdWCO5bPo="
                 }
             }
         },
         {
             "id": 6,
-            "name": "I feel like I could, TAKE ON THE WORLD!",
+            "name": "Glorious combat is upon us!",
             "bonus": false,
             "break": {
-                "commands": "U2FsdGVkX1+ser6zo67YtP8hg8CmVlVdK0FmOY0uy+i6yFA4c+wjNDwEagohzNo9mBO+A/4i3gg1nxul3fDT8TOSWdUbhF/AH47BhpVloO+Rr+a22/+A60HARMSK4ROQ85aYqzcc2qx0KXajYYFZF3L3Odsop8UORknAhwDcL4Azl66m59g0xeQolBKHkgQKgp9ACnLkXy+BahOaE7+mM7cjD8Ue9/8/e4gz8MwONWs=",
+                "commands": "U2FsdGVkX19HVKBIQeLs0cumCfVxIbzqOnZz0nTuhed8ECXCvkOaVaYFm/1+vqkO69gyXZs5MA6slvMRDmjYuWlkUFCdiBej+n1SfXAHcKp6BM4pvOWjtxYNGVmg5cZwYUaIMcf2eSosIvI2SmlMuaLNvsrYDwhcvQLV864v4oWbBq75mrAVGPLRbdqASsld",
                 "waitUntil": {
-                    "command": "U2FsdGVkX1+jL0hrWxyeMRHGUJfkssP0TTL7y7MQklOtrebQTsAwlfONI42ZGjVkQCRrXH4opCuxQv5Zj6AqqMnEhZby8PZ0/IQ34f79Krjr7IMaRnGJSAfE4tc/m+fZ",
-                    "expectation": "U2FsdGVkX184iEubp7C/wz83gT+RvwT3puhqII55b0U="
+                    "command": "U2FsdGVkX1+jVEuITmVJBAQI1j+TlFmmrzJCH1zkS4D9t9f8i8JP4VjO6bb/QFpT4SsZBMmnXg+O/rVdP1G7S/d7xFHSuCYNIfOx9a9hoKpJnprPLCPJ3ino8I02AelrIBHgiTokffGbuWfSyuUHYFhB4Br6pC60yv9xjNjDTQb7Ays9LJfvV99eQQ2yRRhg",
+                    "expectation": "U2FsdGVkX1881nGGW5E1Bt0hCRX2/zhRLwLywmI+6Pk="
                 }
             },
             "fix": {
-                "commands": "U2FsdGVkX19RLt1hmakYP22u3fyACsCFTq5WZoANz7ixWwYWSHQfVbT9KV1TiFNNOcVbgEbFBf99NqSsOiVmHdOTfjoxy6hoFhbeCO97RdbYAm0HXG4GEPBPb6Lvie0D16iqCOOwWoQncYbzQ1dFbuMz8NYQo3cHX+uv0UqcEUL6aClhQcs1LT713w/JNeSr",
+                "commands": "U2FsdGVkX1+863Y5o2DQ0CZE6GctOXKDm9r4ahYw1R2h0T1pOOOUqIS0V4qDRM1See3TAbU1d9h9vaRteIVUsufdNewSY7zfSplx1mUOAD3pPRvHZ+11O0nqMNqjowoaAJ2AyejEKa3S5TQpflzTthOzYI8qvdCcB4A8bE2AVee/Pm0xlzrOIW+p6DmIEp84/UuRYrZvJ2OLIIv4JhgXVX3C+rYbgyiMf9TKpm4CIlQ=",
                 "waitUntil": {
-                    "command": "U2FsdGVkX19lQAmbNQCLz5jDa+wUGSis1wJknuTpe9mOsT1QsRBR7N9kklowr086XmbHkKpbM/Cljf2QHt2TfMJrzi31YGIYMVws8gCSDWyh3XTvn99OjMkwbNd8g9Yo",
-                    "expectation": "U2FsdGVkX19KRcKY0SDPhBzqHm6cH5XMBY0j2ahNzn4="
+                    "command": "U2FsdGVkX1+/fPd5vf5pugNfFgYKnCQkf4cUdIdGV/rTID8Mfct7ofzwbJcE/6TmORxkQof+cDpCD7wQdjOMyg2HvV3bSqamDkoKSUhpEmbKs8LqsOhPls/SAtO947od",
+                    "expectation": "U2FsdGVkX18/3s+fvgHg3yRNd/6ARZHoMx8nDmvnNxM="
+                }
+            }
+        },
+        {
+            "id": 7,
+            "name": "I feel like I could, TAKE ON THE WORLD!",
+            "maxScore": 1000,
+            "bonus": true,
+            "break": {
+                "commands": "U2FsdGVkX19jxrastJIR0kQuW3E2AmPtrIBlaoNrUws8qaLvbWoT+1SZ2H0hV9vBalos+TsOcHiy80OdM5Vs0HtwbO39h6JXZ16X4TddPytcB5gJP3R98EBLzxp+CzWuOQ4Ej5f+DlR5ochcEigSGRF01YPrMMaED6jnu4R3tXo=",
+                "waitUntil": {
+                    "command": "U2FsdGVkX19gjV5fO7qQ8MIqz/EoLecuJ1zR+tK+acZXz3n3iPxEbF5TLN2qJH41p8LJBqdqItuPkjbCYrV2WRv/oohe6TT4AXnkAiF+GMkRdwKpqwkcKxwRkzrVwSKd",
+                    "expectation": "U2FsdGVkX19A/6jSL+dMaLIpPG+4euUybdOO2YQtr90="
+                }
+            },
+            "fix": {
+                "commands": "U2FsdGVkX1+QnCuLwPpnoqFd4x2xL93N/noq6ldn5w+fFrSHAxkx2O4OzVVsC/60UmgNG9ImHIV082/xolC9TuCJj63YO+A8XWz1cNPkMZ1VSvOpzAU3wDr+FFaP5BXoWbt4w/3QKacUQiqgfQQna2eiRq1D2a9xIv0OgK78HH8=",
+                "waitUntil": {
+                    "command": "U2FsdGVkX1/JgZFFjx513JpWWwn+d8Q4LSb+e802fQDBcQWdfyzQhWYtvk0GsmIfdwq59C4sbOklBi6+R7JLrkVPfouhdMua4+IBSrF5/boNqpCLgI3YJ8KThxDnCxq/",
+                    "expectation": "U2FsdGVkX19b9Jm2xJYDiwy4RLEgHWsqVld8iIVn5rM="
                 }
             }
         }

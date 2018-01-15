@@ -89,6 +89,10 @@ objects:
       spec:
         containers:
         - env:
+          - name: SCOREBOARD_HOST
+            value: ${APP_NAME}-scoreboard
+          - name: SCOREBOARD_PORT
+            value: ${SCOREBOARD_PORT}
           name: ${APP_NAME}
           image: ' '
         serviceAccountName: ${APP_NAME}
@@ -102,9 +106,36 @@ objects:
           kind: ImageStreamTag
           name: ${APP_NAME}:latest
       type: ImageChange
+- apiVersion: v1
+  kind: Service
+  metadata:
+    labels:
+      app: ${APP_NAME}
+    name: ${APP_NAME}-scoreboard
+  spec:
+    ports:
+    - name: scoreboard
+      port: 3000
+      targetPort: 3000
+    selector: {}
+- apiVersion: v1
+  kind: Endpoints
+  metadata:
+    name: ${APP_NAME}-scoreboard
+  subsets:
+  - addresses:
+    - ip: ${SCOREBOARD_HOST}
+    ports:
+    - name: scoreboard
+      port: 3000
 parameters:
 - description: Break & Fix Application name
   displayName: Application name
   name: APP_NAME
   required: true
   value: manager-app
+- description: Scoreboard application host
+  displayName: Scoreboard APP host
+  name: SCOREBOARD_HOST
+  required: true
+  value: 1.1.1.1
