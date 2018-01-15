@@ -50,7 +50,7 @@ objects:
     resources: {}
     runPolicy: Serial
     source:
-      contextDir: ${APP_NAME}
+      contextDir: ${CONTEXT_DIR}
       git:
         uri: https://github.com/ruromero/devconf
       type: Git
@@ -109,5 +109,10 @@ parameters:
 - description: Break & Fix Application name
   displayName: Application name
   name: APP_NAME
+  required: true
+  value: demoapp
+- description: Where the demo application lays in the git Repository
+  displayName: Context directory
+  name: CONTEXT_DIR
   required: true
   value: demoapp
