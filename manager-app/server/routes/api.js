@@ -7,6 +7,10 @@ const Notifier = require('../models/notifier');
 
 const router = express.Router();
 
+router.get('/health', (req, res) => {
+  res.send('');
+})
+
 router.post('/break', (req, res) => {
   try {
     OC.run(Configuration.getBreakConfig(req.body.level, req.body.key),
