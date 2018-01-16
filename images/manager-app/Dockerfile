@@ -14,9 +14,11 @@ RUN tar -xf $APP_ROOT/etc/$OC_TOOL.tar.gz -C $APP_ROOT/etc && \
     mv $APP_ROOT/etc/$OC_TOOL $APP_ROOT/etc/oc-tool && \
     git clone https://github.com/ruromero/devconf /tmp/src/devconf && \
     cp -r /tmp/src/devconf/manager-app/.  /tmp/src/ && \
-    rm -rf /tmp/src/devconf
+    rm -rf /tmp/src/devconf && \
+    chown -R 1001 /tmp/src
 
-RUN $STI_SCRIPTS_PATH/assemble && \
-    chown -R 1001 .
+USER 1001
+
+RUN $STI_SCRIPTS_PATH/assemble
 
 CMD $STI_SCRIPTS_PATH/run
