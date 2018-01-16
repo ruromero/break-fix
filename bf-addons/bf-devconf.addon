@@ -2,7 +2,6 @@
 # Description: Application to be used in the Break & Fix at Devconf 2018
 
 oc adm new-project break-fix --display-name="Break & Fix"
-oc import-image ruromero/nodejs-6-oc --confirm -n openshift
 oc new-app -f manager-app-template.yaml -n break-fix
 oc adm policy add-cluster-role-to-user cluster-admin -z manager-app -n break-fix
 oc adm new-project demo --display-name="Demoapp project"

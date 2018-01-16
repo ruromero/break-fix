@@ -9,12 +9,6 @@ objects:
   metadata:
     name: ${APP_NAME}
 - apiVersion: v1
-  kind: ImageStream
-  metadata:
-    labels:
-      app: ${APP_NAME}
-    name: ${APP_NAME}
-- apiVersion: v1
   kind: Service
   metadata:
     labels:
@@ -39,36 +33,6 @@ objects:
       kind: Service
       name: ${APP_NAME}
 - apiVersion: v1
-  kind: BuildConfig
-  metadata:
-    labels:
-      app: ${APP_NAME}
-    name: ${APP_NAME}
-  spec:
-    nodeSelector: null
-    output:
-      to:
-        kind: ImageStreamTag
-        name: ${APP_NAME}:latest
-    postCommit: {}
-    resources: {}
-    runPolicy: Serial
-    source:
-      contextDir: ${APP_NAME}
-      git:
-        uri: https://github.com/ruromero/devconf
-      type: Git
-    strategy:
-      sourceStrategy:
-        from:
-          kind: DockerImage
-          name: ruromero/nodejs-6-oc:latest
-      type: Source
-    triggers:
-    - type: ConfigChange
-    - imageChange:
-      type: ImageChange
-- apiVersion: v1
   kind: DeploymentConfig
   metadata:
     labels:
@@ -90,44 +54,14 @@ objects:
         containers:
         - env:
           - name: SCOREBOARD_HOST
-            value: ${APP_NAME}-scoreboard
+            value: ${SCOREBOARD_HOST}
           - name: SCOREBOARD_PORT
             value: ${SCOREBOARD_PORT}
           name: ${APP_NAME}
-          image: ' '
+          image: ruromero/manager-app:latest
         serviceAccountName: ${APP_NAME}
     triggers:
     - type: ConfigChange
-    - imageChangeParams:
-        automatic: true
-        containerNames:
-        - ${APP_NAME}
-        from:
-          kind: ImageStreamTag
-          name: ${APP_NAME}:latest
-      type: ImageChange
-- apiVersion: v1
-  kind: Service
-  metadata:
-    labels:
-      app: ${APP_NAME}
-    name: ${APP_NAME}-scoreboard
-  spec:
-    ports:
-    - name: scoreboard
-      port: 3000
-      targetPort: 3000
-    selector: {}
-- apiVersion: v1
-  kind: Endpoints
-  metadata:
-    name: ${APP_NAME}-scoreboard
-  subsets:
-  - addresses:
-    - ip: ${SCOREBOARD_HOST}
-    ports:
-    - name: scoreboard
-      port: 3000
 parameters:
 - description: Break & Fix Application name
   displayName: Application name
@@ -138,4 +72,9 @@ parameters:
   displayName: Scoreboard APP host
   name: SCOREBOARD_HOST
   required: true
-  value: 1.1.1.1
+  value: 35.204.123.207
+- description: Scoreboard application port
+  displayName: Scoreboard APP port
+  name: SCOREBOARD_PORT
+  required: true
+  value: "8080"

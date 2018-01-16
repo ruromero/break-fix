@@ -17,7 +17,7 @@ This laboratory is intended to be deployed using [minishift](https://github.com/
 * Create a new project `break-fix`
 * Create a service account with cluster-admin role
 * Deploy the `manager-app` application (see [manager-app](#manager-app)) that will use the previously created service account
-* Deploy the `demo-app` (as much as needed) on the `myproject` namespace
+* Deploy the `demoapp` on the `demo` namespace (project)
 
 ## Getting started
 1. Install the latest version of  [minishift](https://github.com/minishift/minishift)
@@ -45,7 +45,7 @@ This laboratory is intended to be deployed using [minishift](https://github.com/
 2. Download the add-on and install it
 
   ```
-  $ wget https://github.com/ruromero/devconf/releases/download/v0.1/bf-addons.tar.gz
+  $ wget https://github.com/ruromero/devconf/releases/download/v1.0/bf-addons.tar.gz
   $ tar -xf bf-addons.tar.gz
   $ ./minishift addons install bf-addons
   Addon 'bf-devconf' installed
@@ -93,4 +93,4 @@ Each level will break the `demoapp` or some element that will prevent it from be
 ### The Docker images
 The Docker images are also published in Docker Hub
 * [ruromero/nodejs-6-oc](https://hub.docker.com/r/ruromero/nodejs-6-oc/): An extension of the base s2i image for nodejs which installs the `oc` client.
-* [ruromero/devconf-minion](https://hub.docker.com/r/ruromero/devconf-minion/): A simple image extending [alpine](https://hub.docker.com/_/alpine/) that installs python and executes a simple script that creates an HTTP server to expose a json file which is processed upon deployment.
+* [ruromero/manager-app](https://hub.docker.com/r/ruromero/manager-app/): An image extending [ruromero/nodejs-6-oc](https://hub.docker.com/r/ruromero/nodejs-6-oc/) that downloads and builds the source code.
