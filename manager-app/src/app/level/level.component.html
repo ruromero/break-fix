@@ -1,6 +1,6 @@
 <h3>Level {{ level.id }} - {{ level.name }}</h3>
 <div *ngIf="toConfirm === ''">
-  <div *ngIf="!processing; else showProcessing">
+  <div *ngIf="processing === ''; else showProcessing">
     <button *ngIf="level.status === levelStatus.Unlocked" (click)="toConfirm = 'break'">Break</button>
     <div *ngIf="level.status === levelStatus.Broken">
       <div>
@@ -18,14 +18,17 @@
     </div>
     <div *ngIf="level.status === levelStatus.Locked">Unlock this level!</div>
     <div *ngIf="level.status === levelStatus.Fixed">
-      <div>Yay! You solved this level</div>
+      <div *ngIf="level.id === 7">All you base are belong to us!</div>
+      <div *ngIf="level.id !== 7">Yay! You solved this level</div>
       <div *ngIf="level.id < gameService.getGame().levels.length">
         <button [routerLink]="['/level', {id: level.id + 1}]">Next level</button>
       </div>
     </div>
   </div>
   <ng-template #showProcessing>
-    <p>Breaking OpenShift is not easy, please hold on.</p>
+    <p *ngIf="processing === 'Breaking'">Breaking OpenShift is not easy, please hold on.</p>
+    <p *ngIf="processing === 'Fixing'">Hold on while I do YOUR JOB!</p>
+    <p *ngIf="processing === 'Checking'">Sending an encrypted (plain text) request to the route</p>
     <app-random-msg></app-random-msg>
   </ng-template>
 </div>

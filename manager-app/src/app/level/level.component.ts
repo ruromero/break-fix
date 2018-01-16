@@ -13,7 +13,7 @@ export class LevelComponent implements OnInit {
 
   level: Level;
   levelStatus = LevelStatus;
-  processing: boolean = false;
+  processing: string = '';
   toConfirm: string = '';
   error: string = '';
   showRemainingTime: boolean;
@@ -51,21 +51,21 @@ export class LevelComponent implements OnInit {
     if(!confirmed) {
       return;
     }
-    this.processing = true;
+    this.processing = 'Breaking';
     this.levelService.break(this.level.id, this.gameService.getGame().key,
       () => {
         this.gameService.breakLevel(this.level.id);
-        this.processing = false;
+        this.processing = '';
       }, (error: string) => {
         console.log("Unable to break level %d. Error: %s", this.level.id, error);
         this.error = 'I have not been able to break it. You can try again but I don\'t promise you anything';
-        this.processing = false;
+        this.processing = '';
       });
   };
 
   check = () => {
     this.error = "";
-    this.processing = true;
+    this.processing = 'Checking';
     this.levelService.check(this.level.id,
       (passed, score) => {
         if(passed) {
@@ -73,12 +73,12 @@ export class LevelComponent implements OnInit {
         } else {
           this.error = "The check failed. The route is not yet reachable";
         }
-        this.processing = false;
+        this.processing = '';
       },
       (error: string) => {
         console.log("Unable to check level %d. Error: %s", this.level.id, error);
         this.error = "Something went terribly wrong";
-        this.processing = false;
+        this.processing = '';
       });
   };
 
@@ -88,17 +88,17 @@ export class LevelComponent implements OnInit {
     if(!confirmed) {
       return;
     }
-    this.processing = true;
+    this.processing = 'Fixing';
     this.levelService.giveUp(this.level.id, this.gameService.getGame().key,
       () => {
         this.level.score = 0;
         this.level.status = LevelStatus.Fixed;
         this.gameService.save(this.level);
-        this.processing = false;
+        this.processing = '';
       }, (error: string) => {
         console.log("Unable to give up for level %d. Error: %s", this.level.id, error);
         this.error = 'I have not been able to fix it. You can try again but I don\'t promise you anything';
-        this.processing = false;
+        this.processing = '';
       });
   };
 
