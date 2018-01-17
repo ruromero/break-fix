@@ -34,6 +34,14 @@ function removeScore(position) {
   tableRef.deleteRow(position);
 }
 
+function clearScores() {
+  const tableRef = document.getElementById('scores').tBodies[0];
+  let pos = 0;
+  while(pos < tableRef.childElementCount) {
+    tableRef.deleteRow(pos);
+  }
+}
+
 appSocket.onmessage = (event) => {
   console.log('event received: ' + event.data);
   const object = JSON.parse(event.data);
@@ -43,5 +51,11 @@ appSocket.onmessage = (event) => {
     }
     addScore(object.data);
     updateScores();
+  }
+  if(object.type === 'removeScore') {
+    removeScore(object.data.position);
+  }
+  if(object.type === 'clearScores') {
+    clearScores();
   }
 };

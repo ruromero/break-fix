@@ -42,6 +42,30 @@ exports.addScore = (gameId, score) => {
   return pos;
 };
 
+exports.removeScore = (player, gameId) => {
+  let pos = 0;
+  while(pos < scores.length) {
+    if(scores[pos].player === player) {
+      if(gameId === undefined || gameId === scores[pos].gameId) {
+        scores.splice(pos, 1);
+        wsapi.broadcast('removeScore',
+          {
+            position: pos
+          });
+      } else {
+        pos++;
+      }
+    } else {
+      pos++;
+    }
+  }
+};
+
+exports.clearScores = () => {
+  scores = [];
+  wsapi.broadcast('clearScores');
+}
+
 /**
  * A new user will be broadcasted.
  * An existing user with same tokenHash will be ignored
