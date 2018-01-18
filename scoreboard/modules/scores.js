@@ -8,26 +8,7 @@ const db = low(adapter);
 
 db.defaults({scores: []})
   .write();
-  db.get('scores').push({
-    player: 'fulano',
-    points: Math.floor(Math.random() * 1000),
-    gameId: '1'
-  }).write();
-  db.get('scores').push({
-    player: 'fulano',
-    points: Math.floor(Math.random() * 1000),
-    gameId: '2'
-  }).write();
-  db.get('scores').push({
-    player: 'fulano',
-    points: Math.floor(Math.random() * 1000),
-    gameId: '3'
-  }).write();
-  db.get('scores').push({
-    player: 'mengano',
-    points: Math.floor(Math.random() * 1000),
-    gameId: '4'
-  }).write();
+
 const players = new Map();
 
 exports.getScores = () => {
