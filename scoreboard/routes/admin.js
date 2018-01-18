@@ -14,8 +14,6 @@ function isAuthorized(request) {
     return false;
   }
   const hash = CryptoJS.SHA256(credentials.pass).toString();
-  console.log(`credentials ${credentials.name} : ${credentials.pass}`);
-  console.log(`hash: ${hash} === ${ADMIN_HASH}`);
   return ADMIN_HASH === hash;
 }
 
