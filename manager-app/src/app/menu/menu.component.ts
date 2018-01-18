@@ -32,4 +32,8 @@ export class MenuComponent implements OnInit {
     }
   };
 
+  survey = () => {
+    window.open('https://es.surveymonkey.com/r/TLHCGMB', '_blank');
+  };
+
 }
