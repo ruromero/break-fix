@@ -3,12 +3,25 @@ let new_uri = "ws://" + loc.hostname + ':40510';
 
 const appSocket = new WebSocket(new_uri);
 
+function getPosition(score) {
+  const rows = document.getElementById('scores').tBodies[0].getElementsByTagName('tr');
+  let pos = 0;
+  while(pos < rows.length) {
+    if(rows[pos].getElementsByClassName('points')[0].innerText < score.points) {
+      return pos;
+    }
+    pos++;
+  }
+}
+
 function addScore(score) {
   const tableRef = document.getElementById('scores').tBodies[0];
-  const newRow = tableRef.insertRow(score.position);
-  const positionCell = newRow.insertCell(0)
+  const pos = getPosition(score);
+  const newRow = tableRef.insertRow(pos);
+  newRow.id = score.gameId;
+  const positionCell = newRow.insertCell(0);
   positionCell.className='position';
-  positionCell.appendChild(document.createTextNode(score.position));
+  positionCell.appendChild(document.createTextNode(pos));
   const pointsCell = newRow.insertCell(1)
   pointsCell.className='points';
   pointsCell.appendChild(document.createTextNode(score.points));
@@ -17,7 +30,7 @@ function addScore(score) {
   playerCell.appendChild(document.createTextNode(score.player));
 }
 
-function updateScores() {
+function updateRanks() {
   const positions = document.getElementsByClassName('position');
   for(let pos = 0; pos < positions.length; pos++) {
     positions[pos].innerText = pos + 1;
@@ -29,9 +42,11 @@ function updateScores() {
   }
 }
 
-function removeScore(position) {
-  const tableRef = document.getElementById('scores').tBodies[0];
-  tableRef.deleteRow(position);
+function removeScore(gameId) {
+  const row = document.getElementById(gameId);
+  if(row !== null) {
+    row.parentNode.removeChild(row);
+  }
 }
 
 function clearScores() {
@@ -46,14 +61,13 @@ appSocket.onmessage = (event) => {
   console.log('event received: ' + event.data);
   const object = JSON.parse(event.data);
   if(object.type === 'addScore') {
-    if(object.data.previous !== -1) {
-      removeScore(object.data.previous);
-    }
+    removeScore(object.data.gameId);
     addScore(object.data);
-    updateScores();
+    updateRanks();
   }
   if(object.type === 'removeScore') {
-    removeScore(object.data.position);
+    removeScore(object.data.gameId);
+    updateRanks();
   }
   if(object.type === 'clearScores') {
     clearScores();

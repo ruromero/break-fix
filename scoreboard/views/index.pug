@@ -11,12 +11,12 @@ block content
     tbody
       each score, index in scores
         if index == 0
-          tr.champ
+          tr.champ(id=score.gameId)
             td.position=index+1
             td.points=score.points
             td.player=score.player
         else
-          tr
+          tr(id=score.gameId)
             td.position=index+1
             td.points=score.points
             td.player=score.player
