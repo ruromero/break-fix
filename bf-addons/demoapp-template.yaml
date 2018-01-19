@@ -87,13 +87,17 @@ objects:
         - name: ${APP_NAME}
           image: ' '
           readinessProbe:
-            failureThreshold: 3
             httpGet:
               path: /
               port: 8080
               scheme: HTTP
             periodSeconds: 5
-            successThreshold: 1
+            timeoutSeconds: 1
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8080
+              scheme: HTTP
             timeoutSeconds: 1
     triggers:
     - type: ConfigChange
