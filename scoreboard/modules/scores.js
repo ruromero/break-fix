@@ -21,7 +21,8 @@ exports.addScore = (gameId, score) => {
     points: score.points,
     gameId: gameId
   };
-  if(db.get('scores').has({gameId: gameId}).value()) {
+
+  if(db.get('scores').some(['gameId', gameId]).value()) {
     db.get('scores')
       .find({gameId: gameId})
       .assign({
