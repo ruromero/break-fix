@@ -87,7 +87,7 @@ The `manager-app` is a web application that drive you through the workshop. It w
 ### Levels
 Each level will break the `demoapp` or some element that will prevent it from being accessible through its route.
 * **Break**: Will execute some `oc` commands that will break the `demoapp` and you will have **10 minutes** to fix it (if you want to get some points).
-* **Check**: Tries to access the `demoapp` through it's route (to verify the end-2-end health of the application). If it succeeds you will get 1 point for each second left and you will be able to move to the next level.
+* **Check**: Tries to access the `demoapp` through it's route (to verify the end-2-end health of the application). If it succeeds you will get 1 point for each second left and you will be able to move to the next level. See the [demoapp README](demoapp/README.md) for more details.
 * **Give up**: Will revert the changes made by the **Break** commands and you will be able to move forward to the next level but you won't get any points.
 
 ### The Docker images

@@ -1,9 +1,9 @@
 # Name: bf-devconf
 # Description: Application to be used in the Break & Fix at Devconf 2018
 
-oc adm new-project break-fix --display-name="Break & Fix"
+oc adm new-project break-fix --display-name='Break & Fix'
 oc new-app -f manager-app-template.yaml -n break-fix
 oc adm policy add-cluster-role-to-user cluster-admin -z manager-app -n break-fix
-oc adm new-project demo --display-name="Demoapp project"
+oc adm new-project demo --display-name='Demoapp project'
 oc create -f demoapp-template.yaml -n demo
 oc new-app demoapp-template -n demo
