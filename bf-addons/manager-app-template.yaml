@@ -59,6 +59,7 @@ objects:
             value: ${SCOREBOARD_PORT}
           name: ${APP_NAME}
           image: ruromero/manager-app:latest
+          imagePullPolicy: IfNotPresent
         serviceAccountName: ${APP_NAME}
     triggers:
     - type: ConfigChange
