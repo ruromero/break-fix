@@ -23,7 +23,7 @@ This laboratory is intended to be deployed using [minishift](https://github.com/
 1. Install the latest version of  [minishift](https://github.com/minishift/minishift)
 
   ```
-  ./minishift start --profile bfdevconf
+  ./minishift start --profile bfdevconf --openshift-version v3.7.1
   -- Starting profile 'bfdevconf'
   -- Checking if requested hypervisor 'kvm' is supported on this platform ... OK
   -- Checking if KVM driver is installed ...
