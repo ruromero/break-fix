@@ -46,8 +46,8 @@ This laboratory is intended to be deployed using [minishift](https://github.com/
 
   ```
   $ wget https://github.com/ruromero/devconf/releases/download/v3.7.1/bf-addons-3.7.1.tar.gz
-  $ tar -xf bf-addons.tar.gz
-  $ ./minishift addons install bf-addons
+  $ tar -xf bf-addons-3.7.1.tar.gz
+  $ ./minishift addons install bf-addons-3.7.1
   Addon 'bf-devconf' installed
   $ ./minishift addons apply bf-devconf
   -- Applying addon 'bf-devconf':..........
