@@ -10,7 +10,14 @@ Copy **profiles/bf-devconf** -> empty profile with properties set
 ```
 
 ```
-./minishift image export centos/nodejs-6-centos7:latest openshift/origin-deployer:v3.7.1 openshift/origin-docker-registry:v3.7.1 openshift/origin-haproxy-router:v3.7.1 openshift/origin-pod:v3.7.1 openshift/origin-sti-builder:v3.7.1 openshift/origin:v3.7.1 ruromero/manager-app:latest
+./minishift image export centos/nodejs-6-centos7:latest \
+  openshift/origin-deployer:v3.6.1  openshift/origin-deployer:v3.7.1 \
+  openshift/origin-docker-registry:v3.6.1 openshift/origin-docker-registry:v3.7.1  \
+  openshift/origin-haproxy-router:v3.6.1 openshift/origin-haproxy-router:v3.7.1 \
+  openshift/origin-pod:v3.6.1 openshift/origin-pod:v3.7.1 \
+  openshift/origin-sti-builder:v3.6.1 openshift/origin-sti-builder:v3.7.1 \
+  openshift/origin:v3.6.1 openshift/origin:v3.7.1 \
+  ruromero/manager-app:3.6.1 ruromero/manager-app:3.7.1 ruromero/manager-app:latest
 ```
 Images are saved into ~/.minishift/cache/images/blobs
 

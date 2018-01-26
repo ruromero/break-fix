@@ -58,7 +58,7 @@ objects:
           - name: SCOREBOARD_PORT
             value: ${SCOREBOARD_PORT}
           name: ${APP_NAME}
-          image: ruromero/manager-app:latest
+          image: ruromero/manager-app:3.7.1
           imagePullPolicy: IfNotPresent
         serviceAccountName: ${APP_NAME}
     triggers:
