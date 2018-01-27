@@ -42,12 +42,12 @@ This laboratory is intended to be deployed using [minishift](https://github.com/
       oc login -u system:admin
   ```
 
-2. Download the add-on and install it. Check the [latest release](https://github.com/ruromero/devconf/releases/latest):
+2. Download the add-on and install it. Check the [v3.7.1  release](https://github.com/ruromero/devconf/releases/tag/v3.7.1):
 
   ```
-  $ wget https://github.com/ruromero/devconf/releases/download/v1.2/bf-addons.tar.gz
-  $ tar -xf bf-addons.tar.gz
-  $ ./minishift addons install bf-addons
+  $ wget https://github.com/ruromero/devconf/releases/download/v3.7.1/bf-addons-3.7.1.tar.gz
+  $ tar -xf bf-addons-3.7.1.tar.gz
+  $ ./minishift addons install bf-addons-3.7.1
   Addon 'bf-devconf' installed
   $ ./minishift addons apply bf-devconf
   -- Applying addon 'bf-devconf':..........
