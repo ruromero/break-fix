@@ -1,14 +1,13 @@
 1. Set a new MINISHIFT_HOME and copy the content from the USB Drive
 ```
 export MINISHIFT_HOME=$HOME/minishift_home
-mkdir -p $MINISHIFT_HOME
-cp -rv usb/minishift/* $MINISHIFT_HOME/
-cd $MISHIFT_HOME
+cp -rv usb/minishift_home.tar.gz $HOME
+tar -xvf $HOME/minishift_home.tar.gz -C $HOME
 ```
 
-2. Copy the proper minishift binary to $MINISHIFT_HOME, you have copies on the pendrives.
+2. Copy the proper minishift binary, you have copies on the pendrives.
 
-3.  Start Minishift and apply the addon
+3. Start Minishift and apply the addon
 
   ```
   ./minishift start
