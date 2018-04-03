@@ -7,3 +7,6 @@ oc adm policy add-cluster-role-to-user cluster-admin -z manager-app -n break-fix
 oc adm new-project demo --display-name='Demoapp project'
 oc create -f demoapp-template.yaml -n demo
 oc new-app demoapp-template -n demo
+oc adm new-project tty --display-name='Web terminal'
+oc adm policy add-cluster-role-to-user cluster-admin -z online-oc -n tty
+oc new-app -f tty-template.yaml -n tty

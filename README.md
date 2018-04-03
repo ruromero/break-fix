@@ -94,3 +94,13 @@ Each level will break the `demoapp` or some element that will prevent it from be
 The Docker images are also published in Docker Hub
 * [ruromero/nodejs-6-oc](https://hub.docker.com/r/ruromero/nodejs-6-oc/): An extension of the base s2i image for nodejs which installs the `oc` client.
 * [ruromero/manager-app](https://hub.docker.com/r/ruromero/manager-app/): An image extending [ruromero/nodejs-6-oc](https://hub.docker.com/r/ruromero/nodejs-6-oc/) that downloads and builds the source code.
+
+### Web TTY
+We also included a Web-based OpenShift Command Line utility based on [online-oc](https://github.com/edseymour/online-oc).
++ You can access the route directly: 
+```
+$ oc get routes -n tty --as system:admin
+NAME        HOST/PORT                             PATH      SERVICES    PORT       TERMINATION   WILDCARD
+online-oc   online-oc-tty.192.168.42.95.nip.io             online-oc   8080-tcp                 None
+```
+

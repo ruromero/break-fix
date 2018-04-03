@@ -3,3 +3,4 @@
 
 oc delete project break-fix
 oc delete project demo
+oc delete project tty
