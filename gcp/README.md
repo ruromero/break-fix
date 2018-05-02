@@ -1,7 +1,9 @@
  # Google Cloud setup
 
  You can find instructions to install google cloud sdk [here](https://cloud.google.com/sdk/downloads#yum).
+ 
  You have to add your [ssh keys](https://cloud.google.com/compute/docs/instances/adding-removing-ssh-keys).
+ 
  Google Cloud full setup is beyond this project , but here you can find a few tips.
 
 #### Firewall rules:
@@ -44,6 +46,8 @@ Download the openshift client:
 ```
 curl -L --silent -o oc.tar.gz https://github.com/openshift/origin/releases/download/v3.9.0/openshift-origin-client-tools-v3.9.0-191fece-linux-64bit.tar.gz && mkdir /tmp/oc && tar -xvf oc.tar.gz -C /tmp/oc && find /tmp/oc -name "oc" -type f -exec mv {} /usr/bin \; && rm -rf /tmp/oc oc.tar.gz
 ```
+
+#### OpenShift cluster and projects
 
 Initiate oc cluster with the public ip of the instance:
 
