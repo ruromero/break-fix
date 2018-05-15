@@ -1,6 +1,6 @@
 # Break & Fix with OpenShift
 
-This is a set of utilities and resources to be used during the [**Break & Fix with OpenShift**](https://devconfcz2018.sched.com/event/DJX6/breakfix-with-openshift) workshop that will take place at [DevConf.cz](https://devconf.cz/) 2018
+This is a set of utilities and resources to be used during the **Break & Fix with OpenShift** Laboratory
 
 ## The event
 Have you ever considered running an OpenShift cluster? Are you scared by the complexity? Join us in this workshop to break and fix some stuff to gain the confidence you need.
@@ -23,8 +23,8 @@ This laboratory is intended to be deployed using [minishift](https://github.com/
 1. Install the latest version of  [minishift](https://github.com/minishift/minishift)
 
   ```
-  ./minishift start --profile bfdevconf --openshift-version v3.7.1
-  -- Starting profile 'bfdevconf'
+  ./minishift start --profile break-fix --openshift-version v3.9.0
+  -- Starting profile 'break-fix'
   -- Checking if requested hypervisor 'kvm' is supported on this platform ... OK
   -- Checking if KVM driver is installed ...
      Driver is available at /usr/local/bin/docker-machine-driver-kvm ...
@@ -42,15 +42,15 @@ This laboratory is intended to be deployed using [minishift](https://github.com/
       oc login -u system:admin
   ```
 
-2. Download the add-on and install it. Check the [v3.7.1  release](https://github.com/ruromero/devconf/releases/tag/v3.7.1):
+2. Download the add-on and install it. Check the [v3.9.0 release](https://github.com/ruromero/devconf/releases/tag/v3.9.0):
 
   ```
-  $ wget https://github.com/ruromero/devconf/releases/download/v3.7.1/bf-addons-3.7.1.tar.gz
-  $ tar -xf bf-addons-3.7.1.tar.gz
-  $ ./minishift addons install bf-addons
-  Addon 'bf-devconf' installed
-  $ ./minishift addons apply bf-devconf
-  -- Applying addon 'bf-devconf':..........
+  $ wget https://github.com/ruromero/devconf/releases/download/v3.9.0/break-fix-3.9.0.tar.gz
+  $ tar -xf break-fix-3.9.0.tar.gz
+  $ ./minishift addons install break-fix
+  Addon 'break-fix' installed
+  $ ./minishift addons apply break-fix
+  -- Applying addon 'break-fix':..........
   ```
 
 3. Wait until all the applications are running
@@ -97,10 +97,9 @@ The Docker images are also published in Docker Hub
 
 ### Web TTY
 We also included a Web-based OpenShift Command Line utility based on [online-oc](https://github.com/edseymour/online-oc).
-+ You can access the route directly: 
++ You can access the route directly:
 ```
 $ oc get routes -n tty --as system:admin
 NAME        HOST/PORT                             PATH      SERVICES    PORT       TERMINATION   WILDCARD
 online-oc   online-oc-tty.192.168.42.95.nip.io             online-oc   8080-tcp                 None
 ```
-
