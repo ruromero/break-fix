@@ -13,7 +13,7 @@ Once the application is marked as ready (i.e. deployed and healthy), the [Servic
 ## Source code
 **Repository:**
 * Type: Git
-* URL: `https://github.com/ruromero/devconf`
+* URL: `https://github.com/ruromero/break-fix`
 * Context dir: `demoapp`
 
 **Code:**

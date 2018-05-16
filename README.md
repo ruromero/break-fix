@@ -42,10 +42,10 @@ This laboratory is intended to be deployed using [minishift](https://github.com/
       oc login -u system:admin
   ```
 
-2. Download the add-on and install it. Check the [v3.9.0 release](https://github.com/ruromero/devconf/releases/tag/v3.9.0):
+2. Download the add-on and install it. Check the [v3.9.0 release](https://github.com/ruromero/break-fix/releases/tag/v3.9.0):
 
   ```
-  $ wget https://github.com/ruromero/devconf/releases/download/v3.9.0/break-fix-3.9.0.tar.gz
+  $ wget https://github.com/ruromero/break-fix/releases/download/v3.9.0/break-fix-3.9.0.tar.gz
   $ tar -xf break-fix-3.9.0.tar.gz
   $ ./minishift addons install break-fix
   Addon 'break-fix' installed
@@ -73,7 +73,7 @@ This laboratory is intended to be deployed using [minishift](https://github.com/
 
   Open the route in your favourite browser http://manager-app-break-fix.192.168.42.95.nip.io
 
-  ![manager-app animation](https://github.com/ruromero/devconf/raw/master/extras/Break%26Fix_demo.gif)
+  ![manager-app animation](https://github.com/ruromero/break-fix/raw/master/extras/Break%26Fix_demo.gif)
 
 
 ## manager-app
