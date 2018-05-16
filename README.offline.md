@@ -11,10 +11,10 @@ tar -xvf $HOME/minishift_home.tar.gz -C $HOME
 
   ```
   ./minishift start
-  ./minishift addons apply bf-devconf
+  ./minishift addons apply break-fix
   ```
 
-4. Ensure that you are using the openshift client matching the minishift version, in this case v3.7.1, you have copies on the pendrives.
+4. Ensure that you are using the openshift client matching the minishift version, in this case v3.9.0, you have copies on the pendrives.
 
 5. Wait until all the applications are running
 

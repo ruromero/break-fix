@@ -69,4 +69,4 @@ oc adm policy add-cluster-role-to-user cluster-admin -z online-oc -n tty
 oc new-app -f tty-template.yaml -n tty
 ```
 
-The template files are located at the [bf-addons](../bf-addons/)
+The template files are located at the [break-fix](../break-fix/)

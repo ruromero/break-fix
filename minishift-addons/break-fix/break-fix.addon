@@ -1,5 +1,5 @@
-# Name: bf-devconf
-# Description: Application to be used in the Break & Fix at Devconf 2018
+# Name: break-fix
+# Description: Application to be used in the Break & Fix Lab
 
 oc adm new-project break-fix --display-name='Break & Fix'
 oc new-app -f manager-app-template.yaml -n break-fix

@@ -1,6 +1,6 @@
 # demoapp
 
-`demoapp` is a simple NodeJS-based application used in the *Break & Fix* workshop. It will be deployed using the [demoapp-template.yaml](../bf-addons/demoapp-template.yaml) file on OpenShift and the `manager-app` will then make
+`demoapp` is a simple NodeJS-based application used in the *Break & Fix* workshop. It will be deployed using the [demoapp-template.yaml](../break-fix/demoapp-template.yaml) file on OpenShift and the `manager-app` will then make
 some changes on the cluster or the application objects to make it unavailable.
 
 ## The build and deployment process
