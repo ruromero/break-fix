@@ -1,0 +1,26 @@
+---
+- name: Create instance(s)
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  roles:
+    - name: manage_gcp_instances
+
+- name: Configure instance(s)
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  roles:
+    - name: configure_gcp_instances
+
+- name: Install OpenShift
+  hosts: labs
+  become: yes
+  roles:
+    - name: install_openshift
+
+- name: Deploy Break and Fix
+  hosts: labs
+  become: yes
+  roles:
+    - name: deploy_breakfix

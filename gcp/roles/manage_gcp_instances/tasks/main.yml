@@ -1,0 +1,12 @@
+---
+- name: "[GCP] Set instance state to {{ state }}"
+  gce:
+    name: "{{ instance_name }}"
+    machine_type: "{{ machine_type }}"
+    image: "{{ image }}"
+    disk_size: "{{ disk_size }}"
+    zone: "{{ zone }}"
+    state: "{{ state }}"
+    tags: break-fix,lab,openshift-console
+    num_instances: "{{ instances }}"
+  register: gce

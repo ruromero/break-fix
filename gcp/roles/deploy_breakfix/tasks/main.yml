@@ -1,0 +1,31 @@
+---
+- name: "[BREAK-FIX] download addon"
+  unarchive:
+    src: "{{ addon_url }}"
+    dest: "{{ ansible_env.HOME }}"
+    remote_src: yes
+
+- name: "[BREAK-FIX] change user to system:admin"
+  shell: >
+    oc login -u system:admin
+
+- name: "[BREAK-FIX] addon: replace template paths"
+  replace:
+    path: "{{ ansible_env.HOME }}/break-fix/break-fix.addon"
+    regexp: '(.*) ([\w\-]*)\-template\.yaml'
+    replace: '\1 {{ ansible_env.HOME }}/break-fix/\2-template.yaml'
+
+- name: "[BREAK-FIX] addon: remove comments and empty lines"
+  lineinfile:
+    path: "{{ ansible_env.HOME }}/break-fix/break-fix.addon"
+    regexp: '(^\n$)|(^#.*$)'
+    state: absent
+
+- name: "[BREAK-FIX] load addon"
+  shell: >
+    cat {{ ansible_env.HOME }}/break-fix/break-fix.addon
+  register: deploy_file
+
+- name: "[BREAK_FIX] process addon"
+  shell: "{{ item }}"
+  with_items: "{{ deploy_file.stdout_lines }}"

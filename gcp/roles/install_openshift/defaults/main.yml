@@ -1,0 +1,3 @@
+---
+oc_client_name: openshift-origin-client-tools-v3.9.0-191fece-linux-64bit
+oc_client_url: https://github.com/openshift/origin/releases/download/v3.9.0/{{ oc_client_name }}.tar.gz
