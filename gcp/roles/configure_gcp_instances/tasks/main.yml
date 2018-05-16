@@ -1,0 +1,33 @@
+---
+- name: "[GCP] Set firewall rules"
+  gce_net:
+    name: default
+    fwname: openshift-ports
+    allowed: tcp:80,443,8443
+    state: present
+    target_tags: break-fix
+
+- name: "[GCP] Add host"
+  add_host:
+    hostname: "{{ item.name }}"
+    ansible_host: "{{ item.public_ip }}"
+    groups: "labs"
+  loop: "{{ gce.instance_data }}"
+
+- name: "[GCP] remove known hosts"
+  lineinfile:
+    path: ~/.ssh/known_hosts
+    regexp: '^{{ item.public_ip }}.*'
+    state: absent
+  loop: "{{ gce.instance_data }}"
+
+- name: "[GCP] Wait for connection"
+  command: ping -c1 {{ item.public_ip }}
+  loop: "{{ gce.instance_data }}"
+  retries: 10
+  delay: 1
+  ignore_errors: yes
+
+- name: "[GCP] add known hosts"
+  shell: ssh-keyscan {{ item.public_ip }} >> ~/.ssh/known_hosts
+  loop: "{{ gce.instance_data }}"

@@ -1,0 +1,8 @@
+---
+state: present
+instance_name: lab
+machine_type: g1-small
+image: centos-7
+zone: europe-west4-a
+disk_size: 50
+instances: 2
