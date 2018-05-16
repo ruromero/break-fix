@@ -5,4 +5,4 @@ machine_type: g1-small
 image: centos-7
 zone: europe-west4-a
 disk_size: 50
-instances: 15
+instances: 8 # Free tier max 8CPU
