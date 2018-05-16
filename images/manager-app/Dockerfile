@@ -12,10 +12,10 @@ USER root
 
 RUN tar -xf $APP_ROOT/etc/$OC_TOOL.tar.gz -C $APP_ROOT/etc && \
     mv $APP_ROOT/etc/$OC_TOOL $APP_ROOT/etc/oc-tool && \
-    git clone https://github.com/ruromero/devconf devconf && \
-    chown 1001 -R devconf && \
-    cp -r devconf/manager-app/.  . && \
-    rm -rf devconf
+    git clone https://github.com/ruromero/break-fix break-fix && \
+    chown 1001 -R break-fix && \
+    cp -r break-fix/manager-app/.  . && \
+    rm -rf break-fix
 
 USER 1001
 

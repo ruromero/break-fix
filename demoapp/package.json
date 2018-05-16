@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ruromero/devconf.git"
+    "url": "git+https://github.com/ruromero/break-fix.git"
   },
   "author": "Ruben Romero Montes <rromerom@redhat.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ruromero/devconf/issues"
+    "url": "https://github.com/ruromero/break-fix/issues"
   },
-  "homepage": "https://github.com/ruromero/devconf#readme",
+  "homepage": "https://github.com/ruromero/break-fix#readme",
   "dependencies": {
     "express": "^4.16.2"
   }

@@ -52,7 +52,7 @@ objects:
     source:
       contextDir: ${CONTEXT_DIR}
       git:
-        uri: https://github.com/ruromero/devconf
+        uri: https://github.com/ruromero/break-fix
       type: Git
     strategy:
       sourceStrategy:
