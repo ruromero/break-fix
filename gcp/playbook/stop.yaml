@@ -1,0 +1,9 @@
+---
+- name: Create instance(s)
+  hosts: localhost
+  connection: local
+  gather_facts: no
+
+  roles:
+    - name: manage_gcp_instances
+      state: stopped
