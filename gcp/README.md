@@ -76,3 +76,22 @@ The template files are located at the [break-fix](../break-fix/)
 * **Manager Application** http://manager-app-break-fix.<your_ip>.nip.io
 * **Demo Application** http://demoapp-demo.<your_ip>.nip.io
 * **TTY** http://online-oc-tty.<your_ip>.nip.io
+
+```
+for ip in `GCE_INI_PATH=~/.ansible/inventory/gce.ini ~/.ansible/inventory/gce.py --list --pretty | jq '._meta.hostvars[].gce_public_ip' -r`
+do
+  echo MACHINE: $ip
+  echo -e "Manager App:\thttp://manager-app-break-fix.$ip.nip.io"
+  echo -e "demo app:\thttp://demoapp-demo.$ip.nip.io"
+  echo -e "tty:\t\thttp://online-oc-tty.$ip.nip.io"
+done
+
+MACHINE: 35.204.135.118
+Manager App:	http://manager-app-break-fix.35.204.135.118.nip.io
+demo app:	http://demoapp-demo.35.204.135.118.nip.io
+tty:		http://online-oc-tty.35.204.135.118.nip.io
+MACHINE: 35.204.221.18
+Manager App:	http://manager-app-break-fix.35.204.221.18.nip.io
+demo app:	http://demoapp-demo.35.204.221.18.nip.io
+tty:		http://online-oc-tty.35.204.221.18.nip.io
+```
