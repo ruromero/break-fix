@@ -1,9 +1,9 @@
  # Google Cloud setup
 
  You can find instructions to install google cloud sdk [here](https://cloud.google.com/sdk/downloads#yum).
- 
+
  You have to add your [ssh keys](https://cloud.google.com/compute/docs/instances/adding-removing-ssh-keys).
- 
+
  Google Cloud full setup is beyond this project , but here you can find a few tips.
 
 #### Firewall rules:
@@ -70,3 +70,9 @@ oc new-app -f tty-template.yaml -n tty
 ```
 
 The template files are located at the [break-fix](../break-fix/)
+
+# Accessing the application
+
+* **Manager Application** http://manager-app-break-fix.<your_ip>.nip.io
+* **Demo Application** http://demoapp-demo.<your_ip>.nip.io
+* **TTY** http://online-oc-tty.<your_ip>.nip.io
