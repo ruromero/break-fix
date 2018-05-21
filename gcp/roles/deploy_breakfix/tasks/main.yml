@@ -2,34 +2,32 @@
 - name: "[BREAK-FIX] download addon"
   unarchive:
     src: "{{ addon_url }}"
-    dest: "{{ ansible_env.HOME }}"
+    dest: "{{ openshift_home }}"
     remote_src: yes
-
-- name: "[BREAK-FIX] change user to system:admin"
-  shell: >
-    oc login -u system:admin
 
 - name: "[BREAK-FIX] addon: replace template paths"
   replace:
-    path: "{{ ansible_env.HOME }}/break-fix/break-fix.addon"
+    path: "{{ openshift_home }}/break-fix/break-fix.addon"
     regexp: '(.*) ([\w\-]*)\-template\.yaml'
-    replace: '\1 {{ ansible_env.HOME }}/break-fix/\2-template.yaml'
+    replace: '\1 {{ openshift_home }}/break-fix/\2-template.yaml'
 
 - name: "[BREAK-FIX] addon: remove comments and empty lines"
   lineinfile:
-    path: "{{ ansible_env.HOME }}/break-fix/break-fix.addon"
+    path: "{{ openshift_home }}/break-fix/break-fix.addon"
     regexp: '(^\n$)|(^#.*$)'
     state: absent
 
 - name: "[BREAK-FIX] load addon"
   shell: >
-    cat {{ ansible_env.HOME }}/break-fix/break-fix.addon
+    cat {{ openshift_home }}/break-fix/break-fix.addon
   register: deploy_file
 
-- name: "[BREAK_FIX] process addon"
-  shell: "{{ item }}"
+- name: "[BREAK-FIX] update script with addon content"
+  lineinfile:
+    path: "{{ openshift_home }}/start.sh"
+    line: "sudo {{ item }}"
+    state: present
   with_items: "{{ deploy_file.stdout_lines }}"
 
-- name: "[BREAK_FIX] grant admin to developer on demo project"
-  shell: >
-    oc adm policy add-role-to-user admin developer -n demo
+- name: "[BREAK-FIX] START"
+  shell: "{{ openshift_home }}/start.sh"

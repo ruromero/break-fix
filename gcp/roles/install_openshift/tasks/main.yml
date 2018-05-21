@@ -27,18 +27,26 @@
     immediate: yes
     permanent: yes
 
+- name: "[OPENSHIFT] create openshift data folder"
+  file:
+    path: "{{ openshift_home }}/data"
+    state: directory
+
 - name: "[OPENSHIFT] download oc client"
   unarchive:
     src: "{{ oc_client_url }}"
-    dest: "{{ ansible_env.HOME }}"
+    dest: "{{ openshift_home }}"
     remote_src: yes
+    mode: 0777
 
 - name: "[OPENSHIFT] add oc to /usr/bin"
   file:
-    src: "{{ ansible_env.HOME }}/{{ oc_client_name }}/oc"
+    src: "{{ openshift_home }}/{{ oc_client_name }}/oc"
     dest: /usr/bin/oc
     state: link
 
-- name: "[OPENSHIFT] start cluster"
-  shell: >
-    oc cluster up --public-hostname="{{ ansible_host }}" --routing-suffix="{{ ansible_host }}.nip.io"
+- name: "[OPENSHIFT] create start cluster script"
+  copy:
+    src: files/start.sh
+    dest: "{{ openshift_home }}/start.sh"
+    mode: 0777

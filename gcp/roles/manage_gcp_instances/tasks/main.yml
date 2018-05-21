@@ -9,4 +9,6 @@
     state: "{{ state }}"
     tags: break-fix,lab,openshift-console
     num_instances: "{{ instances }}"
+    metadata:
+      startup-script: "{{ openshift_home }}/start.sh"
   register: gce
