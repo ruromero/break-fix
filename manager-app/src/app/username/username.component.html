@@ -1,4 +1,4 @@
-<h2>Prepare for unforseen consequences</h2>
+<h2>Prepare for unforeseen consequences</h2>
 <h3 *ngIf="waitForUser; else showUsername" class="blink">Press a key to start</h3>
 <ng-template #showUsername>
   <form autocomplete="off" novalidate (ngSubmit)="saveUsername(username)">
