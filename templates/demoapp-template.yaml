@@ -1,0 +1,127 @@
+apiVersion: v1
+kind: Template
+metadata:
+  creationTimestamp: null
+  name: demoapp-template
+objects:
+- apiVersion: v1
+  kind: ImageStream
+  metadata:
+    labels:
+      app: ${APP_NAME}
+    name: ${APP_NAME}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    labels:
+      app: ${APP_NAME}
+    name: ${APP_NAME}
+  spec:
+    ports:
+    - name: web
+      port: 8080
+    selector:
+      app: ${APP_NAME}
+- apiVersion: v1
+  kind: Route
+  metadata:
+    labels:
+      app: ${APP_NAME}
+    name: ${APP_NAME}
+  spec:
+    port:
+      targetPort: web
+    to:
+      kind: Service
+      name: ${APP_NAME}
+- apiVersion: v1
+  kind: BuildConfig
+  metadata:
+    labels:
+      app: ${APP_NAME}
+    name: ${APP_NAME}
+  spec:
+    nodeSelector: null
+    output:
+      to:
+        kind: ImageStreamTag
+        name: ${APP_NAME}:latest
+    postCommit: {}
+    resources: {}
+    runPolicy: Serial
+    source:
+      contextDir: ${CONTEXT_DIR}
+      git:
+        uri: https://github.com/ruromero/break-fix
+      type: Git
+    strategy:
+      sourceStrategy:
+        from:
+          kind: DockerImage
+          name: ${BUILDER_IMAGE}
+      type: Source
+    triggers:
+    - type: ConfigChange
+    - imageChange:
+      type: ImageChange
+- apiVersion: v1
+  kind: DeploymentConfig
+  metadata:
+    labels:
+      app: ${APP_NAME}
+    name: ${APP_NAME}
+  spec:
+    replicas: 1
+    selector:
+      app: ${APP_NAME}
+      deploymentconfig: ${APP_NAME}
+    strategy:
+      type: Recreate
+    template:
+      metadata:
+        labels:
+          app: ${APP_NAME}
+          deploymentconfig: ${APP_NAME}
+      spec:
+        containers:
+        - name: ${APP_NAME}
+          image: ' '
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8080
+              scheme: HTTP
+            periodSeconds: 5
+            timeoutSeconds: 1
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8080
+              scheme: HTTP
+            timeoutSeconds: 1
+    triggers:
+    - type: ConfigChange
+    - imageChangeParams:
+        automatic: true
+        containerNames:
+        - ${APP_NAME}
+        from:
+          kind: ImageStreamTag
+          name: ${APP_NAME}:latest
+      type: ImageChange
+parameters:
+- description: Break & Fix Application name
+  displayName: Application name
+  name: APP_NAME
+  required: true
+  value: demoapp
+- description: Where the demo application lays in the git Repository
+  displayName: Context directory
+  name: CONTEXT_DIR
+  required: true
+  value: demoapp
+- description: Base image used to build the Demo application
+  displayName: Builder image
+  name: BUILDER_IMAGE
+  required: true
+  value: centos/nodejs-6-centos7:latest

@@ -1,61 +1,38 @@
  # Google Cloud setup
 
+*UPDATE: Now using [installcentos](https://github.com/gshipley/installcentos) to have a full 1 node installation.*
+
  You can find instructions to install google cloud sdk [here](https://cloud.google.com/sdk/downloads#yum).
 
  You have to add your [ssh keys](https://cloud.google.com/compute/docs/instances/adding-removing-ssh-keys).
 
  Google Cloud full setup is beyond this project , but here you can find a few tips.
 
-#### Firewall rules:
+#### Firewall rule:
 ```
 gcloud compute firewall-rules create openshift-console --allow tcp:8443 --description "Allow incoming traffic on TCP port 8443" --direction INGRESS --target-tags openshift-console
-gcloud compute firewall-rules create default-allow-http --allow tcp:80 --description "Allow incoming traffic on TCP port 80" --direction INGRESS --target-tags default-allow-http
-gcloud compute firewall-rules create default-allow-https --allow tcp:443 --description "Allow incoming traffic on TCP port 443" --direction INGRESS --target-tags default-allow-https
 ```
 
 #### Create Instance:
 ```
-gcloud compute instances create instance1 --image-family centos-7 --image-project centos-cloud --machine-type g1-small --tags default-allow-http,default-allow-https,openshift-console
+gcloud compute instances create breakfix1 --image-family centos-7 --image-project centos-cloud --machine-type n1-standard-4 --tags http-server,https-server,openshift-console --zone europe-west1-b --boot-disk-size=20GB
 ```
 
 #### Prerrequisites:
-
-We will install and setup docker and a few other packages:
 ```
-yum install docker wget git screen -y
-cat << EOF > /etc/docker/daemon.json
-{
-   "insecure-registries": [
-     "172.30.0.0/16"
-   ]
-}
-EOF
-systemctl enable docker
-systemctl start docker
+sed -zi 's/PermitRootLogin no\|$/PermitRootLogin yes/' /etc/ssh/sshd_config
+systemctl restart sshd
+export DOMAIN=$(curl -s -H "Metadata-Flavor: Google" http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/access-configs/0/external-ip).nip.io
+export USERNAME=bernard
+export PASSWORD=bernoulli
 ```
 
-Allow access to the web console port (8443):
-
+#### Install the one node cluster
 ```
-firewall-cmd --permanent --add-port=8443/tcp
-firewall-cmd --reload
+curl https://raw.githubusercontent.com/gshipley/installcentos/master/install-openshift.sh | INTERACTIVE=false /bin/bash
 ```
 
-Download the openshift client:
-
-```
-curl -L --silent -o oc.tar.gz https://github.com/openshift/origin/releases/download/v3.9.0/openshift-origin-client-tools-v3.9.0-191fece-linux-64bit.tar.gz && mkdir /tmp/oc && tar -xvf oc.tar.gz -C /tmp/oc && find /tmp/oc -name "oc" -type f -exec mv {} /usr/bin \; && rm -rf /tmp/oc oc.tar.gz
-```
-
-#### OpenShift cluster and projects
-
-Initiate oc cluster with the public ip of the instance:
-
-```
-oc cluster up --public-hostname=$(curl -H "Metadata-Flavor: Google" http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/access-configs/0/external-ip)
-```
-
-Setup the openshift projects:
+#### Setup the openshift projects:
 
 ```
 oc adm new-project break-fix --display-name='Break & Fix'
@@ -69,29 +46,15 @@ oc adm policy add-cluster-role-to-user cluster-admin -z online-oc -n tty
 oc new-app -f tty-template.yaml -n tty
 ```
 
-The template files are located at the [break-fix](../break-fix/)
+The template files are located at the [templates directory](https://github.com/ruromero/break-fix/templates/)
 
 # Accessing the application
+
 
 * **Manager Application** http://manager-app-break-fix.<your_ip>.nip.io
 * **Demo Application** http://demoapp-demo.<your_ip>.nip.io
 * **TTY** http://online-oc-tty.<your_ip>.nip.io
 
 ```
-for ip in `GCE_INI_PATH=~/.ansible/inventory/gce.ini ~/.ansible/inventory/gce.py --list --pretty | jq '._meta.hostvars[].gce_public_ip' -r`
-do
-  echo MACHINE: $ip
-  echo -e "Manager App:\thttp://manager-app-break-fix.$ip.nip.io"
-  echo -e "demo app:\thttp://demoapp-demo.$ip.nip.io"
-  echo -e "tty:\t\thttp://online-oc-tty.$ip.nip.io"
-done
-
-MACHINE: 35.204.135.118
-Manager App:	http://manager-app-break-fix.35.204.135.118.nip.io
-demo app:	http://demoapp-demo.35.204.135.118.nip.io
-tty:		http://online-oc-tty.35.204.135.118.nip.io
-MACHINE: 35.204.221.18
-Manager App:	http://manager-app-break-fix.35.204.221.18.nip.io
-demo app:	http://demoapp-demo.35.204.221.18.nip.io
-tty:		http://online-oc-tty.35.204.221.18.nip.io
+echo -e "Manager App:\thttp://manager-app-break-fix.apps.$DOMAIN\ndemo app:\thttp://demoapp-demo.apps.$DOMAIN\ntty:\t\thttp://online-oc-tty.apps.$DOMAIN"
 ```
