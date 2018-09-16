@@ -8,16 +8,14 @@
 
  Google Cloud full setup is beyond this project , but here you can find a few tips.
 
-#### Firewall rules:
+#### Firewall rule:
 ```
 gcloud compute firewall-rules create openshift-console --allow tcp:8443 --description "Allow incoming traffic on TCP port 8443" --direction INGRESS --target-tags openshift-console
-gcloud compute firewall-rules create default-allow-http --allow tcp:80 --description "Allow incoming traffic on TCP port 80" --direction INGRESS --target-tags default-allow-http
-gcloud compute firewall-rules create default-allow-https --allow tcp:443 --description "Allow incoming traffic on TCP port 443" --direction INGRESS --target-tags default-allow-https
 ```
 
 #### Create Instance:
 ```
-gcloud compute instances create breakfix1 --image-family centos-7 --image-project centos-cloud --machine-type n1-standard-4 --tags default-allow-http,default-allow-https,openshift-console --zone europe-west1-b --boot-disk-size=20GB
+gcloud compute instances create breakfix1 --image-family centos-7 --image-project centos-cloud --machine-type n1-standard-4 --tags http-server,https-server,openshift-console --zone europe-west1-b --boot-disk-size=20GB
 ```
 
 #### Prerrequisites:
@@ -58,5 +56,5 @@ The template files are located at the [templates directory](https://github.com/r
 * **TTY** http://online-oc-tty.<your_ip>.nip.io
 
 ```
-echo -e "Manager App:\thttp://manager-app-break-fix.$DOMAIN\ndemo app:\thttp://demoapp-demo.$DOMAIN\ntty:\t\thttp://online-oc-tty.$DOMAIN"
+echo -e "Manager App:\thttp://manager-app-break-fix.apps.$DOMAIN\ndemo app:\thttp://demoapp-demo.apps.$DOMAIN\ntty:\t\thttp://online-oc-tty.apps.$DOMAIN"
 ```
