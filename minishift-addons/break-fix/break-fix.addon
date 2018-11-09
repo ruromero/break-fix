@@ -1,8 +1,10 @@
 # Name: break-fix
 # Description: Application to be used in the Break & Fix Lab
+# Required-Vars: SCOREBOARD_HOST, SCOREBOARD_PORT
+# Var-Defaults: SCOREBOARD_HOST=35.204.123.207, SCOREBOARD_PORT=8080
 
 oc adm new-project break-fix --display-name='Break & Fix'
-oc new-app -f manager-app-template.yaml -n break-fix -p SCOREBOARD_HOST=35.204.123.207
+oc new-app -f manager-app-template.yaml -n break-fix -p SCOREBOARD_HOST=#{SCOREBOARD_HOST} -p SCOREBOARD_PORT=#{SCOREBOARD_PORT}
 oc adm policy add-cluster-role-to-user cluster-admin -z manager-app -n break-fix
 oc adm new-project demo --display-name='Demoapp project'
 oc create -f demoapp-template.yaml -n demo

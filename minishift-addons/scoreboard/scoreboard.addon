@@ -1,0 +1,5 @@
+# Name: scoreboard
+# Description: Scoreboard to be used in the Break & Fix Lab
+
+oc adm new-project scoreboard --display-name='Break & Fix - Scoreboard'
+oc new-app -f scoreboard-template.yaml -n scoreboard
