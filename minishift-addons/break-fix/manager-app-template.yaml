@@ -77,4 +77,3 @@ parameters:
   displayName: Scoreboard APP port
   name: SCOREBOARD_PORT
   required: true
-  value: "8080"
