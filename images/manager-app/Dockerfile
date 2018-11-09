@@ -4,7 +4,7 @@ LABEL author="Ruben Romero Montes <rromerom@redhat.com>"
 
 ENV OC_TOOL=openshift-origin-client-tools-v3.9.0-191fece-linux-64bit \
     PATH=$PATH:$APP_ROOT/etc/oc-tool \
-    INSTALL_DIR=/opt/rh/rh-nodejs6/root/usr/bin
+    INSTALL_DIR=/opt/rh/rh-nodejs8/root/usr/bin
 
 ADD https://github.com/openshift/origin/releases/download/v3.9.0/$OC_TOOL.tar.gz $APP_ROOT/etc
 
