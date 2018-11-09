@@ -7,16 +7,12 @@ import { GameService } from '../game.service';
   templateUrl: './new-game.component.html',
   styleUrls: ['../app.component.css','./new-game.component.css']
 })
-export class NewGameComponent implements OnInit {
+export class NewGameComponent {
 
   constructor(
     private gameService: GameService,
     private router: Router
-  ){
-  }
-
-  ngOnInit() {
-  }
+  ){  }
 
   error: string = '';
   password: string = '';

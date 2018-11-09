@@ -6,7 +6,7 @@ import { GameService } from '../game.service';
   templateUrl: './username.component.html',
   styleUrls: ['./username.component.css', '../app.component.css']
 })
-export class UsernameComponent implements OnInit {
+export class UsernameComponent {
 
   waitForUser: boolean = true;
 
@@ -16,9 +16,6 @@ export class UsernameComponent implements OnInit {
     document.addEventListener('keypress', () => {
       this.waitForUser = false;
     }, Object({once: true}));
-  }
-
-  ngOnInit() {
   }
 
   saveUsername(username: string): void {

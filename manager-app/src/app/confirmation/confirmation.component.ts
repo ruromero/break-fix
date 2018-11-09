@@ -5,15 +5,10 @@ import { Component, OnInit, Input } from '@angular/core';
   templateUrl: './confirmation.component.html',
   styleUrls: ['../app.component.css', './confirmation.component.css']
 })
-export class ConfirmationComponent implements OnInit {
+export class ConfirmationComponent {
 
   @Input() message: string;
   @Input() confirmFn: Function;
-
-  constructor() { }
-
-  ngOnInit() {
-  }
 
   confirm = () => {
     this.confirmFn(true);
