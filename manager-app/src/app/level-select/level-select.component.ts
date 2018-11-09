@@ -7,15 +7,12 @@ import { LevelStatus } from '../model/level';
   templateUrl: './level-select.component.html',
   styleUrls: ['../app.component.css','./level-select.component.css']
 })
-export class LevelSelectComponent implements OnInit {
+export class LevelSelectComponent {
 
   levelStatus = LevelStatus;
 
   constructor(
-    private gameService: GameService
+    public gameService: GameService
   ) { }
-
-  ngOnInit() {
-  }
 
 }

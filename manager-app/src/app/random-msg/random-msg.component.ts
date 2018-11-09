@@ -45,8 +45,6 @@ export class RandomMsgComponent implements OnInit {
 
   message: string;
 
-  constructor() { }
-
   ngOnInit() {
     this.setRandomMsg();
     setInterval(this.setRandomMsg, 2000);

@@ -9,7 +9,7 @@ import { Level, LevelStatus } from '../model/level';
   templateUrl: './level.component.html',
   styleUrls: ['../app.component.css', './level.component.css']
 })
-export class LevelComponent implements OnInit {
+export class LevelComponent {
 
   level: Level;
   levelStatus = LevelStatus;
@@ -36,9 +36,6 @@ export class LevelComponent implements OnInit {
         this.level = null;
       }
     });
-  }
-
-  ngOnInit() {
   }
 
   ngOnDestroy() {

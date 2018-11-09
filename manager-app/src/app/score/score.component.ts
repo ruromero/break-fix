@@ -6,14 +6,11 @@ import { GameService } from '../game.service';
   templateUrl: './score.component.html',
   styleUrls: ['./score.component.css']
 })
-export class ScoreComponent implements OnInit {
+export class ScoreComponent {
 
   constructor(
-    private gameService: GameService
+    public gameService: GameService
   ) { }
-
-  ngOnInit() {
-  }
 
   onNextLevel() {
     this.gameService.calculateScore();
