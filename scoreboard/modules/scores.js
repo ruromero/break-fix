@@ -3,7 +3,7 @@ const wsapi = require('./wsapi');
 const low = require('lowdb');
 const FileSync = require('lowdb/adapters/FileSync');
 
-const adapter = new FileSync('data/scores.db.json');
+const adapter = new FileSync((process.env.DB_PATH || 'data') + '/scores.db.json');
 const db = low(adapter);
 
 db.defaults({scores: []})
