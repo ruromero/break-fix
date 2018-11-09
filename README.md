@@ -26,7 +26,7 @@ This laboratory is intended to be deployed using [minishift](https://github.com/
 1. Install the latest version of  [minishift](https://github.com/minishift/minishift)
 
   ```[bash]
-  ./minishift start --profile break-fix --openshift-version v3.9.0
+  ./minishift start --profile break-fix --openshift-version v3.11.0
   -- Starting profile 'break-fix'
   -- Checking if requested hypervisor 'kvm' is supported on this platform ... OK
   -- Checking if KVM driver is installed ...
@@ -45,11 +45,11 @@ This laboratory is intended to be deployed using [minishift](https://github.com/
       oc login -u system:admin
   ```
 
-1. Download the add-on and install it. Check the [v3.9.0 release](https://github.com/ruromero/break-fix/releases/tag/v3.9.0):
+1. Download the add-on and install it. Check the [v3.11.0 release](https://github.com/ruromero/break-fix/releases/tag/v3.11.0):
 
   ```[bash]
-  $ wget https://github.com/ruromero/break-fix/releases/download/v3.9.0/break-fix-3.9.0.tar.gz
-  $ tar -xf break-fix-3.9.0.tar.gz
+  $ wget https://github.com/ruromero/break-fix/releases/download/v3.11.0/break-fix-3.11.0.tar.gz
+  $ tar -xf break-fix-3.11.0.tar.gz
   $ ./minishift addons install break-fix
   Addon 'break-fix' installed
   $ ./minishift addons apply break-fix
@@ -100,8 +100,8 @@ Each level will break the `demoapp` or some element that will prevent it from be
 
 The Docker images are also published in Docker Hub
 
-* [ruromero/nodejs-6-oc](https://hub.docker.com/r/ruromero/nodejs-6-oc/): An extension of the base s2i image for nodejs which installs the `oc` client.
-* [ruromero/manager-app](https://hub.docker.com/r/ruromero/manager-app/): An image extending [ruromero/nodejs-6-oc](https://hub.docker.com/r/ruromero/nodejs-6-oc/) that downloads and builds the source code.
+* [ruromero/manager-app](https://hub.docker.com/r/ruromero/manager-app/): An image that downloads and builds the source code for the manager-app app.
+* [ruromero/scoreboard](https://hub.docker.com/r/ruromero/scoreboard/): An image that downloads and builds the source code for the scoreboard app.
 
 ### Web TTY
 
