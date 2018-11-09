@@ -1,6 +1,6 @@
 FROM centos/nodejs-6-centos7
 
-MAINTAINER Ruben Romero Montes <rromerom@redhat.com>
+LABEL author="Ruben Romero Montes <rromerom@redhat.com>"
 
 ENV OC_TOOL=openshift-origin-client-tools-v3.9.0-191fece-linux-64bit \
     PATH=$PATH:$APP_ROOT/etc/oc-tool \
