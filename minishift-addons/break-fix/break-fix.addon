@@ -2,7 +2,7 @@
 # Description: Application to be used in the Break & Fix Lab
 
 oc adm new-project break-fix --display-name='Break & Fix'
-oc new-app -f manager-app-template.yaml -n break-fix
+oc new-app -f manager-app-template.yaml -n break-fix -p SCOREBOARD_HOST=35.204.123.207
 oc adm policy add-cluster-role-to-user cluster-admin -z manager-app -n break-fix
 oc adm new-project demo --display-name='Demoapp project'
 oc create -f demoapp-template.yaml -n demo
