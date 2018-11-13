@@ -45,13 +45,14 @@ This laboratory is intended to be deployed using [minishift](https://github.com/
       oc login -u system:admin
   ```
 
-1. Download the add-ons and install the ones you need. Check the [v3.11.0 release](https://github.com/ruromero/break-fix/releases/tag/v3.11.0):
+1. Download the add-ons and install the ones you need. Check the [v3.11 release](https://github.com/ruromero/break-fix/releases/tag/v3.11):
 
   ```[bash]
-  $ wget https://github.com/ruromero/break-fix/releases/download/v3.11.0/break-fix-3.11.0.tar.gz
-  $ tar -xf break-fix-3.11.0.tar.gz
-  $ ./minishift addons install break-fix scoreboard
+  $ wget https://github.com/ruromero/break-fix/releases/download/v3.11/break-fix-3.11.tar.gz
+  $ tar -xf break-fix-3.11.tar.gz
+  $ ./minishift addons install break-fix
   Addon 'break-fix' installed
+  $ ./minishift addons install scoreboard
   Addon 'scoreboard' installed
   ```
 
@@ -65,7 +66,7 @@ This laboratory is intended to be deployed using [minishift](https://github.com/
 1. Install the main break-fix addon that contains the `manager-app`, `demoapp` and `tty`. Provide the SCOREBOARD_HOST and SCOREBOARD_PORT variables to connect to an existing scoreboard. By default it will be our GCP hosted server (`35.204.123.207:8080`) which might not be online.
 
   ```[bash]
-  $ ./minishift addons apply break-fix --addon-env SCOREBOARD_HOST=scoreboard-scoreboard.192.168.42.95.nip.io --addon-env SCOREBOARD_PORT=80
+  $ ./minishift addons apply break-fix --addon-env SCOREBOARD_HOST=scoreboard.scoreboard.svc.cluster.local --addon-env SCOREBOARD_PORT=8080
   -- Applying addon 'break-fix':..........
   ```
 

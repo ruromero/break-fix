@@ -1,6 +1,0 @@
-# Name: break-fix
-# Description: Removes the stuff created in the Break & Fix Lab
-
-oc delete project break-fix
-oc delete project demo
-oc delete project tty

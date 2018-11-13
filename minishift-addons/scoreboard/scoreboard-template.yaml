@@ -14,6 +14,8 @@ objects:
     ports:
     - name: web
       port: 8080
+    - name: ws
+      port: 40510
     selector:
       app: ${APP_NAME}
 - apiVersion: v1
@@ -25,6 +27,18 @@ objects:
   spec:
     port:
       targetPort: web
+    to:
+      kind: Service
+      name: ${APP_NAME}
+- apiVersion: v1
+  kind: Route
+  metadata:
+    labels:
+      app: ${APP_NAME}
+    name: ws-${APP_NAME}
+  spec:
+    port:
+      targetPort: ws
     to:
       kind: Service
       name: ${APP_NAME}
@@ -51,6 +65,10 @@ objects:
         - env:
           - name: DB_PATH
             value: /data
+          - name: WS_ROUTE_PREFIX
+            value: "ws-"
+          - name: WS_ROUTE_PORT
+            value: "80"
           name: ${APP_NAME}
           image: ruromero/scoreboard:3.11
           imagePullPolicy: IfNotPresent

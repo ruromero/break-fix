@@ -1,10 +1,17 @@
 const express = require('express');
 const router = express.Router();
 const Scores = require('../modules/scores');
+const WSapi = require('../modules/wsapi');
 
 router.get('/', (req, res) => {
   console.log("Ping received");
   res.send('');
+});
+
+router.get('/ws-config', (req, res) => {
+  res.send(
+    WSapi.getConfig()
+  );
 });
 
 router.post('/score', (req, res) => {

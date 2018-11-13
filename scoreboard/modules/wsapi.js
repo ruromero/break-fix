@@ -4,7 +4,7 @@ const WebSocketServer = WebSocket.Server;
 wss = new WebSocketServer({port: 40510});
 
 wss.on('connection', function (ws) {
-  ws.send('Connected at: ' + `${new Date()}`);
+  ws.send('{"message":"Connected at: ' + `${new Date()}` + '"}');
 });
 
 exports.broadcast = (type, data) => {
@@ -17,3 +17,12 @@ exports.broadcast = (type, data) => {
     }
   });
 };
+
+exports.getConfig = () => {
+  port = process.env.WS_ROUTE_PORT || wss.options.port;
+  prefix = process.env.WS_ROUTE_PREFIX || '';
+  return {
+    port: port,
+    prefix: prefix
+  };
+}

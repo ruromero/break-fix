@@ -1,0 +1,4 @@
+# Name: scoreboard
+# Description: Removes the Scoreboard project
+
+oc delete project scoreboard

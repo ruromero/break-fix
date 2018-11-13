@@ -1,7 +1,11 @@
 const loc = window.location;
-let new_uri = "ws://" + loc.hostname + ':40510';
 
-const appSocket = new WebSocket(new_uri);
+fetch('/api/ws-config')
+  .then(response => response.json())
+  .then(config => {
+    let new_uri = "ws://" + config.prefix + loc.hostname + ':' + config.port;
+    initSocket(new WebSocket(new_uri));
+  });
 
 function getPosition(score) {
   const rows = document.getElementById('scores').tBodies[0].getElementsByTagName('tr');
@@ -57,19 +61,22 @@ function clearScores() {
   }
 }
 
-appSocket.onmessage = (event) => {
-  console.log('event received: ' + event.data);
-  const object = JSON.parse(event.data);
-  if(object.type === 'addScore') {
-    removeScore(object.data.gameId);
-    addScore(object.data);
-    updateRanks();
-  }
-  if(object.type === 'removeScore') {
-    removeScore(object.data.gameId);
-    updateRanks();
-  }
-  if(object.type === 'clearScores') {
-    clearScores();
-  }
-};
+function initSocket(appSocket) {
+  appSocket.onmessage = (event) => {
+    console.log('event received: ' + event.data);
+    const object = JSON.parse(event.data);
+    if(object.type === 'addScore') {
+      removeScore(object.data.gameId);
+      addScore(object.data);
+      updateRanks();
+    }
+    if(object.type === 'removeScore') {
+      removeScore(object.data.gameId);
+      updateRanks();
+    }
+    if(object.type === 'clearScores') {
+      clearScores();
+    }
+  };
+}
+
