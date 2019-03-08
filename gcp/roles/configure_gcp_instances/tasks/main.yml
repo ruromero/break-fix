@@ -3,7 +3,7 @@
   gce_net:
     name: default
     fwname: openshift-ports
-    allowed: tcp:80,443,8443
+    allowed: tcp:80,443,8443,4001
     state: present
     target_tags: break-fix
 
