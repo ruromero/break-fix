@@ -17,6 +17,15 @@
     regexp: '(^\n$)|(^#.*$)'
     state: absent
 
+- name: "[BREAK-FIX] addon: replace Scoreboard placeholder"
+  replace:
+    path: "{{ openshift_home }}/break-fix/break-fix.addon"
+    regexp: "{{ item.regexp }}" 
+    replace: "{{ item.content }}"
+  with_items:
+    - { regexp: '#{SCOREBOARD_HOST}', content: "{{ SCOREBOARD_HOST | default('') }}" }
+    - { regexp: '#{SCOREBOARD_PORT}', content: "{{ SCOREBOARD_PORT | default('') }}" }
+
 - name: "[BREAK-FIX] load addon"
   shell: >
     cat {{ openshift_home }}/break-fix/break-fix.addon
@@ -31,3 +40,13 @@
 
 - name: "[BREAK-FIX] START"
   shell: "{{ openshift_home }}/start.sh"
+
+- pause:
+    seconds: 120
+
+- name: "[BREAK-FIX] Add permission on ocp projects"
+  command: "oc adm policy add-role-to-user {{ item.oc_role }} developer -n {{ item.project }}"
+  with_items:
+    - { oc_role: 'admin', project: 'demo' }
+    - { oc_role: 'view', project: 'tty' }
+    - { oc_role: 'view', project: 'break-fix' }

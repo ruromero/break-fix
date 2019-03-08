@@ -1,0 +1,9 @@
+---
+instance_name: t3chfest-lab
+machine_type: n1-standard-2
+image: centos-7
+zone: europe-west4-a
+disk_size: 50
+instances: 30
+SCOREBOARD_HOST: '35.204.14.216'
+SCOREBOARD_PORT: '8080'
